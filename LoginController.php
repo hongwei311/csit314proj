@@ -1,20 +1,23 @@
 <?php
-// session_start();
 include("User.php");
-
-if(isset($_POST['submit']))
+class LoginController
 {
-    $Username = stripslashes($_POST['username']);
-    $Password = stripslashes($_POST['password']);
-    $Usertype = stripslashes($_POST['usertype']);
-    $validation = validateLogin($Username, $Password, $Usertype);
-    if($validation==true)
+    public $validationcheck;
+
+    function setValidationcheck($validationcheck)
     {
-        echo "Login successful";
+        $this -> validationcheck = $validationcheck;
     }
-    else
+
+    function getValidationcheck()
     {
-        echo "Wrong username/password";
+        return $this -> validationcheck;
+    }
+
+    function onSubmit($Username, $Password, $Usertype)
+    {
+        $validation = validateLogin($Username, $Password, $Usertype);
+        return $validation;
     }
 }
 

@@ -2,13 +2,44 @@
     include("LoginController.php");
       session_start();
       $_SESSION = array();
-      session_destroy();
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
+        $LoginController = new LoginController();
+        $validation = $LoginController->onSubmit($_POST['username'],$_POST['password'],$_POST['usertype']);
+        $LoginController->setValidationcheck($validation);
+        if($validation==true)
+        {
+            switch($_POST['usertype'])
+            {
+                case 'Admin':
+                    header("Location:Admin_Main_Page.php");
+                    break;
+
+                case 'Doctor':
+                    header("Location:Doctor_Main_Page.php");
+                    break;
+
+                case 'Patient':
+                    header("Location:Patient_Main_Page.php");
+                    break;
+
+                case 'Pharmacist':
+                    header("Location:Pharmacist_Main_Page.php");
+                    break;
+            }
+
+        }
+        else
+        {
+            echo "Wrong username/password";
+        }
+    }
 ?>
 <html>
 
 
 <body>
-    <form id="LoginPageForm" method="POST" action="LoginController.php">
+    <form id="LoginPageForm" method="POST" action="LoginPage.php">
         <label>Username</label>&ensp;<input type="text" name="username" placeholder="Username"> <br>
         <label>Password</label>&ensp;<input type="password" name="password" placeholder="Password"> <br>
         <label>User Type</label>&ensp;<select name = "usertype" id="usertype">

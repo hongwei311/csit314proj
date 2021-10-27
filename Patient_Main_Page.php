@@ -1,4 +1,9 @@
+<<<<<<< HEAD:Patient_Main_Page.php
 <?php?>
+=======
+<?php
+?>
+>>>>>>> beb76e6ca71f51d9349bc172212341ea2dd0e939:Patient_Main_Page.html
 <!DOCTYPE html>
 <html>
 <head>

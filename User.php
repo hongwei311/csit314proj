@@ -41,11 +41,11 @@ function validateLogin($Username, $Password, $Usertype)
     $qRes = @mysqli_query($conn, $sql);
     if (mysqli_num_rows($qRes)==0)
     {
-        return false;
+        return $validation = false;
     }   
     else
     {
-        return true;
+        return $validation = true;
     } 
 }
 
