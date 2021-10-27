@@ -21,20 +21,22 @@ table, th, td {
   cursor: pointer;
 }
 
-.Patient_Main_Page {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.Patient_Main_Page:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-.Logout {
+.navigate {
   background-color: white; 
   color: black; 
   border: 2px solid #008CBA;
+}
+
+.navigate:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.Logout {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #FF0000;
 }
 
 .Logout:hover {

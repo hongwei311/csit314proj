@@ -21,36 +21,26 @@ table, th, td {
   cursor: pointer;
 }
 
-.Patient_Main_Page {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.Patient_Main_Page:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.Patient_Search_Past_Prescription {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.Patient_Search_Past_Prescription:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.Patient_Search_Current_Prescription {
+.navigate {
   background-color: white; 
   color: black; 
   border: 2px solid #008CBA;
 }
 
-.Patient_Search_Current_Prescription:hover {
-    background-color: #4CAF50;
+.navigate:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.Logout {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #FF0000;
+}
+
+.Logout:hover {
+  background-color: #008CBA;
   color: white;
 }
 </style>
@@ -59,12 +49,12 @@ table, th, td {
 
 <h1>Search Prescription</h1>
 
-<p><a href="Patient_Main_Page.php"><button class="button Patient_Main_Page">Main Page</button></p></a></p>
+<p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 
-<p><a href="Patient_Search_Current_Prescription.php"><button class="button Patient_Search_Current_Prescription">Search Current Prescription</button></a></p>
+<p><a href="Patient_Search_Current_Prescription.php"><button class="button navigate">Search Current Prescription</button></a></p>
 
-<p><a href="Patient_Search_Past_Prescription.php"><button class="button Patient_Search_Past_Prescription">Search Past Prescription</button></a></p>
+<p><a href="Patient_Search_Past_Prescription.php"><button class="button navigate">Search Past Prescription</button></a></p>
 
 </body>
 </html>
