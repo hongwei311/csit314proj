@@ -8,11 +8,13 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   $_SESSION['username']=$_POST['username'];
   if($validation==true)
   {
-    echo '<script>alert("User added successfully")</script>';
+    // echo '<script>alert("User added successfully")</script>';
+    echo "User added successfully";
   }
   else
   {
-    echo '<script>alert("User not added successfully")</script>';
+    // echo '<script>alert("User not added successfully")</script>';
+    echo "User not added successfully";
   }
 }
 
@@ -70,11 +72,11 @@ table, th, td {
 
 <p><a href="Admin_Main_Page.php"><button class="button">Main Page</button></p></a></p>
 
-<form action="UserController.php">
+<form id="AdminAddUserPage" method="POST" action="Admin_Add_User_Page.php">
   <label>Username: </label>
-  <input type="text" id="Username" name="Username"><br><br>
+  <input type="text" id="Username" name="username"><br><br>
   <label>Password: </label>
-  <input type="Password" id="Password" name="Password"><br><br>
+  <input type="Password" id="Password" name="password"><br><br>
   <label>User Type</label>&ensp;<select name = "usertype" id="usertype">
             <option value = "Admin" >Admin</option>
             <option value = "Doctor" >Doctor</option>

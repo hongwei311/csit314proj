@@ -1,6 +1,6 @@
 <?php
 
-include("LoginController.php");
+include_once("LoginController.php");
 
 class User{
     private $userid;
@@ -52,11 +52,13 @@ class User{
     {       
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-        $sql = "INSERT INTO $TableName" . "(UserName, Password, Usertype)" .
+        
+        $sql = "INSERT INTO $TableName (UserName, Password, UserType)" .
         " VALUES ('$Username', '$Password', '$Usertype')";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
+            echo "<p>* Unable to insert. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else

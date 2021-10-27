@@ -1,11 +1,11 @@
 <?php
-include("User.php");
-
+include_once("User.php");
 class UserControl
 {
     function addUser($Username, $Password, $Usertype)
     {
-        $validation = add($Username, $Password, $Usertype);
+        $User = new User();
+        $validation = $User->add($Username, $Password, $Usertype);
         return $validation;
     }
 }

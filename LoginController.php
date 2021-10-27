@@ -1,10 +1,11 @@
 <?php
-include("User.php");
+include_once("User.php");
 class LoginControl
 {
     function onSubmit($Username, $Password, $Usertype)
     {
-        $validation = validateLogin($Username, $Password, $Usertype);
+        $User = new User();
+        $validation = $User->validateLogin($Username, $Password, $Usertype);
         return $validation;
     }
 }

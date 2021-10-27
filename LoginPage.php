@@ -1,5 +1,5 @@
 <?php
-    include("LoginController.php");
+    include_once("LoginController.php");
       session_start();
       $_SESSION = array();
     if($_SERVER['REQUEST_METHOD']=='POST')
