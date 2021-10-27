@@ -4,10 +4,9 @@
       $_SESSION = array();
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
-        $LoginController = new LoginController();
-        $validation = $LoginController->onSubmit($_POST['username'],$_POST['password'],$_POST['usertype']);
+        $LoginControl = new LoginControl();
+        $validation = $LoginControl->onSubmit($_POST['username'],$_POST['password'],$_POST['usertype']);
         $_SESSION['username']=$_POST['username'];
-        $LoginController->setValidationcheck($validation);
         if($validation==true)
         {
             switch($_POST['usertype'])

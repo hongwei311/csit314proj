@@ -1,6 +1,6 @@
 <?php
 
-include_once("LoginController.php");
+include("LoginController.php");
 
 class User{
     private $userid;
@@ -32,21 +32,44 @@ class User{
         return $this -> UserType;
     }
 
-}
-function validateLogin($Username, $Password, $Usertype)
-{
-    $TableName = "useraccount";
-    $conn = mysqli_connect("localhost","root","","csit314");
-    $sql = "SELECT UserName, Password FROM $TableName" . " where UserName ='". $Username . "' and Password='" . $Password . "' and Usertype='" . $Usertype . "'";
-    $qRes = @mysqli_query($conn, $sql);
-    if (mysqli_num_rows($qRes)==0)
+    function validateLogin($Username, $Password, $Usertype)
     {
-        return $validation = false;
-    }   
-    else
-    {
-        return $validation = true;
-    } 
+        $TableName = "useraccount";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT UserName, Password FROM $TableName" . " where UserName ='". $Username . "' and Password='" . $Password . "' and Usertype='" . $Usertype . "'";
+        $qRes = @mysqli_query($conn, $sql);
+        if (mysqli_num_rows($qRes)==0)
+        {
+            return $validation = false;
+        }   
+        else
+        {
+            return $validation = true;
+        } 
+    }
+
+    function add($Username, $Password, $Usertype)
+    {       
+        $TableName = "useraccount";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "INSERT INTO $TableName" . "(UserName, Password, Usertype)" .
+        " VALUES ('$Username', '$Password', '$Usertype')";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            return $validation = false;
+        }
+        else
+        {
+            return $validation = true;
+        }
+
+    }         
+
 }
+
+
+
+
 
 ?>
