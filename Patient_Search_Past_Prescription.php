@@ -1,3 +1,4 @@
+<?php?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,20 +21,22 @@ table, th, td {
   cursor: pointer;
 }
 
-.Patient_Main_Page {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.Patient_Main_Page:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-.Logout {
+.navigate {
   background-color: white; 
   color: black; 
   border: 2px solid #008CBA;
+}
+
+.navigate:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.Logout {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #FF0000;
 }
 
 .Logout:hover {
@@ -46,7 +49,7 @@ table, th, td {
 
 <h1>Search Past Prescription</h1>
 
-<p><a href="Patient_Main_Page.html"><button class="button Patient_Main_Page">Main Page</button></p></a></p>
+<p><a href="Patient_Main_Page.html"><button class="button navigate">Main Page</button></p></a></p>
 
 <form action="Search.PHP ?????????">
     <label for="date">Date: </label>
