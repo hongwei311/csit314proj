@@ -1,9 +1,8 @@
-<?php
-?>
+<?php?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Main Page</title>
+  <title>Pharmacist Main Page</title>
 <style>
 .button {
   border: none;
@@ -65,7 +64,7 @@
 </head>
 <body>
 
-<h1>Welcome Patient XXX</h1>
+<h1>Welcome Pharmacist XXX</h1>
 
 <p><a href="Patient_Current_Prescription.php"><button class="button Patient_Current_Prescription">Current Prescription</button></p></a></p>
 

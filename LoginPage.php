@@ -6,6 +6,7 @@
     {
         $LoginController = new LoginController();
         $validation = $LoginController->onSubmit($_POST['username'],$_POST['password'],$_POST['usertype']);
+        $_SESSION['username']=$_POST['username'];
         $LoginController->setValidationcheck($validation);
         if($validation==true)
         {

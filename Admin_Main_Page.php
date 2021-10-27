@@ -1,7 +1,11 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pharmacist Main Page</title>
+  <title>Main Page</title>
 <style>
 .button {
   border: none;
@@ -63,15 +67,15 @@
 </head>
 <body>
 
-<h1>Welcome Pharmacist XXX</h1>
+<h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 
-<p><a href="Patient_Current_Prescription.html"><button class="button Patient_Current_Prescription">Current Prescription</button></p></a></p>
+<p><a href="Patient_Current_Prescription.php"><button class="button Patient_Current_Prescription">Add new users</button></p></a></p>
 
-<p><a href="Patient_Past_Prescription.html"><button class="button Patient_Past_Prescription">Past Prescription</button></a></p>
+<p><a href="Patient_Past_Prescription.php"><button class="button Patient_Past_Prescription">Search for users</button></a></p>
 
-<p><a href="Patient_Search_Prescription.html"><button class="button Patient_Search_Prescription">Search Prescription</button></a></p>
+<p><a href="Patient_Search_Prescription.php"><button class="button Patient_Search_Prescription">Update users</button></a></p>
 
-<p><a href="LOG OUT XXXXXXXX"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>
 </html>
