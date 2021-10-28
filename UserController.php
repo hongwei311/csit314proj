@@ -8,6 +8,12 @@ class UserControl
         $validation = $User->add($Username, $Password, $Usertype);
         return $validation;
     }
+
+    function updateUser($UserID)
+    {
+        $User = new User();
+        
+    }
 }
 
 ?>

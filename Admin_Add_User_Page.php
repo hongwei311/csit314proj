@@ -5,15 +5,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 {
   $UserControl = new UserControl();
   $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['usertype']);
-  $_SESSION['username']=$_POST['username'];
   if($validation==true)
   {
-    // echo '<script>alert("User added successfully")</script>';
     echo "User added successfully";
   }
   else
   {
-    // echo '<script>alert("User not added successfully")</script>';
     echo "User not added successfully";
   }
 }
