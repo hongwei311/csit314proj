@@ -72,6 +72,7 @@ table, th, td {
   </form>
 
 
-  <p><a href="LOG OUT XXXXXXXX"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+  
+<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 </body>
 </html>

@@ -57,8 +57,6 @@ table, th, td {
   <input type="submit" value="Submit">
 </form> 
 
-
-
 <p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 </body>
 </html>
