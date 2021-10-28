@@ -1,21 +1,6 @@
 <?php
 include_once("UserController.php");
 session_start();
-if($_SERVER['REQUEST_METHOD']=='POST')
-{
-  $UserControl = new UserControl();
-  $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['usertype']);
-  if($validation==true)
-  {
-    echo "User added successfully";
-  }
-  else
-  {
-    echo "User not added successfully";
-  }
-}
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +13,7 @@ table, th, td {
 
 .button {
   border: none;
-  color: white;
+  color: black;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -82,7 +67,21 @@ table, th, td {
         </select> <br><br>
   <input type="submit" value="Submit">
 </form> 
-
+<?php
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+  $UserControl = new UserControl();
+  $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['usertype']);
+  if($validation==true)
+  {
+    echo "User added successfully";
+  }
+  else
+  {
+    echo "User not added";
+  }
+}
+?>
 
 
 <p><a href="Logout.php"><button class="button" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>

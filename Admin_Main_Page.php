@@ -71,11 +71,11 @@ session_start();
 
 <p><a href="Admin_Add_User_Page.php"><button class="button Patient_Current_Prescription">Add new users</button></p></a></p>
 
-<p><a href=""><button class="button Patient_Past_Prescription">Search for users</button></a></p>
+<p><a href="Admin_Search_User_Page.php"><button class="button Patient_Past_Prescription">Search for users</button></a></p>
 
-<p><a href=""><button class="button Patient_Search_Prescription">Update users</button></a></p>
+<p><a href="Admin_Update_User_Page.php"><button class="button Patient_Search_Prescription">Update users</button></a></p>
 
-<p><a href=""><button class="button Patient_Search_Prescription">view users</button></a></p>
+<p><a href=""><button class="button Patient_Search_Prescription">View users</button></a></p>
 
 <p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
