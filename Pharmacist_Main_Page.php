@@ -4,6 +4,7 @@
 <head>
   <title>Pharmacist Main Page</title>
 <style>
+
 .button-align {
 width: 200px;
 margin: 0 auto;
@@ -58,6 +59,7 @@ display: inline;}
 
   </div>
     </div>
+    <br>
     <div class="button">
       <div class="button-align">
         <a href="Patient_Search_Prescription.html"><button class="button navigate">Search Prescription</button></a>
@@ -65,7 +67,7 @@ display: inline;}
   
     </div>
       </div>
-
+      <br>
       <div class="button">
         <div class="button-align">
           <a href="Patient_Past_Prescription.html"><button class="button navigate">Past Prescription</button></a>
