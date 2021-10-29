@@ -4,6 +4,12 @@
 <head>
   <title>Pharmacist Main Page</title>
 <style>
+
+.button-align {
+width: 200px;
+margin: 0 auto;
+display: inline;}
+
 .button {
   border: none;
   color: white;
@@ -15,6 +21,7 @@
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  
 }
 
 .navigate {
@@ -46,11 +53,30 @@
 
 <h1>Welcome Pharmacist XXX</h1>
 
-<p><a href="Patient_Current_Prescription.php"><button class="button navigate">Current Prescription</button></p></a></p>
+  <div class="button">
+    <div class="button-align">
+      <a href="Pharmacist_Patient_Record.php"><button class="button navigate">View Patient's Records</button></a>
+      <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription</button></a>
 
-<p><a href="Patient_Past_Prescription.php"><button class="button navigate">Past Prescription</button></a></p>
+  </div>
+    </div>
+    <br>
+    <div class="button">
+      <div class="button-align">
+        <a href="Search_Patient_Record.php"><button class="button navigate">Search Patient's Records</button></a>
+        <a href="View_Prescription_Status.php"><button class="button navigate">View Prescription Status</button></a>
+  
+    </div>
+      </div>
+      <br>
+      <div class="button">
+        <div class="button-align">
+          <a href="Search_Patients_Prescription.php"><button class="button navigate">Search Patient's Prescription</button></a>
+          <a href="Update_Prescription_Status.php"><button class="button navigate">Update Prescription Status</button></a>
+    
+      </div>
+        </div>
 
-<p><a href="Patient_Search_Prescription.php"><button class="button navigate">Search Prescription</button></a></p>
 
 <p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
