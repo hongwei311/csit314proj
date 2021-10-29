@@ -51,7 +51,23 @@ table, th, td {
 
     <input type="submit" value="Submit">
   </form>
+  <br><br>
+  <table style="width: 70%;"> <!-- Auto input data from the dates -->
+        <tr>
+            <th>Dates</th>
+            <th>Medications</th>
+        </tr>
+        <tr>
+            <td>PHP code to auto input</td>
+            <td>PHP code to auto input</td>
+        </tr>
+        <tr>
+            <td>PHP code to auto input</td>
+            <td>PHP code to auto input</td>
+        </tr>
+        
 
+    </table>
 
 </body>
 </html>
