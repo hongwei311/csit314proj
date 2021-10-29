@@ -31,18 +31,6 @@ table, th, td {
   background-color: #4CAF50;
   color: white;
 }
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
 </style>
 </head>
 <body>
@@ -51,8 +39,6 @@ table, th, td {
 
 <p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
-
-<p><a href="Patient_Search_Current_Prescription.php"><button class="button navigate">Search Current Prescription</button></a></p>
 
 <p><a href="Patient_Search_Past_Prescription.php"><button class="button navigate">Search Past Prescription</button></a></p>
 

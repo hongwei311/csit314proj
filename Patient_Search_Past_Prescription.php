@@ -31,25 +31,13 @@ table, th, td {
   background-color: #4CAF50;
   color: white;
 }
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
 </style>
 </head>
 <body>
 
 <h1>Search Past Prescription</h1>
 
-<p><a href="Patient_Main_Page.php"><button class="button Patient_Main_Page">Main Page</button></p></a></p>
+<p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 <form action="Search.PHP ?????????">
     <label for="date">Date: </label>
@@ -60,19 +48,10 @@ table, th, td {
       <option value="date">Auto input date from DB</option>
     </select>
     <br>
-    <label for="Med">Med: </label>
-    <select name="Med" id="Med">
-      <option value="Med">Auto input Med from DB according to the date</option>
-      <option value="Med">Auto input Med from DB according to the date</option>
-      <option value="Med">Auto input Med from DB according to the date</option>
-      <option value="Med">Auto input Med from DB according to the date</option>
-    </select>
-    <br><br>
+
     <input type="submit" value="Submit">
   </form>
 
 
-  
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 </body>
 </html>

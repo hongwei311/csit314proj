@@ -49,7 +49,7 @@ table, th, td {
 
 <h1>Past Prescription</h1>
 
-<p><a href="Patient_Main_Page.php"><button class="button Patient_Main_Page">Main Page</button></p></a></p>
+<p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 
     <table style="width: 70%;">

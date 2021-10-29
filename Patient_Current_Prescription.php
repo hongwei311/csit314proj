@@ -31,18 +31,6 @@ table, th, td {
   background-color: #4CAF50;
   color: white;
 }
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
 </style>
 </head>
 <body>
