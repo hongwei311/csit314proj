@@ -1,27 +1,14 @@
 <?php
 include_once("Prescription.php");
-class UserControl
+class PrescriptionControl
 {
-    function addPrescription($PrescriptionDetails, $PrescriptionStatus, $DoctorId)
+    function addPrescription($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId)
     {
         $Prescription = new Prescription();
-        $validation = $User->add($PrescriptionDetails, $PrescriptionStatus, $DoctorId);
+        $validation = $Prescription->add($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId);
         return $validation;
     }
 
-    function searchUser($UserId)
-    {
-        $User = new User();
-        $userdetails = $User->search($UserId);
-        return $userdetails;
-    }
-
-    function updateUser($UserId,$Username, $Password, $Usertype)
-    {
-        $User = new User();
-        $validation = $User->update($UserId,$Username, $Password, $Usertype);
-        return $validation;
-    }
 }
 
 ?>
