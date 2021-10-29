@@ -69,15 +69,46 @@ session_start();
 
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 
-<p><a href="Admin_Add_User_Page.php"><button class="button Patient_Current_Prescription">Add new users</button></p></a></p>
 
-<p><a href="Admin_Search_User_Page.php"><button class="button Patient_Past_Prescription">Search for users</button></a></p>
+<label>Select Prescription Type</label>&ensp;
+<button type="submit" name="past" value="PastPrescription">Past</button>
+<button type="submit" name="new" value="NewPrescription">New</button>
+<?php
 
-<p><a href="Admin_Update_User_Page.php"><button class="button Patient_Search_Prescription">Update users</button></a></p>
+    if($_SERVER['REQUEST_METHOD']=='POST')
+      {
+        $PrescriptionControl = PrescriptionControl();
+        $validation = $PrescriptionControl->viewPastPrescription($_POST['PrescriptionStatus']);
+        if($)
+        {
+          echo "User added successfully";
+        }
+  else
+  {
+    echo "User not added";
+  }
+}
 
-<p><a href=""><button class="button Patient_Search_Prescription">View users</button></a></p>
+?>
+<table style="width: 70%;">
+        <tr>
+            <th>Quantity</th>
+            <th>Medications</th>
+        </tr>
+        <tr>
+            <td>PHP code to auto input</td>
+            <td>PHP code to auto input</td>
+        </tr>
+        <tr>
+            <td>PHP code to auto input</td>
+            <td>PHP code to auto input</td>
+        </tr>
+        <tr>
+            <td>PHP code to auto input</td>
+            <td>PHP code to auto input</td>
+        </tr>
 
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+    </table>
 
 </body>
 </html>

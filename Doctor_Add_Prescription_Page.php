@@ -63,7 +63,7 @@ table, th, td {
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
   $PrecriptionControl = new PrescriptionControl();
-  $validation = $PrescriptionControl->addPrescription($_POST['prescriptionDetails'], $_POST['Not Collected'],$_POST['patientId']);
+  $validation = $PrescriptionControl->addPrescription($_POST['prescriptionDetails'], $_POST['Not Collected'],$_POST['1'],$_POST['patientId']);
   if($validation==true)
   {
     echo "Prescription added successfully";
@@ -75,8 +75,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 ?>
 
-
-<p><a href="Logout.php"><button class="button" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 </body>
 </html>
 

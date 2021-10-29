@@ -2,22 +2,33 @@
 
 include_once("PrescriptionController.php");
 
-class User{
-    private $patientid;
-    private $prescriptionDetails;
+class Prescription{
 
-    function setUserName($Username){
-        $this -> Username = $Username;
+    private $Patientid;
+    private $PrescriptionDetails;
+
+    function setPrescriptionDetails($PrescriptionDetails){
+        $this -> PrescriptionDetails = $PrescriptionDetails;
     }
 
-    function getUsername(){
-        return $this -> Username;
+    function getPrescriptionDetails(){
+        return $this -> PrescriptionDetails;
+    }
+
+
+    function setPrescriptionStatus($PrescriptionStatus){
+        $this -> PrescriptionStatus = $PrescriptionStatus;
+    }
+
+    function getPrescriptionStatus(){
+        return $this -> PrescriptionStatus;
     }
 
 
 
 
-    function addPrescription($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId)
+
+    function add($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId)
     {       
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
@@ -37,6 +48,26 @@ class User{
 
     }     
     
+    function viewPast($PrescriptionStatus)
+    {
+        $TableName = "prescription";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        
+        $sql = "SELECT * FROM $TableName" . " where PrescriptionStatus ='" . $PrescriptionStatus . "'";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
+        }
+        else
+        {
+            $Row = mysqli_fetch_assoc($qRes);
+            $prescriptiondetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["DoctorId"],$Row["PatientId"],$Row["PharmacistId"]);
+            return $prescriptiondetails;
+        }
+    }
+
     function search($UserId)
     {
         $TableName = "useraccount";
