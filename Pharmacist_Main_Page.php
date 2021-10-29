@@ -4,6 +4,11 @@
 <head>
   <title>Pharmacist Main Page</title>
 <style>
+.button-align {
+width: 200px;
+margin: 0 auto;
+display: inline;}
+
 .button {
   border: none;
   color: white;
@@ -46,13 +51,31 @@
 
 <h1>Welcome Pharmacist XXX</h1>
 
-<p><a href="Patient_Current_Prescription.php"><button class="button navigate">Current Prescription</button></p></a></p>
+  <div class="button">
+    <div class="button-align">
+      <a href="Patient_Current_Prescription.html"><button class="button navigate">Current Prescription</button></a>
+      <a href="Patient_Past_Prescription.html"><button class="button navigate">Past Prescription</button></a>
 
-<p><a href="Patient_Past_Prescription.php"><button class="button navigate">Past Prescription</button></a></p>
+  </div>
+    </div>
+    <div class="button">
+      <div class="button-align">
+        <a href="Patient_Search_Prescription.html"><button class="button navigate">Search Prescription</button></a>
+        <a href="Patient_Current_Prescription.html"><button class="button navigate">Current Prescription</button></a>
+  
+    </div>
+      </div>
 
-<p><a href="Patient_Search_Prescription.php"><button class="button navigate">Search Prescription</button></a></p>
+      <div class="button">
+        <div class="button-align">
+          <a href="Patient_Past_Prescription.html"><button class="button navigate">Past Prescription</button></a>
+          <a href="Patient_Search_Prescription.html"><button class="button navigate">Search Prescription</button></a>
+    
+      </div>
+        </div>
 
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+
+<p><a href="LOG OUT XXXXXXXX"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>
 </html>
