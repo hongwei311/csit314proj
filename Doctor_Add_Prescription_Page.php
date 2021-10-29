@@ -1,11 +1,11 @@
 <?php
-include_once("PrescriptionController.php");
+include_once("UserController.php");
 session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add Prescription</title>
+<title>Add New User</title>
 <style>
 table, th, td {
   border:1px solid black;
@@ -50,13 +50,15 @@ table, th, td {
 </head>
 <body>
 
-<h1>Add Prescription</h1>
+<h1>Add new user</h1>
 
-<form id="DoctorAddPrecriptionPage" method="POST" action="Doctor_Add_Prescription_Page.php">
-  <label>Patient ID</label>
-  <input type="text" id="Patient ID" name="patiendID"><br><br>
-  <label>Prescription</label>
-  <input type="text" id="Text" name="text"><br><br>
+<p><a href="Admin_Main_Page.php"><button class="button">Main Page</button></p></a></p>
+
+<form id="AdminAddUserPage" method="POST" action="Admin_Add_User_Page.php">
+  <label>Username: </label>
+  <input type="text" id="Username" name="username"><br><br>
+  <label>Password: </label>
+  <input type="Password" id="Password" name="password"><br><br>
   <label>User Type</label>&ensp;<select name = "usertype" id="usertype">
             <option value = "Admin" >Admin</option>
             <option value = "Doctor" >Doctor</option>
@@ -68,15 +70,15 @@ table, th, td {
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
-  $PrecriptionControl = new PrescriptionControl();
-  $validation = $PrescriptionControl->addUser($_POST['username'],$_POST['password'],$_POST['usertype']);
+  $UserControl = new UserControl();
+  $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['usertype']);
   if($validation==true)
   {
-    //echo "User added successfully";
+    echo "User added successfully";
   }
   else
   {
-    //echo "User not added";
+    echo "User not added";
   }
 }
 ?>
