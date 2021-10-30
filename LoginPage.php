@@ -26,8 +26,6 @@
             $_SESSION['password']=$password;
             $_SESSION['UserProfile']=$UserProfile;
             
-            echo"<p>$userid</p>";
-            echo"<p>$username</p>";
             
             
             if ($_SESSION['UserProfile']!=null){
