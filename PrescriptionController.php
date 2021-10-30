@@ -10,11 +10,18 @@ class PrescriptionControl
         return $validation;
     }
 
-    function viewPrescription($PrescriptionStatus)
+    function viewPastPrescription()
     {
         $Prescription = new Prescription();
-        $PrescriptionDetails = $Prescription->view($PrescriptionStatus);
-        return $PrescriptionDetails;
+        $prescriptionInfo = $Prescription->viewPast();
+        return $prescriptionInfo;
+    }
+
+    function viewNewPrescription()
+    {
+        $Prescription = new Prescription();
+        $prescriptionInfo = $Prescription->viewNew();
+        return $prescriptionInfo;
     }
 
 }

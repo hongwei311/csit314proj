@@ -48,23 +48,59 @@ class Prescription{
 
     }     
     
-    function view($PrescriptionStatus)
+    function viewPast()
     {
         $TableName = "prescription";
+        $PrescriptionStatus = 'Collected';
         $conn = mysqli_connect("localhost","root","","csit314");
-        
         $sql = "SELECT * FROM $TableName" . " where PrescriptionStatus ='" . $PrescriptionStatus . "'";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptiondetails("");
+            return $prescription = array("","","","");
         }
         else
         {
-            $Row = mysqli_fetch_assoc($qRes);
-            $prescriptiondetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"]);
-            return $prescriptiondetails;
+            $prescriptionInfo=array();
+            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+            {
+                if(empty($prescriptionInfo))
+                {
+                    $prescriptionInfo=$Row;
+                }
+                else array_push($prescriptionInfo,$Row);
+            }
+            
+            return $prescriptionInfo;
+        }
+    }
+
+    function viewNew()
+    {
+        $TableName = "prescription";
+        $PrescriptionStatus = 'Not Collected';
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $TableName" . " where PrescriptionStatus ='" . $PrescriptionStatus . "'";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $prescription = array("","","","");
+        }
+        else
+        {
+            $prescriptionInfo=array();
+            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+            {
+                if(empty($prescriptionInfo))
+                {
+                    $prescriptionInfo=$Row;
+                }
+                else array_push($prescriptionInfo,$Row);
+            }
+            
+            return $prescriptionInfo;
         }
     }
 

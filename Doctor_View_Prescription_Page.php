@@ -1,6 +1,6 @@
 <?php
+include_once("PrescriptionController.php");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,23 +71,28 @@ session_start();
 
 
 <label>Select Prescription Type</label>&ensp;
+<form  method="POST">
 <button type="submit" name="past" value="PastPrescription">Past</button>
 <button type="submit" name="new" value="NewPrescription">New</button>
+</form>
 <?php
 
-    if($_SERVER['REQUEST_METHOD']=='POST')
+    if(isset($_POST['past'])) 
       {
-        $PrescriptionControl = PrescriptionControl();
-        $validation = $PrescriptionControl->viewPastPrescription($_POST['PrescriptionStatus']);
-        if($validation)
-        {
-          echo "User added successfully";
+        $PrescriptionControl = new PrescriptionControl();
+        $validation = $PrescriptionControl->viewPastPrescription();
+
+          echo "PAST";
+          print_r($validation);
         }
-     else
-      {
-       echo "User not added";
-      }
-      }
+        if(isset($_POST['new'])) 
+        {
+          $PrescriptionControl = new PrescriptionControl();
+          $validation = $PrescriptionControl->viewNewPrescription();
+  
+            echo "NEW";
+            print_r($validation);
+          }
 
 ?>
 <table style="width: 70%;">
