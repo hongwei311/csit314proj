@@ -29,6 +29,13 @@ class UserControl
 		$validation = $User->view();
 		return $validation;
 	}
+	
+	function viewFullDoctor()
+	{
+		$User = new User();
+		$userdetails = $User->viewFullDoctorDetails();
+		return $userdetails;
+	}
 }
 
 ?>

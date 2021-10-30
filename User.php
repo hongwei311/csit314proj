@@ -142,38 +142,35 @@ class User{
             return $userdetails;
         }
 	}
+	
+		function viewFullDoctorDetails()
+		{
+			
+			$conn = mysqli_connect("localhost","root","","csit314");
 
+			$sql = "SELECT * FROM fulldoctor";
+			$qRes = @mysqli_query($conn, $sql);
+			
+			if($qRes === FALSE)
+			{
+				echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+				return $validation = false;
+			}
+			else
+			{
+				while (($Row = mysqli_fetch_assoc($qRes)) != FALSE){
+				$userdetails = array_push($Row["UserId"],$Row["DoctorId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"],$Row["FirstName"],$Row["Lastname"]
+				,$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
+				return $userdetails;
+				}
+				
+			}
+			
+		}
 }
-
- class Admin extends User
-
-{
-	public function viewFullDetails()
-	{
-		$newdb = new db();
-
-		$newdb2 = $newdb->connect();
-
-		$role = 2;
-		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
-		$query->bind_param("ii",$role,$userid);
-		
-		if($query->execute())
-		{
-			echo "<script>alert('Account has been approved!') </script>";
-
-			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
-				//exit();
-		}
-		else
-		{
-
-			echo 'failed';
-		}
-	}
 	
 	
-}
+	
 
 class Doctor extends User
 
@@ -205,65 +202,6 @@ class Doctor extends User
 	
 }
 
-class Patient extends User
-
-{
-	public function approveAcc($userid)
-	{
-		$newdb = new db();
-
-		$newdb2 = $newdb->connect();
-
-		$role = 2;
-		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
-		$query->bind_param("ii",$role,$userid);
-		
-		if($query->execute())
-		{
-			echo "<script>alert('Account has been approved!') </script>";
-
-			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
-				//exit();
-		}
-		else
-		{
-
-			echo 'failed';
-		}
-	}
-	
-	
-}
-
-class Pharmacist extends User
-
-{
-	public function approveAcc($userid)
-	{
-		$newdb = new db();
-
-		$newdb2 = $newdb->connect();
-
-		$role = 2;
-		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
-		$query->bind_param("ii",$role,$userid);
-		
-		if($query->execute())
-		{
-			echo "<script>alert('Account has been approved!') </script>";
-
-			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
-				//exit();
-		}
-		else
-		{
-
-			echo 'failed';
-		}
-	}
-	
-	
-}
 
 
 ?>
