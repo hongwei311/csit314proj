@@ -133,12 +133,20 @@ class User{
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
+            return $userdetails = array("","","","");
         }
         else
         {
-            $Row = mysqli_fetch_assoc($qRes);
-            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
+            $userdetails=array();
+            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+            {
+                if(empty($userdetails))
+                {
+                    $userdetails=$Row;
+                }
+                else array_push($userdetails,$Row);
+            }
+            
             return $userdetails;
         }
 	}
@@ -149,7 +157,7 @@ class User{
 			$conn = mysqli_connect("localhost","root","","csit314");
 
 			$sql = "SELECT * FROM fulldoctor";
-			$qRes = @mysqli_query($conn, $sql);
+			$qRes = mysqli_query($conn, $sql);
 			
 			if($qRes === FALSE)
 			{
@@ -157,12 +165,18 @@ class User{
 				return $validation = false;
 			}
 			else
-			{
-				while (($Row = mysqli_fetch_assoc($qRes)) != FALSE){
-				$userdetails = array_push($Row["UserId"],$Row["DoctorId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"],$Row["FirstName"],$Row["Lastname"]
-				,$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
-				return $userdetails;
-				}
+			{   
+                $userdetails=array();
+                while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+                {
+                    if(empty($userdetails))
+                    {
+                        $userdetails=$Row;
+                    }
+                    else array_push($userdetails,$Row);
+                }
+            
+            return $userdetails;
 				
 			}
 			

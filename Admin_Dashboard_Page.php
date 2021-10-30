@@ -63,33 +63,6 @@ include_once("UserController.php");
 					//send validation to login controller class
 					$userdetails = $UserControl->viewFullDoctor();
 					print_r($userdetails);
-                        if($userdetails->num_rows > 0){
-								while($row = $userdetails->fetch_array()){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['UserId'] . "</td>";
-                                        echo "<td>" . $row['DoctorId'] . "</td>";
-                                        echo "<td>" . $row['UserName'] . "</td>";
-                                        echo "<td>" . $row['Password'] . "</td>";
-										echo "<td>" . $row['UserProfile'] . "</td>";
-										echo "<td>" . $row['FirstName'] . "</td>";
-										echo "<td> $" . $row['LastName'] . "</td>";
-										echo "<td> $" . $row['BirthDate'] . "</td>";
-                                        echo "<td> $" . $row['GenderCode'] . "</td>";
-										echo "<td> $" . $row['PhoneNumber'] . "</td>";
-										echo "<td> $" . $row['EmailAddress'] . "</td>";
-										echo "<td> $" . $row['HealthFacility'] . "</td>";
-										echo "<td> $" . $row['Profession'] . "</td>";
-										echo "<td> $" . $row['YearsOfExperience'] . "</td>";
-                                    echo "</tr>";
-                                }
-                            // Free result set
-                            $userdetails->free();
-                        } else{
-                            echo "<label class='question-text'>No records were found.</label>";
-                        }
-                     
-                    
-                    
                     ?>
 		</tbody>
 	</table>
