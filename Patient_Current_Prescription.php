@@ -1,4 +1,6 @@
-<?php?>
+<?php
+include_once("PrescriptionController.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,25 +41,21 @@ table, th, td {
 
 <p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
-
-    <table style="width: 70%;">
-        <tr>
-            <th>Quantity</th>
-            <th>Medications</th>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-
-    </table>
+<?php
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+  $PrescriptionControl = new PrescriptionControl();
+  $prescriptiondetails = $PrescriptionControl->viewPrescription("Current");
+  if($prescriptiondetails[0]=="")
+  {
+    echo "Fail";
+  }
+  else
+  {
+    print_r($prescriptiondetails); 
+  }
+}
+?>
 </body>
+
 </html>

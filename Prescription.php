@@ -48,7 +48,7 @@ class Prescription{
 
     }     
     
-    function viewPast($PrescriptionStatus)
+    function view($PrescriptionStatus)
     {
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
@@ -58,12 +58,12 @@ class Prescription{
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
+            return $prescriptiondetails("");
         }
         else
         {
             $Row = mysqli_fetch_assoc($qRes);
-            $prescriptiondetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["DoctorId"],$Row["PatientId"],$Row["PharmacistId"]);
+            $prescriptiondetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"]);
             return $prescriptiondetails;
         }
     }
