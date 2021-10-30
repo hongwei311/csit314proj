@@ -18,7 +18,7 @@
         else{
             $userid = $validation["0"];
             $username = $validation["1"];
-            $password = $validation["2"];
+            // $password = $validation["2"];
             $UserProfile = $validation["3"];
             //create session variables
             $_SESSION['userid']=$userid;
