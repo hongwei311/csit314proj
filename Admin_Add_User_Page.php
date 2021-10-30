@@ -59,7 +59,7 @@ table, th, td {
   <input type="text" id="Username" name="username"><br><br>
   <label>Password: </label>
   <input type="Password" id="Password" name="password"><br><br>
-  <label>User Type</label>&ensp;<select name = "usertype" id="usertype">
+  <label>User Profile</label>&ensp;<select name = "userprofile" id="userprofile">
             <option value = "Admin" >Admin</option>
             <option value = "Doctor" >Doctor</option>
             <option value = "Patient" >Patient</option>
@@ -71,7 +71,7 @@ table, th, td {
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
   $UserControl = new UserControl();
-  $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['usertype']);
+  $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['userprofile']);
   if($validation==true)
   {
     echo "User added successfully";

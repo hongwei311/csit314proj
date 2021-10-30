@@ -83,17 +83,17 @@ class Prescription{
         else
         {
             $Row = mysqli_fetch_assoc($qRes);
-            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserType"]);
+            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["userprofile"]);
             return $userdetails;
         }
     }
 
-    function update($UserId, $Username, $Password, $Usertype)
+    function update($UserId, $Username, $Password, $userprofile)
     {
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "UPDATE $TableName 
-                SET UserName = '$Username', Password = '$Password', Usertype = '$Usertype' 
+                SET UserName = '$Username', Password = '$Password', userprofile = '$userprofile' 
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)

@@ -83,7 +83,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <input type="text" id="Username" name="username" value="<?php echo $username;?>"><br><br>
             <label>Password : </label>
             <input type="text" id="Password" name="password" value="<?php echo $password;?>"><br><br>
-            <label>User Type</label>&ensp;<select name = "usertype" id="usertype">
+            <label>User Type</label>&ensp;<select name = "userprofile" id="userprofile">
                         <option value = "Admin" >Admin</option>
                         <option value = "Doctor" >Doctor</option>
                         <option value = "Patient" >Patient</option>
@@ -96,7 +96,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     elseif($_POST['action']==='UpdateUser')
     {
         $UserControl = new UserControl();
-        $validation = $UserControl ->updateUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['usertype']);
+        $validation = $UserControl ->updateUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['userprofile']);
         if($validation==true)
         {
             echo "User updated successfully";
