@@ -62,8 +62,8 @@ table, th, td {
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
-  $PrecriptionControl = new PrescriptionControl();
-  $validation = $PrescriptionControl->addPrescription($_POST['prescriptionDetails'], $_POST['Not Collected'],$_POST['1'],$_POST['patientId']);
+  $PrescriptionControl = new PrescriptionControl();
+  $validation = $PrescriptionControl->addPrescription($_POST['patientId'], $_POST['prescriptionDetails'], 'Not Collected', '1');
   if($validation==true)
   {
     echo "Prescription added successfully";

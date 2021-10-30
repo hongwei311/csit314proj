@@ -3,10 +3,10 @@ include_once("Prescription.php");
 class PrescriptionControl
 {
 
-    function addPrescription($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId)
+    function addPrescription($PatientId, $PrescriptionDetails, $PrescriptionStatus, $DoctorId, )
     {
         $Prescription = new Prescription();
-        $validation = $Prescription->add($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId);
+        $validation = $Prescription->add($PatientId, $PrescriptionDetails, $PrescriptionStatus, $DoctorId);
         return $validation;
     }
 

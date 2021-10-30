@@ -79,15 +79,15 @@ session_start();
       {
         $PrescriptionControl = PrescriptionControl();
         $validation = $PrescriptionControl->viewPastPrescription($_POST['PrescriptionStatus']);
-        if($)
+        if($validation)
         {
           echo "User added successfully";
         }
-  else
-  {
-    echo "User not added";
-  }
-}
+     else
+      {
+       echo "User not added";
+      }
+      }
 
 ?>
 <table style="width: 70%;">
