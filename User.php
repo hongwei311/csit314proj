@@ -1,14 +1,24 @@
 <?php
 
-include_once("LoginController.php");
 
 class User{
-    private $userid;
+    private $UserId;
     private $Username;
     private $Password;
-    private $UserType;
+    private $UserProfile;
 
-    function setUserName($Username){
+	 
+	
+	
+	function setUserId($UserId){
+        $this -> UserId = $UserId;
+    }
+
+    function getUserId(){
+        return $this -> UserId;
+    }
+	
+    function setUsername($Username){
         $this -> Username = $Username;
     }
 
@@ -24,39 +34,43 @@ class User{
         return $this -> Password;
     }
 
-    function setUserType($UserType){
-        $this -> UserType = $UserType;
+    function setUserProfile($UserProfile){
+        $this -> UserProfile = $UserProfile;
     }
 
-    function getUserType(){
-        return $this -> UserType;
+    function getUserProfile(){
+        return $this -> UserProfile;
     }
 
-    function validateLogin($Username, $Password, $Usertype)
+    function validateLogin($Username, $Password)
     {
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-        $sql = "SELECT UserName, Password FROM $TableName" . " where 
-        UserName ='". $Username . "' and Password='" . $Password . "' and Usertype='" . $Usertype . "'";
+		
+        $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "' AND Password= '" . $Password . "'";
         $qRes = @mysqli_query($conn, $sql);
-        if (mysqli_num_rows($qRes)==0)
+		
+        if($qRes === FALSE)
         {
-            echo "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
-        }   
+            echo "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
+			$validation = array("","","","");
+            return $validation;
+		}
         else
         {
-            return $validation = true;
-        } 
+			$Row = mysqli_fetch_assoc($qRes);
+            $validation = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
+            return $validation;
+        }
     }
 
-    function add($Username, $Password, $Usertype)
+    function add($Username, $Password, $UserProfile)
     {       
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
         
-        $sql = "INSERT INTO $TableName (UserName, Password, UserType)" .
-        " VALUES ('$Username', '$Password', '$Usertype')";
+        $sql = "INSERT INTO $TableName (UserName, Password, UserProfile)" .
+        " VALUES ('$Username', '$Password', '$UserProfile')";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
@@ -85,17 +99,17 @@ class User{
         else
         {
             $Row = mysqli_fetch_assoc($qRes);
-            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserType"]);
+            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
             return $userdetails;
         }
     }
 
-    function update($UserId, $Username, $Password, $Usertype)
+    function update($UserId, $Username, $Password, $UserProfile)
     {
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "UPDATE $TableName 
-                SET UserName = '$Username', Password = '$Password', Usertype = '$Usertype' 
+                SET UserName = '$Username', Password = '$Password', UserProfile = '$UserProfile' 
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
@@ -109,11 +123,147 @@ class User{
             return $validation = true;
         }
     }
+	
+	function view()
+    {
+        $TableName = "useraccount";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $TableName";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
+        }
+        else
+        {
+            $Row = mysqli_fetch_assoc($qRes);
+            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
+            return $userdetails;
+        }
+	}
 
 }
 
+ class Admin extends User
 
+{
+	public function viewFullDetails()
+	{
+		$newdb = new db();
 
+		$newdb2 = $newdb->connect();
+
+		$role = 2;
+		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
+		$query->bind_param("ii",$role,$userid);
+		
+		if($query->execute())
+		{
+			echo "<script>alert('Account has been approved!') </script>";
+
+			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
+				//exit();
+		}
+		else
+		{
+
+			echo 'failed';
+		}
+	}
+	
+	
+}
+
+class Doctor extends User
+
+{
+	public function approveAcc($userid)
+	{
+		$newdb = new db();
+
+		$newdb2 = $newdb->connect();
+
+		$role = 2;
+		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
+		$query->bind_param("ii",$role,$userid);
+		
+		if($query->execute())
+		{
+			echo "<script>alert('Account has been approved!') </script>";
+
+			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
+				//exit();
+		}
+		else
+		{
+
+			echo 'failed';
+		}
+	}
+	
+	
+}
+
+class Patient extends User
+
+{
+	public function approveAcc($userid)
+	{
+		$newdb = new db();
+
+		$newdb2 = $newdb->connect();
+
+		$role = 2;
+		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
+		$query->bind_param("ii",$role,$userid);
+		
+		if($query->execute())
+		{
+			echo "<script>alert('Account has been approved!') </script>";
+
+			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
+				//exit();
+		}
+		else
+		{
+
+			echo 'failed';
+		}
+	}
+	
+	
+}
+
+class Pharmacist extends User
+
+{
+	public function approveAcc($userid)
+	{
+		$newdb = new db();
+
+		$newdb2 = $newdb->connect();
+
+		$role = 2;
+		$query = $newdb2->prepare("update role set roleType=? WHERE userID=?") ;
+		$query->bind_param("ii",$role,$userid);
+		
+		if($query->execute())
+		{
+			echo "<script>alert('Account has been approved!') </script>";
+
+			echo '<meta http-equiv="Refresh" content="2; url=adminapprove.php">';
+				//exit();
+		}
+		else
+		{
+
+			echo 'failed';
+		}
+	}
+	
+	
+}
 
 
 ?>

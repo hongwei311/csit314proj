@@ -2,10 +2,10 @@
 include_once("User.php");
 class UserControl
 {
-    function addUser($Username, $Password, $Usertype)
+    function addUser($Username, $Password, $UserProfile)
     {
         $User = new User();
-        $validation = $User->add($Username, $Password, $Usertype);
+        $validation = $User->add($Username, $Password, $UserProfile);
         return $validation;
     }
 
@@ -16,12 +16,19 @@ class UserControl
         return $userdetails;
     }
 
-    function updateUser($UserId,$Username, $Password, $Usertype)
+    function updateUser($UserId,$Username, $Password, $UserProfile)
     {
         $User = new User();
-        $validation = $User->update($UserId,$Username, $Password, $Usertype);
+        $validation = $User->update($UserId,$Username, $Password, $UserProfile);
         return $validation;
     }
+	
+	function viewUser()
+	{
+		$User = new User();
+		$validation = $User->view();
+		return $validation;
+	}
 }
 
 ?>

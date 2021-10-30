@@ -2,14 +2,31 @@
     include_once("LoginController.php");
       session_start();
       $_SESSION = array();
+	  
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
+		//create logincontrol variable
         $LoginControl = new LoginControl();
-        $validation = $LoginControl->onSubmit($_POST['username'],$_POST['password'],$_POST['usertype']);
-        $_SESSION['username']=$_POST['username'];
-        if($validation==true)
-        {
-            switch($_POST['usertype'])
+		//send validation to login controller class
+        $validation = $LoginControl->onSubmit($_POST['username'],$_POST['password']);
+		//retrieve information from controller
+		
+        $userid = $validation["0"];
+        $username = $validation["1"];
+        $password = $validation["2"];
+		$UserProfile = $validation["3"];
+		//create session variables
+		$_SESSION['userid']=$userid;
+		$_SESSION['username']=$username;
+		$_SESSION['password']=$password;
+		$_SESSION['UserProfile']=$UserProfile;
+		
+		echo"<p>$userid</p>";
+		echo"<p>$username</p>";
+		
+		
+		if ($_SESSION['UserProfile']!=null){
+			switch($_SESSION['UserProfile'])
             {
                 case 'Admin':
                     header("Location:Admin_Main_Page.php");
@@ -27,27 +44,25 @@
                     header("Location:Pharmacist_Main_Page.php");
                     break;
             }
-
-        }
+		}
         else
         {
-            echo "Wrong username/password";
+            echo "Wrong Details";
         }
     }
 ?>
 <html>
 
+<head>
+	<title>Electronic Prescription System</title>
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
 
 <body>
     <form id="LoginPageForm" method="POST" action="LoginPage.php">
-        <label>Username</label>&ensp;<input type="text" name="username" placeholder="Username"> <br>
-        <label>Password</label>&ensp;<input type="password" name="password" placeholder="Password"> <br>
-        <label>User Type</label>&ensp;<select name = "usertype" id="usertype">
-            <option value = "Admin" >Admin</option>
-            <option value = "Doctor" >Doctor</option>
-            <option value = "Patient" >Patient</option>
-            <option value = "Pharmacist" >Pharmacist</option>
-        </select> <br>
+        <label>Username</label>&ensp;<input type="text" name="username" placeholder="Username" required> <br>
+        <label>Password</label>&ensp;<input type="password" name="password" placeholder="Password" required> <br>
+        <br>
         <button type="submit" name="submit" value="Login">Login</button>
     </form> 
 </body>
