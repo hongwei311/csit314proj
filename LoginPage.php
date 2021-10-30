@@ -11,7 +11,7 @@
         $validation = $LoginControl->onSubmit($_POST['username'],$_POST['password']);
 		//retrieve information from controller
 		
-        if($validation ==false)
+        if($validation["0"]=="")
         {
             echo "Wrong Username/Password";
         }
