@@ -11,44 +11,47 @@
         $validation = $LoginControl->onSubmit($_POST['username'],$_POST['password']);
 		//retrieve information from controller
 		
-        $userid = $validation["0"];
-        $username = $validation["1"];
-        $password = $validation["2"];
-		$UserProfile = $validation["3"];
-		//create session variables
-		$_SESSION['userid']=$userid;
-		$_SESSION['username']=$username;
-		$_SESSION['password']=$password;
-		$_SESSION['UserProfile']=$UserProfile;
-		
-		echo"<p>$userid</p>";
-		echo"<p>$username</p>";
-		
-		
-		if ($_SESSION['UserProfile']!=null){
-			switch($_SESSION['UserProfile'])
-            {
-                case 'Admin':
-                    header("Location:Admin_Main_Page.php");
-                    break;
-
-                case 'Doctor':
-                    header("Location:Doctor_Main_Page.php");
-                    break;
-
-                case 'Patient':
-                    header("Location:Patient_Main_Page.php");
-                    break;
-
-                case 'Pharmacist':
-                    header("Location:Pharmacist_Main_Page.php");
-                    break;
-            }
-		}
-        else
+        if($validation ==false)
         {
-            echo "Wrong Details";
+            echo "Wrong Username/Password";
         }
+        else{
+            $userid = $validation["0"];
+            $username = $validation["1"];
+            $password = $validation["2"];
+            $UserProfile = $validation["3"];
+            //create session variables
+            $_SESSION['userid']=$userid;
+            $_SESSION['username']=$username;
+            $_SESSION['password']=$password;
+            $_SESSION['UserProfile']=$UserProfile;
+            
+            echo"<p>$userid</p>";
+            echo"<p>$username</p>";
+            
+            
+            if ($_SESSION['UserProfile']!=null){
+                switch($_SESSION['UserProfile'])
+                {
+                    case 'Admin':
+                        header("Location:Admin_Main_Page.php");
+                        break;
+
+                    case 'Doctor':
+                        header("Location:Doctor_Main_Page.php");
+                        break;
+
+                    case 'Patient':
+                        header("Location:Patient_Main_Page.php");
+                        break;
+
+                    case 'Pharmacist':
+                        header("Location:Pharmacist_Main_Page.php");
+                        break;
+                }
+            }
+        }
+        
     }
 ?>
 <html>
