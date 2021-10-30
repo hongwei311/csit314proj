@@ -94,7 +94,7 @@ class User{
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
+            return $userdetails = array("","","","");
         }
         else
         {
