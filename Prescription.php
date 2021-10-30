@@ -28,13 +28,13 @@ class Prescription{
 
 
 
-    function add($PrescriptionDetails, $PrescriptionStatus, $DoctorId, $PatientId)
+    function add($PatientId, $PrescriptionDetails, $PrescriptionStatus, $DoctorId)
     {       
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
         
-        $sql = "INSERT INTO $TableName (PrescriptionDetails, PrescriptionStatus, DoctorId, PatientId)" .
-        " VALUES ('$PrescriptionDetails', '$PrescriptionStatus', '$DoctorId', '$PatientId')";
+        $sql = "INSERT INTO $TableName (PatientId, PrescriptionDetails, PrescriptionStatus, DoctorId)" .
+        " VALUES ('$PatientId', '$PrescriptionDetails', '$PrescriptionStatus', '$DoctorId')";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
