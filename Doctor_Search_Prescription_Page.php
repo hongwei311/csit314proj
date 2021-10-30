@@ -1,6 +1,6 @@
 <?php
+include_once("PrescriptionController.php");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,16 +68,26 @@ session_start();
 <body>
 
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
+<form method="POST">
+  <label>Prescription ID</label>
+  <input type="text" id="Prescription ID" name="prescriptionId"><br><br>
+  <input type="submit" value="Search" name="search">
+</form> 
 
-<p><a href="Admin_Add_User_Page.php"><button class="button Patient_Current_Prescription">Add new users</button></p></a></p>
+<?php
+if(isset($_POST['search']))
+{
+  if($_POST['prescriptionId'] == ''){
+    echo 'Please try again';
+  }
+  else
+  $PrescriptionControl = new PrescriptionControl();
+  $validation = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
 
-<p><a href="Admin_Search_User_Page.php"><button class="button Patient_Past_Prescription">Search for users</button></a></p>
+  print_r($validation);
 
-<p><a href="Admin_Update_User_Page.php"><button class="button Patient_Search_Prescription">Update users</button></a></p>
-
-<p><a href=""><button class="button Patient_Search_Prescription">View users</button></a></p>
-
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+}
+?>
 
 </body>
 </html>

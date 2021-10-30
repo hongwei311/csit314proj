@@ -1,6 +1,6 @@
 <?php
+include_once("PrescriptionController.php");
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,15 +69,49 @@ session_start();
 
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 
-<p><a href="Admin_Add_User_Page.php"><button class="button Patient_Current_Prescription">Add new users</button></p></a></p>
+<form method="POST">
+  <label>Prescription ID to update</label>
+  <input type="text" id="Prescription ID" name="prescriptionId" required><br><br>
+  <input type="submit" value="Search" name="search">
+</form> 
 
-<p><a href="Admin_Search_User_Page.php"><button class="button Patient_Past_Prescription">Search for users</button></a></p>
+<?php
 
-<p><a href="Admin_Update_User_Page.php"><button class="button Patient_Search_Prescription">Update users</button></a></p>
+if(isset($_POST['search']))
+{
+  $prescriptionId = $_POST['prescriptionId'];
+  $PrescriptionControl = new PrescriptionControl();
+  $prescriptionSearch = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
 
-<p><a href=""><button class="button Patient_Search_Prescription">View users</button></a></p>
+  print_r($prescriptionSearch);
+  $_SESSION['prescriptionID'] = $prescriptionId;
 
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+
+?>
+  <form method="POST">
+  <label>Prescription ID:</label> 
+  <?php echo $_POST['prescriptionId']; ?> 
+  <br>
+  <label>Enter prescription Details to update</label>
+  <input type="text" id="Prescription Details" name="prescriptionDetails" required><br><br>
+  <input type="submit" value="Update" name="update">
+  </form> 
+  <?php
+}
+  if(isset($_POST['update']))
+  {
+    echo $_SESSION['prescriptionID'];
+    $PrescriptionControl = new PrescriptionControl();
+    $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
+
+    echo 'Successfully updated!!';
+    unset($_SESSION['prescriptionID']);
+  }
+
+
+
+?>
+
 
 </body>
 </html>

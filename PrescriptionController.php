@@ -24,6 +24,20 @@ class PrescriptionControl
         return $prescriptionInfo;
     }
 
+    function searchPrescription($PrescriptionId)
+    {
+        $Prescription = new Prescription();
+        $prescriptionSearched = $Prescription->searchPrescription($PrescriptionId);
+        return $prescriptionSearched;
+    }
+
+    function updatePrescription($PrescriptionId, $PrescriptionDetails)
+    {
+        $Prescription = new Prescription();
+        $prescriptionUpdate = $Prescription->updatePrescription($PrescriptionId, $PrescriptionDetails);
+        return $prescriptionUpdate;
+    }
+
 }
 
 ?>

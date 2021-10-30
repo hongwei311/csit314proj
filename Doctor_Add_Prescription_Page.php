@@ -52,7 +52,7 @@ table, th, td {
 
 <h1>Add Prescription</h1>
 
-<form id="DoctorAddPrecriptionPage" method="POST" action="Doctor_Add_Prescription_Page.php">
+<form method="POST" >
   <label>Patient ID</label>
   <input type="text" id="Patient ID" name="patientId"><br><br>
   <label>Prescription</label>

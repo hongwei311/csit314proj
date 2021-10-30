@@ -95,7 +95,8 @@ session_start();
           }
 
 ?>
-<table style="width: 70%;">
+
+<!--<table style="width: 70%;">
         <tr>
             <th>Quantity</th>
             <th>Medications</th>
@@ -114,6 +115,6 @@ session_start();
         </tr>
 
     </table>
-
+-->
 </body>
 </html>

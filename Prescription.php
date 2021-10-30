@@ -104,43 +104,52 @@ class Prescription{
         }
     }
 
-    function search($UserId)
+    function searchPrescription($PrescriptionId)
     {
-        $TableName = "useraccount";
+        $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $TableName" . " where PrescriptionId ='" . $PrescriptionId . "'";
         
-        $sql = "SELECT * FROM $TableName" . " where UserId ='" . $UserId . "'";
+
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
+            return $prescriptionSearched = array("","","","");
         }
         else
         {
-            $Row = mysqli_fetch_assoc($qRes);
-            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["userprofile"]);
-            return $userdetails;
+            $prescriptionSearched=array();
+            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+            {
+                if(empty($prescriptionSearched))
+                {
+                    $prescriptionSearched=$Row;
+                }
+                else array_push($prescriptionSearched,$Row);
+            }
+            
+            return $prescriptionSearched;
         }
     }
 
-    function update($UserId, $Username, $Password, $userprofile)
+    function updatePrescription($PrescriptionId, $PrescriptionDetails)
     {
-        $TableName = "useraccount";
+        $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "UPDATE $TableName 
-                SET UserName = '$Username', Password = '$Password', userprofile = '$userprofile' 
-                WHERE UserId = $UserId";
+                SET PrescriptionDetails = '$PrescriptionDetails'
+                WHERE PrescriptionId = $PrescriptionId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
+            return $prescriptionUpdate = false;
         }
         else
         {
             // printf("Affected rows (UPDATE): %d\n", $conn->affected_rows);
-            return $validation = true;
+            return $prescriptionUpdate = true;
         }
     }
 
