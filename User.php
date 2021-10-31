@@ -46,10 +46,8 @@ class User{
     {
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-		
-        $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "' AND Password= '" . $Password . "'";
+        $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "'  ";
         $qRes = @mysqli_query($conn, $sql);
-		
         if($qRes === FALSE)
         {
             echo "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
@@ -58,9 +56,13 @@ class User{
 		}
         else
         {
-			$Row = mysqli_fetch_assoc($qRes);
+            $Row = mysqli_fetch_assoc($qRes);
             $validation = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
-            return $validation;
+            $Password_Hash = $Row["Password"];
+            if(password_verify($Password,$Password_Hash)){
+                return $validation;
+            }
+            
         }
     }
 
@@ -68,9 +70,9 @@ class User{
     {       
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-        
+        $Password_Hash = password_hash($Password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO $TableName (UserName, Password, UserProfile)" .
-        " VALUES ('$Username', '$Password', '$UserProfile')";
+        " VALUES ('$Username', '$Password_Hash', '$UserProfile')";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
