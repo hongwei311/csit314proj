@@ -12,11 +12,10 @@ session_start();
 </head>
 <body>
 
-<h1>Update user</h1>
+<h1>Search user</h1>
 
-<p><a href="Admin_Main_Page.php"><button class="button">Main Page</button></p></a></p>
 
-<form id="AdminUpdateUserPage" method="POST" action="Admin_Update_User_Page.php?action=SearchUser">
+<form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
   <label>Enter User ID: </label>
   <input type="text" id="UserId" name="userid"><br><br>
   <input type='hidden' name = 'action' value = 'SearchUser'>
@@ -35,44 +34,36 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $_SESSION['userid']=$_POST['userid'];
         $userid = $userdetails["0"];
         $username = $userdetails["1"];
-        $password = $userdetails["2"];    
+        $password = $userdetails["2"];
+        $userprofile = $userdetails["3"];
         ?>
-        <form id="AdminUpdateUserPage" method="POST" action="Admin_Update_User_Page.php">
+        <form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
             <label>User ID : <?php echo $userid;?></label><br><br> 
-            <label>Username : </label>
-            <input type="text" id="Username" name="username" value="<?php echo $username;?>"><br><br>
-            <label>Password : </label>
-            <input type="text" id="Password" name="password" value="<?php echo $password;?>"><br><br>
-            <label>User Type</label>&ensp;<select name = "usertype" id="usertype">
-                        <option value = "Admin" >Admin</option>
-                        <option value = "Doctor" >Doctor</option>
-                        <option value = "Patient" >Patient</option>
-                        <option value = "Pharmacist" >Pharmacist</option>
-                    </select> <br><br>
-            <input type="hidden" name = "action" value = "UpdateUser">
-            <input type="submit" value="Update">
+            <label>Username : <?php echo $username;?></label><br><br>
+            <label>Password : <?php echo $password;?></label><br><br>
+            <label>UserProfile : <?php echo $userprofile;?></label><br><br>
+            
+            <input type="hidden" name = "action" value = "SearchUser">
         <?php
     }
-    elseif($_POST['action']==='UpdateUser')
+    elseif($_POST['action']==='SearchUser')
     {
         $UserControl = new UserControl();
-        $validation = $UserControl ->updateUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['usertype']);
+        $validation = $UserControl ->searchUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['usertype']);
         if($validation==true)
         {
-            echo "User updated successfully";
+            echo "User Searched successfully";
             unset($_SESSION['userid']);
         }
         else
         {
-            echo "User not updated";
+            echo "User not found";
         }
     }
     
 }
 
 ?>
-
-
 
 <p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
