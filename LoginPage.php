@@ -61,8 +61,8 @@
 
 <body>
     <form id="LoginPageForm" method="POST" action="LoginPage.php">
-        <label>Username</label>&ensp;<input type="text" name="username" placeholder="Username" > <br>
-        <label>Password</label>&ensp;<input type="password" name="password" placeholder="Password" > <br>
+        <label>Username</label>&ensp;<input type="text" name="username" placeholder="Username" required> <br>
+        <label>Password</label>&ensp;<input type="password" name="password" placeholder="Password" required> <br>
         <br>
         <button type="submit" name="submit" value="Login">Login</button>
     </form> 
