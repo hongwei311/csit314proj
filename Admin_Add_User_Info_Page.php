@@ -55,6 +55,7 @@ table, th, td {
   {
     if($_POST['action']==='SearchUserInfo')
     { 
+      $_SESSION['userid']=$_POST['userid'];
       $UserController = new UserControl();
       $userdetails = $UserController->searchUser($_POST['userid']);
 
@@ -67,7 +68,7 @@ table, th, td {
       ?>
       <?php 
         if(is_null($userinformation["1"])) //if the user's firstname is null
-        {
+        {    
       ?>
           <form id="AdminAdminAddUserInfoPage" method="POST" action="Admin_Add_User_Info_Page.php">
             <label>User ID :  <?php echo $userid;?></label><br><br> 
@@ -88,36 +89,36 @@ table, th, td {
             <input type="submit" value="Add">        
           </form>
       <?php
-          }
+        }
           else
           {
             echo ("User profile aleady added");
           }
-        }
+      }
         else
         {
           echo("User not found");
         }
-      }
-      elseif($_POST['action']==='AddUserInfo')
+    }
+    elseif($_POST['action']==='AddUserInfo')
+    {
+      $UserInfoController = new UserInfoController();
+      $validation = $UserInfoController ->addUserInfo($_POST['FirstName'],$_POST['LastName'],$_POST['BirthDate'],$_POST['GenderCode'],$_POST['EmailAddress']);
+      if($validation==true)
       {
-        $UserInfoController = new UserInfoController();
-        $validation = $UserInfoController ->addUserInfo($_SESSION['userid'],$_POST['userid'],$_POST['FirstName'],$_POST['LastName'],$_POST['BirthDate'],$_POST['GenderCode'],$_POST['EmailAddress']);
-        if($validation==true)
-        {
-            echo "User info added successfully";
-            unset($_SESSION['userid']);
-        }
-        else
-        {
-            echo "User info not added";
-        }
+          echo "User info added successfully";
+          unset($_SESSION['userid']);
       }
+      else
+      {
+          echo "User info not added";
+      }
+    }
       ?>
       <br><br>
       <a href="Admin_Main_Page.php"><button class="button">Back To Homepage</button></a>
     <?php
-  }
+}
 ?>
 
 </body>
