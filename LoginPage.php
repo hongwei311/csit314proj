@@ -23,7 +23,6 @@
             //create session variables
             $_SESSION['userid']=$userid;
             $_SESSION['username']=$username;
-            $_SESSION['password']=$password;
             $_SESSION['UserProfile']=$UserProfile;
             
             if ($_SESSION['UserProfile']!=null){
