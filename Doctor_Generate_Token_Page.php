@@ -1,11 +1,12 @@
 <?php
+include_once("TokenController.php");
 include_once("PrescriptionController.php");
 session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add Prescription</title>
+<title>Generate Token</title>
 <style>
 table, th, td {
   border:1px solid black;
@@ -52,31 +53,32 @@ table, th, td {
  
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 <p><a href="Doctor_Main_Page.php"><button class="button">Main Page</button></p></a></p>
-<h1>Add Prescription</h1>
+<h1>Generate Token</h1>
+<form method="POST">
+  <label>Prescription ID</label>
+  <input type="text" id="Prescription ID" name="prescriptionId"><br><br>
+  <input type="submit" value="Generate" name="Generate">
+</form>
 
-<form method="POST" >
-  <label>Patient ID</label>
-  <input type="text" id="Patient ID" name="patientId"><br><br>
-  <label>Prescription</label>
-  <input type="text" id="Prescription Details" name="prescriptionDetails"><br><br>
-  <input type="submit" value="Submit">
-</form> 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
-  $PrescriptionControl = new PrescriptionControl();
-  $validation = $PrescriptionControl->addPrescription($_POST['patientId'], $_POST['prescriptionDetails'], 'Not Collected', '1');
+  $TokenControl = new TokenControl();
+  $validation = $TokenControl->generateToken($_POST['prescriptionId']);
   if($validation==true)
   {
-    echo "Prescription added successfully";
+    echo "Token generated successfully";
+    // $PrescriptionControl = new PrescriptionControl();
+    // $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
+    // $patientId = $prescriptionDetails['PatientId'];
+    // $sendToken = $TokenControl->sendToken();
   }
   else
   {
-    echo "Prescripton not added";
+    echo "Token not generated";
   }
 }
 ?>
 
 </body>
 </html>
-

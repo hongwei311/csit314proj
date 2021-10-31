@@ -9,7 +9,7 @@ session_start();
 <style>
 .button {
   border: none;
-  color: white;
+  color: black;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -68,53 +68,30 @@ session_start();
 <body>
 
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
-
-
+<p><a href="Doctor_Main_Page.php"><button class="button">Main Page</button></p></a></p>
+<h1>View Prescription</h1>
 <label>Select Prescription Type</label>&ensp;
 <form  method="POST">
-<button type="submit" name="past" value="PastPrescription">Past</button>
-<button type="submit" name="new" value="NewPrescription">New</button>
+<button type="submit" name="new" value="Not Collected">Not Collected</button>
+<button type="submit" name="past" value="Collected">Collected</button>
 </form>
 <?php
 
     if(isset($_POST['past'])) 
-      {
-        $PrescriptionControl = new PrescriptionControl();
-        $validation = $PrescriptionControl->viewPastPrescription();
-
-          echo "PAST";
-          print_r($validation);
-        }
-        if(isset($_POST['new'])) 
-        {
-          $PrescriptionControl = new PrescriptionControl();
-          $validation = $PrescriptionControl->viewNewPrescription();
-  
-            echo "NEW";
-            print_r($validation);
-          }
+    {
+      $PrescriptionControl = new PrescriptionControl();
+      $prescriptiondetails = $PrescriptionControl->viewPrescription($_POST['past']);
+      print_r($prescriptiondetails);
+      
+    }
+    
+    if(isset($_POST['new'])) 
+    {
+      $PrescriptionControl = new PrescriptionControl();
+      $prescriptiondetails = $PrescriptionControl->viewPrescription($_POST['new']);
+      print_r($prescriptiondetails);
+    }
 
 ?>
-
-<!--<table style="width: 70%;">
-        <tr>
-            <th>Quantity</th>
-            <th>Medications</th>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-
-    </table>
--->
 </body>
 </html>

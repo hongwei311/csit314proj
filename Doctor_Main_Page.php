@@ -20,6 +20,8 @@ session_start();
 
 <p><a href="Doctor_View_Prescription_Page.php"><button class="button">View prescriptions</button></a></p>
 
+<p><a href="Doctor_Generate_Token_Page.php"><button class="button">Generate Token</button></a></p>
+
 <p><a href="Logout.php"><button class="button" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>
