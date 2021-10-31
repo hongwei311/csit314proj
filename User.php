@@ -47,7 +47,7 @@ class User{
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
 		
-        $sql = "SELECT UserId, UserName, Password, UserProfile FROM useraccount WHERE UserName = ?";
+        $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "' AND Password= '" . $Password . "'";
         $qRes = @mysqli_query($conn, $sql);
 		
         if($qRes === FALSE)
