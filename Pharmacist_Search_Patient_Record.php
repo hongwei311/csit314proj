@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pharmacist View Prescription Page</title>
+  <title>Search Patient Record</title>
 <style>
 
 .button-align {
@@ -51,22 +51,22 @@ display: inline;}
 </head>
 <body>
 
-<h1>View Prescription Status</h1>
+<h1>Search Patient Record</h1>
 
 <p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 
-<label>Select Prescription Type</label>&ensp;
-<form  method="POST">
-<button type="submit" name="new" value="Not Collected">Not Collected</button>
-<button type="submit" name="past" value="Collected">Collected</button>
-</form>
-<br><br>
+<form action="/action_page.php">
+  <label for="fname">Enter Patient ID</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+
+  <input type="submit" value="Submit"> <!-- search from DB then update the table below -->
+</form> 
 
 <table style="width: 70%;"> <!-- Auto input data from the dates -->
         <tr>
-            <th>Prescription</th>
-            <th>Status</th>
+            <th>Date</th>
+            <th>Medications</th>
         </tr>
         <tr>
             <td>PHP code to auto input</td>

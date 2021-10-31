@@ -63,7 +63,7 @@ display: inline;}
     <br>
     <div class="button">
       <div class="button-align">
-        <a href="Search_Patient_Record.php"><button class="button navigate">Search Patient's Records</button></a>
+        <a href="Pharmacist_search_patient_record.php"><button class="button navigate">Search Patient's Records</button></a>
         <a href="View_Prescription_Status.php"><button class="button navigate">View Prescription Status</button></a>
   
     </div>
@@ -72,7 +72,7 @@ display: inline;}
       <div class="button">
         <div class="button-align">
           <a href="Search_Patients_Prescription.php"><button class="button navigate">Search Patient's Prescription</button></a>
-          <a href="Update_Prescription_Status.php"><button class="button navigate">Update Prescription Status</button></a>
+          <a href="Pharmacist_Update_Prescription.php"><button class="button navigate">Update Prescription Status</button></a>
     
       </div>
         </div>
