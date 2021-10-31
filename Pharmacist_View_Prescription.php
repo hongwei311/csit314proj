@@ -51,34 +51,16 @@ display: inline;}
 </head>
 <body>
 
-<h1>Welcome Pharmacist XXX</h1>
+<h1>View Prescription</h1>
 
-  <div class="button">
-    <div class="button-align">
-      <a href="Pharmacist_Patient_Record.php"><button class="button navigate">View Patient's Records</button></a>
-      <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription</button></a>
-
-  </div>
-    </div>
-    <br>
-    <div class="button">
-      <div class="button-align">
-        <a href="Search_Patient_Record.php"><button class="button navigate">Search Patient's Records</button></a>
-        <a href="View_Prescription_Status.php"><button class="button navigate">View Prescription Status</button></a>
-  
-    </div>
-      </div>
-      <br>
-      <div class="button">
-        <div class="button-align">
-          <a href="Search_Patients_Prescription.php"><button class="button navigate">Search Patient's Prescription</button></a>
-          <a href="Update_Prescription_Status.php"><button class="button navigate">Update Prescription Status</button></a>
-    
-      </div>
-        </div>
+<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+<label>Select Prescription Type</label>&ensp;
+<form  method="POST">
+<button type="submit" name="new" value="Not Collected">Not Collected</button>
+<button type="submit" name="past" value="Collected">Collected</button>
+</form>
 
 </body>
 </html>
