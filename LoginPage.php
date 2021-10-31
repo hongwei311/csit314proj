@@ -26,8 +26,6 @@
             $_SESSION['password']=$password;
             $_SESSION['UserProfile']=$UserProfile;
             
-            
-            
             if ($_SESSION['UserProfile']!=null){
                 switch($_SESSION['UserProfile'])
                 {

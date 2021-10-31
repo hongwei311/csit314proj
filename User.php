@@ -47,7 +47,7 @@ class User{
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
 		
-        $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "' AND Password= '" . $Password . "'";
+        $sql = "SELECT * FROM $TableName" . " WHERE UserName ='".$Username."' AND Password='".$Password."' ";
         $qRes = @mysqli_query($conn, $sql);
 		
         if($qRes === FALSE)
@@ -68,9 +68,9 @@ class User{
     {       
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-        
+        $Password_Hash = password_hash($Password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO $TableName (UserName, Password, UserProfile)" .
-        " VALUES ('$Username', '$Password', '$UserProfile')";
+        " VALUES ('$Username', '$Password_Hash', '$UserProfile')";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
