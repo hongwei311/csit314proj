@@ -46,14 +46,8 @@ class User{
     {
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-		
-        $sql = "SELECT * FROM $TableName" . " WHERE UserName ='".$Username."'";
+        $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "'  ";
         $qRes = @mysqli_query($conn, $sql);
-        $passwordvalidation = mysqli_fetch_assoc($qRes);
-        $passwordvalidationdata = $passwordvalidation["Password"];
-		if(password_verify($Password, $passwordvalidationdata)){
-            // Password is correct, so execute  
-        
         if($qRes === FALSE)
         {
             echo "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
@@ -62,11 +56,14 @@ class User{
 		}
         else
         {
-			$Row = mysqli_fetch_assoc($qRes);
+            $Row = mysqli_fetch_assoc($qRes);
             $validation = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
-            return $validation;
+            $Password_Hash = $Row["Password"];
+            if(password_verify($Password,$Password_Hash)){
+                return $validation;
+            }
+            
         }
-    }
     }
 
     function add($Username, $Password, $UserProfile)

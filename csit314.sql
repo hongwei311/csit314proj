@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2021 at 05:46 AM
+-- Generation Time: Oct 31, 2021 at 03:22 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -33,14 +33,6 @@ CREATE TABLE `admin` (
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`AdminId`, `UserId`, `CreatedDateTime`) VALUES
-(1, 1, '2021-10-15 06:00:15'),
-(2, 5, '2021-10-15 06:04:11');
-
 -- --------------------------------------------------------
 
 --
@@ -56,14 +48,6 @@ CREATE TABLE `doctor` (
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `doctor`
---
-
-INSERT INTO `doctor` (`DoctorId`, `UserId`, `HealthFacility`, `Profession`, `YearsOfExperience`, `CreatedDateTime`) VALUES
-(1, 2, 'Yishun Polyclinic', 'Cardiologists', 5, '2021-10-15 05:02:10'),
-(2, 6, 'Bedok Polyclinic', 'Neurologists', 7, '2021-10-15 05:02:10');
-
 -- --------------------------------------------------------
 
 --
@@ -73,8 +57,8 @@ INSERT INTO `doctor` (`DoctorId`, `UserId`, `HealthFacility`, `Profession`, `Yea
 CREATE TABLE `fulladmin` (
 `UserId` int(11)
 ,`AdminId` int(11)
-,`UserName` char(30)
-,`Password` char(30)
+,`UserName` varchar(30)
+,`Password` varchar(255)
 ,`UserProfile` varchar(100)
 ,`FirstName` char(30)
 ,`Lastname` char(30)
@@ -93,8 +77,8 @@ CREATE TABLE `fulladmin` (
 CREATE TABLE `fulldoctor` (
 `UserId` int(11)
 ,`DoctorId` int(11)
-,`UserName` char(30)
-,`Password` char(30)
+,`UserName` varchar(30)
+,`Password` varchar(255)
 ,`UserProfile` varchar(100)
 ,`FirstName` char(30)
 ,`Lastname` char(30)
@@ -116,8 +100,8 @@ CREATE TABLE `fulldoctor` (
 CREATE TABLE `fullpatient` (
 `UserId` int(11)
 ,`PatientId` int(11)
-,`UserName` char(30)
-,`Password` char(30)
+,`UserName` varchar(30)
+,`Password` varchar(255)
 ,`UserProfile` varchar(100)
 ,`FirstName` char(30)
 ,`Lastname` char(30)
@@ -138,8 +122,8 @@ CREATE TABLE `fullpatient` (
 CREATE TABLE `fullpharmacist` (
 `UserId` int(11)
 ,`PharmacistId` int(11)
-,`UserName` char(30)
-,`Password` char(30)
+,`UserName` varchar(30)
+,`Password` varchar(255)
 ,`UserProfile` varchar(100)
 ,`FirstName` char(30)
 ,`Lastname` char(30)
@@ -166,14 +150,6 @@ CREATE TABLE `patient` (
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `patient`
---
-
-INSERT INTO `patient` (`PatientId`, `UserId`, `DrugAllergy`, `PrescriptionNotifcation`, `CreatedDateTime`) VALUES
-(1, 3, 'Antibiotics', 'Email', '2021-10-15 05:03:22'),
-(2, 7, 'NA', 'QR Code', '2021-10-15 05:03:22');
-
 -- --------------------------------------------------------
 
 --
@@ -188,14 +164,6 @@ CREATE TABLE `pharmacist` (
   `YearsOfExperience` int(11) NOT NULL,
   `CreatedDateTime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `pharmacist`
---
-
-INSERT INTO `pharmacist` (`PharmacistId`, `UserId`, `PharmacyName`, `PharmacyLocation`, `YearsOfExperience`, `CreatedDateTime`) VALUES
-(1, 4, 'Yishun Polyclinic', 'Yishun', 3, '2021-10-15 05:04:24'),
-(2, 8, 'Bedok Polyclinic', 'Bedok', 7, '2021-10-15 05:04:24');
 
 -- --------------------------------------------------------
 
@@ -214,15 +182,6 @@ CREATE TABLE `prescription` (
   `DispensedDateTime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `prescription`
---
-
-INSERT INTO `prescription` (`PrescriptionId`, `PrescriptionDetails`, `PrescriptionStatus`, `DoctorId`, `PatientId`, `PharmacistId`, `CreatedDateTime`, `DispensedDateTime`) VALUES
-(1, 'PrescriptionDetails1', 'PrescriptionStatus1', 1, 1, 1, '2021-10-15 06:08:12', NULL),
-(2, 'PrescriptionDetails2', 'PrescriptionStatus2', 2, 1, 2, '2021-10-15 06:08:12', NULL),
-(3, 'PrescriptionDetails3', 'PrescriptionStatus3', 1, 2, 1, '2021-10-15 06:08:53', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -236,15 +195,6 @@ CREATE TABLE `token` (
   `CreatedDateTime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `token`
---
-
-INSERT INTO `token` (`PrescriptionId`, `TokenId`, `TokenCode`, `CreatedDateTime`) VALUES
-(1, 1, 'TokenCode1', '2021-10-15 04:50:44'),
-(2, 2, 'TokenCode2', '2021-10-15 04:56:55'),
-(3, 3, 'TokenCode3', '2021-10-15 05:17:12');
-
 -- --------------------------------------------------------
 
 --
@@ -253,8 +203,8 @@ INSERT INTO `token` (`PrescriptionId`, `TokenId`, `TokenCode`, `CreatedDateTime`
 
 CREATE TABLE `useraccount` (
   `UserId` int(11) NOT NULL,
-  `UserName` char(30) NOT NULL,
-  `Password` char(30) NOT NULL,
+  `UserName` varchar(30) NOT NULL,
+  `Password` varchar(255) NOT NULL,
   `UserProfile` varchar(100) NOT NULL,
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -264,14 +214,8 @@ CREATE TABLE `useraccount` (
 --
 
 INSERT INTO `useraccount` (`UserId`, `UserName`, `Password`, `UserProfile`, `CreatedDateTime`) VALUES
-(1, 'Admin1', 'Admin1', 'Admin', '2021-10-15 04:56:21'),
-(2, 'Doctor1', 'Doctor1', 'Doctor', '2021-10-15 04:56:55'),
-(3, 'Patient1', 'Patient1', 'Patient', '2021-10-15 04:56:55'),
-(4, 'Pharmacist1', 'Pharmacist1', 'Pharmacist', '2021-10-15 04:57:52'),
-(5, 'Admin2', 'Admin2', 'Admin', '2021-10-15 04:57:52'),
-(6, 'Doctor2', 'Doctor2', 'Doctor', '2021-10-15 04:57:52'),
-(7, 'Patient2', 'Patient2', 'Patient', '2021-10-15 04:57:52'),
-(8, 'Pharmacist2', 'Pharmacist2', 'Pharmacist', '2021-10-15 04:57:52');
+(1, 'AdminUser1', '$2y$10$DatZg/rPwEwQdUi9tO7iKOcxggmpf5vXQZkgYRAzT6kL8HDh3yqpa', 'Admin', '2021-10-31 22:19:24'),
+(2, 'AdminUser2', '$2y$10$i3GUMJzXVFZg/JR0ZCDlOuUvY5k9CkUK62fn/AlH7lPjn28/vyNZ2', 'Admin', '2021-10-31 22:19:30');
 
 -- --------------------------------------------------------
 
@@ -289,20 +233,6 @@ CREATE TABLE `userinfo` (
   `EmailAddress` char(30) NOT NULL,
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `userinfo`
---
-
-INSERT INTO `userinfo` (`UserId`, `FirstName`, `LastName`, `BirthDate`, `GenderCode`, `PhoneNumber`, `EmailAddress`, `CreatedDateTime`) VALUES
-(1, 'TestFirstName1', 'TestLastName1', '2020-12-01', 'M', '96441242', 'TestUser1@hotmail.com', '2021-10-15 04:50:04'),
-(2, 'TestFirstName2', 'TestLastName2', '2020-12-01', 'F', '96441242', 'TestUser2@hotmail.com', '2021-10-15 04:50:16'),
-(3, 'TestFirstName3', 'TestFirstName3', '2020-12-01', 'M', '96441242', 'TestUser3@hotmail.com', '2021-10-15 04:50:21'),
-(4, 'TestFirstName4', 'TestFirstName4', '2020-12-01', 'M', '96441242', 'TestUser4@hotmail.com', '2021-10-15 04:50:44'),
-(5, 'TestFirstName5', 'TestFirstName5', '2020-12-01', 'M', '96441242', 'TestUser5@hotmail.com', '2021-10-15 04:50:44'),
-(6, 'TestFirstName6', 'TestFirstName6', '2020-12-01', 'M', '96441242', 'TestUser6@hotmail.com', '2021-10-15 04:50:44'),
-(7, 'TestFirstName7', 'TestFirstName7', '2020-12-01', 'M', '96441242', 'TestUser7@hotmail.com', '2021-10-15 04:50:44'),
-(8, 'TestFirstName8', 'TestFirstName8', '2020-12-01', 'M', '96441242', 'TestUser8@hotmail.com', '2021-10-15 04:50:44');
 
 -- --------------------------------------------------------
 
@@ -448,7 +378,7 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT for table `useraccount`
 --
 ALTER TABLE `useraccount`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
