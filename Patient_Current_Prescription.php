@@ -45,8 +45,8 @@ table, th, td {
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
   $PrescriptionControl = new PrescriptionControl();
-  $prescriptiondetails = $PrescriptionControl->viewPrescription("Current");
-  if($prescriptiondetails[0]=="")
+  $prescriptiondetails = $PrescriptionControl->viewPrescription("Not Collected");
+  if(empty($prescriptiondetails))
   {
     echo "Fail";
   }
