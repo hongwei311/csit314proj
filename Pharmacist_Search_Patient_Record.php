@@ -4,7 +4,9 @@
 <head>
   <title>Search Patient Record</title>
 <style>
-
+table, th, td {
+  border:1px solid black;
+}
 .button-align {
 width: 200px;
 margin: 0 auto;

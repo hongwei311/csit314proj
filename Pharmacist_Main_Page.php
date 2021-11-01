@@ -55,8 +55,8 @@ display: inline;}
 
   <div class="button">
     <div class="button-align">
-      <a href="Pharmacist_View_Patient_Record.php"><button class="button navigate">View Patient's Records</button></a>
-      <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription</button></a>
+      <a href="Pharmacist_View_Patient_Record.php"><button class="button navigate">View Patients Records</button></a>
+      <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription</button></a> <!-- Currently same as VIEW Prescription Status -->
 
   </div>
     </div>
@@ -64,14 +64,14 @@ display: inline;}
     <div class="button">
       <div class="button-align">
         <a href="Pharmacist_search_patient_record.php"><button class="button navigate">Search Patient's Records</button></a>
-        <a href="View_Prescription_Status.php"><button class="button navigate">View Prescription Status</button></a>
+        <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription Status</button></a>
   
     </div>
       </div>
       <br>
       <div class="button">
         <div class="button-align">
-          <a href="Search_Patients_Prescription.php"><button class="button navigate">Search Patient's Prescription</button></a>
+          <a href="Pharmacist_Search_Patient_Prescription.php"><button class="button navigate">Search Patient's Prescription</button></a>
           <a href="Pharmacist_Update_Prescription.php"><button class="button navigate">Update Prescription Status</button></a>
     
       </div>

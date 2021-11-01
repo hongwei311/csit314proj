@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pharmacist View Patient Record</title>
+  <title>Search Patient Prescription</title>
 <style>
 table, th, td {
   border:1px solid black;
@@ -53,33 +53,22 @@ display: inline;}
 </head>
 <body>
 
-<h1>View Patient Record </h1>
+<h1>Search Patient Prescription</h1>
 
 <p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 
-<form action="ViewPatientRecord!!!!!!!!!!!!!!">
-    <label for="viewPatientRecord">Date: </label>
-    <select name="viewPatientRecord" id="viewPatientRecord">
-      <option value="date">Auto input date from DB</option>
-      <option value="date">Auto input date from DB</option>
-      <option value="date">Auto input date from DB</option>
-      <option value="date">Auto input date from DB</option>
-    </select>
-    <br>
+<form action="/action_page.php">
+  <label for="fname">Enter Prescription ID</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
 
-    <input type="submit" value="Submit">
-  </form>
-<br><br>
+  <input type="submit" value="Submit"> <!-- search from DB then update the table below -->
+</form> 
 
 <table style="width: 70%;"> <!-- Auto input data from the dates -->
         <tr>
-            <th>Patient ID</th>
-            <th>Prescription ID</th>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
+            <th>Date</th>
+            <th>Medications</th>
         </tr>
         <tr>
             <td>PHP code to auto input</td>
