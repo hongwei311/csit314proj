@@ -55,7 +55,7 @@ display: inline;}
 
   <div class="button">
     <div class="button-align">
-      <a href="Pharmacist_Patient_Record.php"><button class="button navigate">View Patient's Records</button></a>
+      <a href="Pharmacist_View_Patient_Record.php"><button class="button navigate">View Patient's Records</button></a>
       <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription</button></a>
 
   </div>
