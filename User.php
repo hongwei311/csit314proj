@@ -102,7 +102,12 @@ class User{
         {
             $Row = mysqli_fetch_assoc($qRes);
             $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
-            return $userdetails;
+            if($Row["UserId"]!=""){
+                return $userdetails;
+            }
+            else{
+                return $userdetails = false;
+            }
         }
     }
 

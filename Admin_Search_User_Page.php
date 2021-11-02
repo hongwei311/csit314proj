@@ -15,20 +15,34 @@ session_start();
 <h1>Search user</h1>
 
 
+<!-- 				<label class="question-text">Search Category</label>
+				<input class="input-field" name="category" type="text" autocomplete="off" placeholder="Enter Category" />
+				<label></label>
+				<label class="question-text">Search Brand</label>
+				<input class="input-field" name="brand" type="text" autocomplete="off" placeholder="Enter Brand" />
+				<label></label>
+				<label class="question-text">Search Characteristics</label>
+				<input class="input-field" name="characteristics" type="text" autocomplete="off" placeholder="Enter Characteristics" />
+				<label></label>
+				<label class="question-text">Search Status</label>
+				<input class="input-field" name="status" type="statustext" autocomplete="off" placeholder="Enter Status" />
+				<label></label>
+				
+				<input href="SearchFunction.php" name= "submit" type="submit" class="submit" value="Search"> -->
+
+
 <form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
   <label>Enter User ID: </label>
   <input type="text" id="UserId" name="userid"><br><br>
   <input type='hidden' name = 'action' value = 'SearchUser'>
-  <input type="submit" value="Search">
+  <button class="button" type="submit" value="Search">Search</button>
 </form><br><br> 
-
 
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
-{
-    if($_POST['action']==='SearchUser')
-    {
+{        
+    
         $UserControl = new UserControl();
         $userdetails = $UserControl->searchUser($_POST['userid']);
         $_SESSION['userid']=$_POST['userid'];
@@ -36,32 +50,28 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $username = $userdetails["1"];
         $password = $userdetails["2"];
         $userprofile = $userdetails["3"];
-        ?>
-        <form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
+        $printresult = "";
+
+        if($userdetails==true)
+        {
+            $printresult = "User Searched successfully";
+            unset($_SESSION['userid']);
+        }
+        elseif($userdetails == false)
+        {
+            $printresult = "User not found";
+        }
+}
+?>
+        <form id="AdminSearchUserPage">
             <label>User ID : <?php echo $userid;?></label><br><br> 
             <label>Username : <?php echo $username;?></label><br><br>
             <label>Password : <?php echo $password;?></label><br><br>
             <label>UserProfile : <?php echo $userprofile;?></label><br><br>
-            
-            <input type="hidden" name = "action" value = "SearchUser">
-        <?php
-    }
-    elseif($_POST['action']==='SearchUser')
-    {
-        $UserControl = new UserControl();
-        $validation = $UserControl ->searchUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['usertype']);
-        if($validation==true)
-        {
-            echo "User Searched successfully";
-            unset($_SESSION['userid']);
-        }
-        else
-        {
-            echo "User not found";
-        }
-    }
-    
-}
+            <label><?php echo $printresult;?></label><br><br>
+        </form>
+        
+<?php
 
 ?>
 
