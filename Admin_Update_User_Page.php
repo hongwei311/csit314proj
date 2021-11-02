@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($userdetails==true)
         {
-            $printresult = "User Searched successfully";
+            $printresult = "";
         }
         elseif($userdetails==false)
         {
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <label>Username : </label>
             <input type="text" id="Username" name="username" value="<?php echo $username;?>"><br><br>
             <label>Password : </label>
-            <input type="text" id="Password" name="password" value="<?php echo $password;?>"><br><br>
+            <input type="password" id="Password" name="password" value="<?php echo $password;?>"><br><br>
             <label>Current User Profile : <?php echo $userprofile;?></label><br><br>
             <label>User Profile</label>&ensp;
                     <select name = "userprofile" id="userprofile">

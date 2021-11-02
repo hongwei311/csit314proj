@@ -19,7 +19,6 @@ session_start();
 			<tr>
 				<th width="5%">UserId</th>
 				<th>UserName</th>
-				<th>Password</th>
 				<th width="10%">UserProfile</th>
 			</tr>
 		</thead>
@@ -34,7 +33,6 @@ session_start();
                                     echo "<tr>";
                                         echo "<td>" . $row['UserId'] . "</td>";
                                         echo "<td>" . $row['UserName'] . "</td>";
-                                        echo "<td>" . $row['Password'] . "</td>";
                                         echo "<td>" . $row['UserProfile'] . "</td>";
                                         
                                     echo "</tr>";

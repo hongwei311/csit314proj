@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($userdetails==true)
         {
-            $printresult = "User Searched successfully";
+            $printresult = "";
             unset($_SESSION['userid']);
         }
         elseif($userdetails == false)
@@ -64,7 +64,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         echo "<form>
             <label>User ID : $userid</label><br><br> 
             <label>Username : $username</label><br><br>
-            <label>Password : $password</label><br><br>
             <label>UserProfile :$userprofile</label><br><br>
             <label>$printresult</label><br><br>
             </form>";

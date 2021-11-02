@@ -124,6 +124,7 @@ class User{
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
+            
         }
         else
         {
