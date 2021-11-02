@@ -61,19 +61,18 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $printresult = "User not found";
         }
+        echo "<form>
+            <label>User ID : $userid</label><br><br> 
+            <label>Username : $username</label><br><br>
+            <label>Password : $password</label><br><br>
+            <label>UserProfile :$userprofile</label><br><br>
+            <label>$printresult</label><br><br>
+            </form>";
 }
-?>
-        <form id="AdminSearchUserPage">
-            <label>User ID : <?php echo $userid;?></label><br><br> 
-            <label>Username : <?php echo $username;?></label><br><br>
-            <label>Password : <?php echo $password;?></label><br><br>
-            <label>UserProfile : <?php echo $userprofile;?></label><br><br>
-            <label><?php echo $printresult;?></label><br><br>
-        </form>
-        
-<?php
 
 ?>
+        
+
 
 <p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>

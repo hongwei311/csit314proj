@@ -115,8 +115,9 @@ class User{
     {
         $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
+        $Password_Hash = password_hash($Password, PASSWORD_DEFAULT);
         $sql = "UPDATE $TableName 
-                SET UserName = '$Username', Password = '$Password', UserProfile = '$UserProfile' 
+                SET UserName = '$Username', Password = '$Password_Hash', UserProfile = '$UserProfile' 
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
