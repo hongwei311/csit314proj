@@ -90,28 +90,4 @@ class Sprint_3Test extends \PHPUnit\Framework\TestCase {
 
         $this->assertEquals(empty($result), true); // If result is empty, means prescription is not found 
     }
-
-    public function testUpdatePrescriptionPositive(){
-        
-        $Prescription = new Prescription;
-        
-        $Prescription->setPrescriptionId("7");
-        $Prescription->setPrescriptionDetails("Random Prescription Status");
-
-        $result = $Prescription->update($Prescription->getPrescriptionId(),$Prescription->getPrescriptionDetails());
-
-        $this->assertEquals($result, true); // If result is true, means prescription is updated
-    }
-
-    public function testUpdatePrescriptionNegative(){
-        
-        $Prescription = new Prescription;
-        
-        $Prescription->setPrescriptionId("");
-        $Prescription->setPrescriptionDetails("Random Prescription Status");
-
-        $result = $Prescription->update($Prescription->getPrescriptionId(),$Prescription->getPrescriptionDetails());
-
-        $this->assertEquals($result, false); // If result is false, means prescription is not updated
-    }
 }
