@@ -20,14 +20,14 @@ class PrescriptionControl
     function searchPrescription($PrescriptionId)
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->searchPrescription($PrescriptionId);
+        $prescriptionDetails = $Prescription->search($PrescriptionId);
         return $prescriptionDetails;
     }
 
     function updatePrescription($PrescriptionId, $PrescriptionDetails)
     {
         $Prescription = new Prescription();
-        $validation = $Prescription->updatePrescription($PrescriptionId, $PrescriptionDetails);
+        $validation = $Prescription->update($PrescriptionId, $PrescriptionDetails);
         return $validation;
     }
 
