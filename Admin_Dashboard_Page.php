@@ -28,20 +28,19 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th width="5%">UserId</th>
+				<th>UserId</th>
 				<th>DoctorId</th>
 				<th>UserName</th>
-				<th width="10%">Password</th>
 				<th>UserProfile</th>
 				<th>FirstName</th>
-				<th width="5%">LastName</th>
-				<th width="5%">BirthDate</th>
-				<th width="5%">GenderCode</th>
-				<th width="5%">PhoneNumber</th>
-				<th width="5%">EmailAddress</th>
-				<th width="5%">HealthFacility</th>
-				<th width="5%">Profession</th>
-				<th width="10%">YearsOfExperience</th>
+				<th>LastName</th>
+				<th>BirthDate</th>
+				<th>GenderCode</th>
+				<th>PhoneNumber</th>
+				<th>EmailAddress</th>
+				<th>HealthFacility</th>
+				<th>Profession</th>
+				<th>YearsOfExperience</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -51,33 +50,39 @@ include_once("UserController.php");
 					//send validation to login controller class
 					$userdetails = $UserControl->viewFullDoctor();
 					print_r($userdetails);
+					for($i = 0; $i < count($userdetails); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+                        echo "</tr>";
+                      }
                     ?>
 		</tbody>
 	</table>
 	</div>
 	</div>
 
-	<h1>View Full Doctors</h1>
+	<h1>View Full Doctor</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th width="5%">UserId</th>
+				<th>UserId</th>
 				<th>DoctorId</th>
 				<th>UserName</th>
-				<th width="10%">Password</th>
 				<th>UserProfile</th>
 				<th>FirstName</th>
-				<th width="5%">LastName</th>
-				<th width="5%">BirthDate</th>
-				<th width="5%">GenderCode</th>
-				<th width="5%">PhoneNumber</th>
-				<th width="5%">EmailAddress</th>
-				<th width="5%">HealthFacility</th>
-				<th width="5%">Profession</th>
-				<th width="10%">YearsOfExperience</th>
+				<th>LastName</th>
+				<th>BirthDate</th>
+				<th>GenderCode</th>
+				<th>PhoneNumber</th>
+				<th>EmailAddress</th>
+				<th>HealthFacility</th>
+				<th>Profession</th>
+				<th>YearsOfExperience</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -100,20 +105,19 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th width="5%">UserId</th>
+				<th>UserId</th>
 				<th>DoctorId</th>
 				<th>UserName</th>
-				<th width="10%">Password</th>
 				<th>UserProfile</th>
 				<th>FirstName</th>
-				<th width="5%">LastName</th>
-				<th width="5%">BirthDate</th>
-				<th width="5%">GenderCode</th>
-				<th width="5%">PhoneNumber</th>
-				<th width="5%">EmailAddress</th>
-				<th width="5%">HealthFacility</th>
-				<th width="5%">Profession</th>
-				<th width="10%">YearsOfExperience</th>
+				<th>LastName</th>
+				<th>BirthDate</th>
+				<th>GenderCode</th>
+				<th>PhoneNumber</th>
+				<th>EmailAddress</th>
+				<th>HealthFacility</th>
+				<th>Profession</th>
+				<th>YearsOfExperience</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -136,20 +140,19 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th width="5%">UserId</th>
+				<th>UserId</th>
 				<th>DoctorId</th>
 				<th>UserName</th>
-				<th width="10%">Password</th>
 				<th>UserProfile</th>
 				<th>FirstName</th>
-				<th width="5%">LastName</th>
-				<th width="5%">BirthDate</th>
-				<th width="5%">GenderCode</th>
-				<th width="5%">PhoneNumber</th>
-				<th width="5%">EmailAddress</th>
-				<th width="5%">HealthFacility</th>
-				<th width="5%">Profession</th>
-				<th width="10%">YearsOfExperience</th>
+				<th>LastName</th>
+				<th>BirthDate</th>
+				<th>GenderCode</th>
+				<th>PhoneNumber</th>
+				<th>EmailAddress</th>
+				<th>HealthFacility</th>
+				<th>Profession</th>
+				<th>YearsOfExperience</th>
 			</tr>
 		</thead>
 		<tbody>

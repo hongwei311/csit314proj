@@ -27,8 +27,8 @@ class UserInfoController
 	function viewUserInfo()
 	{
 		$UserInfo = new UserInfo();
-		$validation = $UserInfo->view();
-		return $validation;
+		$userinformation = $UserInfo->view();
+		return $userinformation;
 	}
 }
 

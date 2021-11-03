@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   <input type="email" id="EmailAddress" name="EmailAddress" required>
   <label class="error"><?php echo $emailaddress_err; ?></label>
   <br><br>
-  <label class="error"><?php echo $printReturn; ?></label>
+  <label><?php echo $printReturn; ?></label>
 
   <button class="button" type="submit" value="Submit">Submit</button>
 </form>

@@ -11,7 +11,7 @@ session_start();
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-
+<h1 class="header">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 <h1>View User</h1>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
@@ -25,25 +25,17 @@ session_start();
 		<tbody>
 		<?php
                     // Attempt select query execution
-					$conn = mysqli_connect("localhost","root","","csit314");
-                    $sql = "SELECT * FROM useraccount";
-                    if($result = $conn->query($sql)){
-                        if($result->num_rows > 0){
-								while($row = $result->fetch_array()){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['UserId'] . "</td>";
-                                        echo "<td>" . $row['UserName'] . "</td>";
-                                        echo "<td>" . $row['UserProfile'] . "</td>";
-                                        
-                                    echo "</tr>";
-                                }
-                            // Free result set
-                            $result->free();
-                        } else{
-                            echo "<label class='question-text'>No records were found.</label>";
-                        }
-                    } 
-                    
+					$UserControl = new UserControl();
+					//send validation to login controller class
+					$userdetails = $UserControl->viewUser();
+                    for($i = 0; $i < count($userdetails); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+                        echo "</tr>";
+                      }
+
          ?>
 		</tbody>
 </table>

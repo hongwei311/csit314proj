@@ -26,16 +26,38 @@ class UserControl
 	function viewUser()
 	{
 		$User = new User();
-		$validation = $User->view();
-		return $validation;
+		$userdetails = $User->view();
+		return $userdetails;
 	}
 	
+    function viewFullAdmin()
+	{
+		$User = new User();
+		$userdetails = $User->viewFullAdminDetails();
+		return $userdetails;
+	}
+
 	function viewFullDoctor()
 	{
 		$User = new User();
 		$userdetails = $User->viewFullDoctorDetails();
 		return $userdetails;
 	}
+
+    function viewFullPatient()
+	{
+		$User = new User();
+		$userdetails = $User->viewFullPatientDetails();
+		return $userdetails;
+	}
+    
+    function viewFullPharmacist()
+	{
+		$User = new User();
+		$userdetails = $User->viewFullPharmacistDetails();
+		return $userdetails;
+	}
+
 }
 
 ?>

@@ -3,10 +3,6 @@ include_once("UserInfoController.php");
 session_start();
 // $userid = $username = $password = "";
 
-$phoneregex = "/^(^[689]{1})(\d{7})$/";
-$emailregex = "/^[^0-9][_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/";
-$phonenumber_err = $emailaddress_err = "";
-$printresult = "";
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +26,13 @@ $printresult = "";
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
-    
+    $phoneregex = "/^(^[689]{1})(\d{7})$/";
+    $emailregex = "/^[^0-9][_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/";
+    $phonenumber_err = $emailaddress_err = "";
+    $printresult = "";
+
+    $UserId = $FirstName = $LastName = $BirthDate = $GenderCode = $PhoneNumber = $EmailAddress = "";
+
     if($_POST['action']==='SearchUserInfo')
     {
         $UserControl = new UserInfoController();
@@ -86,16 +88,18 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 <?php
     }
-    
-    if($_POST['action']==='UpdateUserInfo')
-    {
-        if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
-            $phonenumber_err="Please enter a valid phone number.";
-            }
-            
-          if (!preg_match($emailregex, $_POST["EmailAddress"])) {
-            $emailaddress_err="Please enter a valid email address.";
-            }
+
+        if($_POST['action']==='UpdateUserInfo'){
+        
+            if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
+                $phonenumber_err="Please enter a valid phone number."; 
+                }
+                
+            if (!preg_match($emailregex, $_POST["EmailAddress"])) {
+                $emailaddress_err="Please enter a valid email address.";
+                }
+        
+
         if($phonenumber_err == "" && $emailaddress_err == ""){
         $UserControl = new UserInfoController();
         $validation = $UserControl ->updateUserInfo($_SESSION['UserId'],$_POST['FirstName'],$_POST['LastName'],
@@ -109,6 +113,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         {
             echo "User Info not updated";
         }
+        }
+        elseif($phonenumber_err != "" || $emailaddress_err != ""){
+            echo "<p>User Info not updated</p>";
+            echo "<p>$phonenumber_err</p>";
+            echo "<p>$emailaddress_err</p>";
         }
     }
     

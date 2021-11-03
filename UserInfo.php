@@ -147,7 +147,7 @@ class UserInfo{
             {
                 if(empty($userinformation))
                 {
-                    $userinformation=$Row;
+                    array_push($userinformation,$Row);
                 }
                 else array_push($userinformation,$Row);
             }

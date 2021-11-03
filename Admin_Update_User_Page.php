@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $printresult = "User not found";
         }
-    }
+    
 ?>      
         <form id="AdminUpdateUserPage" method="POST" action="Admin_Update_User_Page.php">
             <label><?php echo $printresult;?></label><br><br>
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         </form>
 
 <?php
-    
+    }
     if($_POST['action']==='UpdateUser')
     {
         $UserControl = new UserControl();

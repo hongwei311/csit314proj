@@ -146,13 +146,18 @@ class User{
         }
         else
         {
+            //create array
             $userdetails=array();
+            //loop the array
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
+                //check if array is empty
                 if(empty($userdetails))
                 {
-                    $userdetails=$Row;
+                    //add in the first array row
+                    array_push($userdetails,$Row);
                 }
+                //if array is not empty push new row into last position
                 else array_push($userdetails,$Row);
             }
             
@@ -160,8 +165,37 @@ class User{
         }
 	}
 	
-		function viewFullDoctorDetails()
-		{
+	function viewFullAdminDetails()
+	{
+			
+			$conn = mysqli_connect("localhost","root","","csit314");
+			$sql = "SELECT * FROM fulladmin";
+			$qRes = mysqli_query($conn, $sql);
+			
+			if($qRes === FALSE)
+			{
+				echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+				return $userdetails = false;
+			}
+			else
+			{   
+                $userdetails=array();
+                while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+                {
+                    if(empty($userdetails))
+                    {
+                        array_push($userdetails,$Row);
+                    }
+                    else array_push($userdetails,$Row);
+                }
+            
+            return $userdetails;
+				
+			}
+			
+	}
+    function viewFullDoctorDetails()
+	{
 			
 			$conn = mysqli_connect("localhost","root","","csit314");
 
@@ -171,7 +205,7 @@ class User{
 			if($qRes === FALSE)
 			{
 				echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-				return $validation = false;
+				return $userdetails = false;
 			}
 			else
 			{   
@@ -180,7 +214,7 @@ class User{
                 {
                     if(empty($userdetails))
                     {
-                        $userdetails=$Row;
+                        array_push($userdetails,$Row);
                     }
                     else array_push($userdetails,$Row);
                 }
@@ -189,7 +223,67 @@ class User{
 				
 			}
 			
-		}
+	}
+    function viewFullPatientDetails()
+	{
+			
+			$conn = mysqli_connect("localhost","root","","csit314");
+
+			$sql = "SELECT * FROM fulldoctor";
+			$qRes = mysqli_query($conn, $sql);
+			
+			if($qRes === FALSE)
+			{
+				echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+				return $userdetails = false;
+			}
+			else
+			{   
+                $userdetails=array();
+                while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+                {
+                    if(empty($userdetails))
+                    {
+                        array_push($userdetails,$Row);
+                    }
+                    else array_push($userdetails,$Row);
+                }
+            
+            return $userdetails;
+				
+			}
+			
+	}
+    function viewFullPharmacistDetails()
+	{
+			
+			$conn = mysqli_connect("localhost","root","","csit314");
+
+			$sql = "SELECT * FROM fulldoctor";
+			$qRes = mysqli_query($conn, $sql);
+			
+			if($qRes === FALSE)
+			{
+				echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+				return $userdetails = false;
+			}
+			else
+			{   
+                $userdetails=array();
+                while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+                {
+                    if(empty($userdetails))
+                    {
+                        array_push($userdetails,$Row);
+                    }
+                    else array_push($userdetails,$Row);
+                }
+            
+            return $userdetails;
+				
+			}
+			
+	}
 }
 	
 	
