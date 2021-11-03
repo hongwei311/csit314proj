@@ -10,7 +10,7 @@ session_start(); // start session to manipulate session variables
 </head>
 <body>
 
-<h1>Add new user</h1>
+<h1>Add New User</h1>
 
 <form id="AdminAddUserPage" method="POST" action="Admin_Add_User_Page.php">
   <!-- create form wih post method to the same page -->

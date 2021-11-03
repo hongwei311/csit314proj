@@ -3,10 +3,10 @@ include_once("UserInfo.php");
 
 class UserInfoController
 {
-    function addUserInfo($FirstName, $LastName, $BirthDate, $GenderCode, $EmailAddress)
+    function addUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
     {
         $UserInfo = new UserInfo();
-        $validation = $UserInfo->add($FirstName, $LastName, $BirthDate, $GenderCode, $EmailAddress);
+        $validation = $UserInfo->add($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress);
         return $validation;
     }
 
@@ -17,10 +17,10 @@ class UserInfoController
         return $userinformation;
     }
 
-    function updateUserInfo($FirstName, $LastName, $BirthDate, $GenderCode, $EmailAddress)
+    function updateUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
     {
         $UserInfo = new UserInfo();
-        $validation = $UserInfo->update($FirstName, $LastName, $BirthDate, $GenderCode, $EmailAddress);
+        $validation = $UserInfo->update($UserId,$FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress);
         return $validation;
     }
 	

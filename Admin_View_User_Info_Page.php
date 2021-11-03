@@ -1,5 +1,5 @@
 <?php
-include_once("UserController.php");
+include_once("UserInfoController.php");
 session_start();
 // $userid = $username = $password = "";
 
@@ -12,7 +12,7 @@ session_start();
 </head>
 <body>
 
-<h1>View User</h1>
+<h1>View user</h1>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
