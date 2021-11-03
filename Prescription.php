@@ -5,6 +5,7 @@ include_once("PrescriptionController.php");
 class Prescription{
 
     private $Patientid;
+    private $Prescriptionid;
     private $PrescriptionDetails;
 
     function setPrescriptionDetails($PrescriptionDetails){
@@ -22,6 +23,14 @@ class Prescription{
 
     function getPrescriptionStatus(){
         return $this -> PrescriptionStatus;
+    }
+
+    function setPrescriptionId($PrescriptionId){
+        $this -> PrescriptionId = $PrescriptionId;
+    }
+
+    function getPrescriptionId(){
+        return $this -> PrescriptionId;
     }
 
 
@@ -75,7 +84,7 @@ class Prescription{
         }
     }
 
-    function searchPrescription($PrescriptionId)
+    function search($PrescriptionId)
     {
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
@@ -104,7 +113,7 @@ class Prescription{
         }
     }
 
-    function updatePrescription($PrescriptionId, $PrescriptionDetails)
+    function update($PrescriptionId, $PrescriptionDetails)
     {
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
