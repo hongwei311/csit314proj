@@ -21,10 +21,10 @@ session_start(); // start session to manipulate session variables
   <input type="Password" id="Password" name="password" required><br><br>
   <!-- create password text for Username for user to input username text -->
   <label>User Profile</label>&ensp;<select name = "userprofile" id="userprofile">
-            <option value = "Admin" >Admin</option>
-            <option value = "Doctor" >Doctor</option>
-            <option value = "Patient" >Patient</option>
-            <option value = "Pharmacist" >Pharmacist</option>
+            <option value = "admin" >Admin</option>
+            <option value = "doctor" >Doctor</option>
+            <option value = "patient" >Patient</option>
+            <option value = "pharmacist" >Pharmacist</option>
         </select> <br><br>
    <!-- create option input for User Profile for user to select user profile -->
   <button class="button" type="submit" value="Submit">Submit</button>

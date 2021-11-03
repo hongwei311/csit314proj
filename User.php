@@ -82,9 +82,43 @@ class User{
         else
         {
             return $validation = true;
-        }
 
-    }   
+
+            /* // testing insert into multiple tables
+            //select all details of newly created account based on entered username
+            $getuserID = "SELECT * FROM $TableName WHERE UserName='$Username'";
+            //run query
+            $run = @mysqli_query($conn,$getuserID);
+            //get userid
+            $getrow=mysqli_fetch_array($run);
+            {
+                $UserId = $getrow['UserId'];
+            }
+            
+            //access userinfo table
+            $UserInfoTable = "userinfo";
+            $insertUserInfo = "INSERT INTO userinfo (UserId)" .
+            " VALUES ('$UserId')";
+            $execute = @mysqli_query($conn,$insertUserInfo);
+
+            $getuserID = "SELECT * FROM $TableName WHERE UserName='$Username'";
+            //run query
+            $run = @mysqli_query($conn,$getuserID);
+            //get userid
+            $getrow=mysqli_fetch_array($run);
+            {
+                $UserId = $getrow['UserId'];
+                $UserProfile = $getrow['UserProfile'];
+            }
+            
+            //access userinfo table
+            
+            $insertUserProfile = "INSERT INTO $UserProfile (UserId)" .
+            " VALUES ('$UserId')";
+            $execute = @mysqli_query($conn,$insertUserProfile); */
+        } 
+     }
+        
     
     function search($UserId)
     {
@@ -229,7 +263,7 @@ class User{
 			
 			$conn = mysqli_connect("localhost","root","","csit314");
 
-			$sql = "SELECT * FROM fulldoctor";
+			$sql = "SELECT * FROM fullpatient";
 			$qRes = mysqli_query($conn, $sql);
 			
 			if($qRes === FALSE)
@@ -259,7 +293,7 @@ class User{
 			
 			$conn = mysqli_connect("localhost","root","","csit314");
 
-			$sql = "SELECT * FROM fulldoctor";
+			$sql = "SELECT * FROM fullpharmacist";
 			$qRes = mysqli_query($conn, $sql);
 			
 			if($qRes === FALSE)

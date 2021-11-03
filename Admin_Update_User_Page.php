@@ -56,10 +56,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <label>User Profile</label>&ensp;
                     <select name = "userprofile" id="userprofile" value="<?php $userprofile;?>" required>
                         <option><?php echo $userprofile;?></option>
-                        <option value = "Admin" >Admin</option>
-                        <option value = "Doctor" >Doctor</option>
-                        <option value = "Patient" >Patient</option>
-                        <option value = "Pharmacist" >Pharmacist</option>
+                        <option value = "admin" >Admin</option>
+                        <option value = "doctor" >Doctor</option>
+                        <option value = "patient" >Patient</option>
+                        <option value = "pharmacist" >Pharmacist</option>
                     </select> <br><br>
             <input type="hidden" name = "action" value = "UpdateUser">
             <button class="button" type="submit" value="Update">Update</button>

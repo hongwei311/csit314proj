@@ -28,19 +28,16 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th>UserId</th>
-				<th>DoctorId</th>
-				<th>UserName</th>
-				<th>UserProfile</th>
-				<th>FirstName</th>
-				<th>LastName</th>
-				<th>BirthDate</th>
-				<th>GenderCode</th>
-				<th>PhoneNumber</th>
-				<th>EmailAddress</th>
-				<th>HealthFacility</th>
-				<th>Profession</th>
-				<th>YearsOfExperience</th>
+				<th>User Id</th>
+				<th>Admin Id</th>
+				<th>User Name</th>
+				<th>User Profile</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Birth Date</th>
+				<th>Gender Code</th>
+				<th>Phone Number</th>
+				<th>Email Address</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -48,13 +45,19 @@ include_once("UserController.php");
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullDoctor();
-					print_r($userdetails);
+					$userdetails = $UserControl->viewFullAdmin();
 					for($i = 0; $i < count($userdetails); $i++) {
                         echo "<tr>";
                         echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+						echo "<td>" . $userdetails[$i]['AdminId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
+						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
                         echo "</tr>";
                       }
                     ?>
@@ -70,19 +73,19 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th>UserId</th>
-				<th>DoctorId</th>
-				<th>UserName</th>
-				<th>UserProfile</th>
-				<th>FirstName</th>
-				<th>LastName</th>
-				<th>BirthDate</th>
-				<th>GenderCode</th>
-				<th>PhoneNumber</th>
-				<th>EmailAddress</th>
-				<th>HealthFacility</th>
+				<th>User Id</th>
+				<th>Doctor Id</th>
+				<th>User Name</th>
+				<th>User Profile</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Birth Date</th>
+				<th>Gender Code</th>
+				<th>Phone Number</th>
+				<th>Email Address</th>
+				<th>Health Facility</th>
 				<th>Profession</th>
-				<th>YearsOfExperience</th>
+				<th>Years Of Experience</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -91,7 +94,23 @@ include_once("UserController.php");
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$userdetails = $UserControl->viewFullDoctor();
-					print_r($userdetails);
+					for($i = 0; $i < count($userdetails); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['DoctorId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
+						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
+						echo "<td>" . $userdetails[$i]['HealthFacility'] . "</td>";
+						echo "<td>" . $userdetails[$i]['Profession'] . "</td>";
+						echo "<td>" . $userdetails[$i]['YearsOfExperience'] . "</td>";
+                        echo "</tr>";
+                      }
                     ?>
 		</tbody>
 	</table>
@@ -105,19 +124,18 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th>UserId</th>
-				<th>DoctorId</th>
-				<th>UserName</th>
-				<th>UserProfile</th>
-				<th>FirstName</th>
-				<th>LastName</th>
-				<th>BirthDate</th>
-				<th>GenderCode</th>
-				<th>PhoneNumber</th>
-				<th>EmailAddress</th>
-				<th>HealthFacility</th>
-				<th>Profession</th>
-				<th>YearsOfExperience</th>
+				<th>User Id</th>
+				<th>Patient Id</th>
+				<th>User Name</th>
+				<th>User Profile</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Birth Date</th>
+				<th>Gender Code</th>
+				<th>Phone Number</th>
+				<th>Email Address</th>
+				<th>Drug Allergy</th>
+				<th>Presciription Notification</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -125,8 +143,23 @@ include_once("UserController.php");
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullDoctor();
-					print_r($userdetails);
+					$userdetails = $UserControl->viewFullPatient();
+					for($i = 0; $i < count($userdetails); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PatientId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
+						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
+						echo "<td>" . $userdetails[$i]['DrugAllergy'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PrescriptionNotifcation'] . "</td>";
+                        echo "</tr>";
+                      }
                     ?>
 		</tbody>
 	</table>
@@ -140,19 +173,19 @@ include_once("UserController.php");
 	<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
-				<th>UserId</th>
-				<th>DoctorId</th>
-				<th>UserName</th>
-				<th>UserProfile</th>
-				<th>FirstName</th>
-				<th>LastName</th>
-				<th>BirthDate</th>
-				<th>GenderCode</th>
-				<th>PhoneNumber</th>
-				<th>EmailAddress</th>
-				<th>HealthFacility</th>
-				<th>Profession</th>
-				<th>YearsOfExperience</th>
+				<th>User Id</th>
+				<th>Pharmacist Id</th>
+				<th>User Name</th>
+				<th>User Profile</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Birth Date</th>
+				<th>Gender Code</th>
+				<th>Phone Number</th>
+				<th>Email Address</th>
+				<th>Pharmacy Name</th>
+				<th>Pharmacy Location</th>
+				<th>Years Of Experience</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -160,8 +193,24 @@ include_once("UserController.php");
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullDoctor();
-					print_r($userdetails);
+					$userdetails = $UserControl->viewFullPharmacist();
+					for($i = 0; $i < count($userdetails); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PharmacistId'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
+						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
+                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
+						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PharmacyName'] . "</td>";
+						echo "<td>" . $userdetails[$i]['PharmacyLocation'] . "</td>";
+						echo "<td>" . $userdetails[$i]['YearsOfExperience'] . "</td>";
+                        echo "</tr>";
+                      }
                     ?>
 		</tbody>
 	</table>
