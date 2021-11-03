@@ -1,125 +1,86 @@
 <?php
-  include_once("UserController.php");
-  include_once("UserInfoController.php");
-  session_start();
-?>
+include_once("UserInfoController.php"); // include User Controller to call function
+include("GlobalClass.php");
+session_start(); // start session to manipulate session variables
 
+?>
 <!DOCTYPE html>
 <html>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-
-.navigate {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.navigate:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
-</style>
-
 <head>
-  <title>Add User Profile</title>
+<title>Add New User Info</title>
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
-
 <body>
-<h1>Add User Profile</h1>
 
-<form id="AdminAddUserInfoPage" method="POST" action="Admin_Add_User_Info_Page.php?action=SearchUser">
-  <label>Enter User ID: </label>
-  <input type="text" id="Userid" name="userid"><br><br>
-  <a href="Admin_Main_Page.php"><button class="button">Back</button></a>
-  <input type='hidden' name = 'action' value = 'SearchUserInfo'>
-  <input type="submit" value="Search">
-</form><br><br> 
 
 <?php
-  if($_SERVER['REQUEST_METHOD']=='POST')
-  {
-    if($_POST['action']==='SearchUserInfo')
-    { 
-      $_SESSION['userid']=$_POST['userid'];
-      $UserController = new UserControl();
-      $userdetails = $UserController->searchUser($_POST['userid']);
+$phoneregex = "/^(^[689]{1})(\d{7})$/";
+$emailregex = "/^[^0-9][_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/";
+$phonenumber_err = $emailaddress_err = "";
+$printReturn = "";
 
-      $UserInfoController = new UserInfoController();
-      $userinformation = $UserInfoController->searchUserInfo($_POST['userid']);
-     
-      if(is_null($userdetails["0"]) != 1) // if user exists in the user table (has user id)
-      {
-        $userid = $userdetails["0"];
-      ?>
-      <?php 
-        if(is_null($userinformation["1"])) //if the user's firstname is null
-        {    
-      ?>
-          <form id="AdminAdminAddUserInfoPage" method="POST" action="Admin_Add_User_Info_Page.php">
-            <label>User ID :  <?php echo $userid;?></label><br><br> 
-            <label>First Name : </label>
-            <input type="text" id="FirstName" name="FirstName"><br><br>
-            <label>Last Name: </label>
-            <input type="text" id="LastName" name="LastName"><br><br>
-            <label>Birth Date: </label>
-            <input type="text" id="BirthDate" name="BirthDate"><br><br>
-            <label>Gender: </label>&ensp;
-            <select name="GenderCode" id="GenderCode">
-              <option value = "M" >M</option>
-              <option value = "F" >F</option>
-            </select> <br><br>
-            <label>Email Address: </label>
-            <input type="text" id="EmailAddress" name="EmailAddress"><br><br>
-            <input type="hidden" name = "action" value = "AddUserInfo">
-            <input type="submit" value="Add">        
-          </form>
-      <?php
-        }
-          else
-          {
-            echo ("User profile aleady added");
-          }
-      }
-        else
-        {
-          echo("User not found");
-        }
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+
+  if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
+    $phonenumber_err="Please enter a valid phone number."; 
     }
-    elseif($_POST['action']==='AddUserInfo')
-    {
-      $UserInfoController = new UserInfoController();
-      $validation = $UserInfoController ->addUserInfo($_POST['FirstName'],$_POST['LastName'],$_POST['BirthDate'],$_POST['GenderCode'],$_POST['EmailAddress']);
-      if($validation==true)
-      {
-          echo "User info added successfully";
-          unset($_SESSION['userid']);
-      }
-      else
-      {
-          echo "User info not added";
-      }
+    
+  if (!preg_match($emailregex, $_POST["EmailAddress"])) {
+    $emailaddress_err="Please enter a valid email address.";
     }
-      ?>
-      <br><br>
-      <a href="Admin_Main_Page.php"><button class="button">Back To Homepage</button></a>
-    <?php
+  
+  if($phonenumber_err =="" && $emailaddress_err == ""){
+  $UserInfoControl = new UserInfoController(); // create User Controller to run function
+  $validation = $UserInfoControl->addUserInfo($_POST['UserId'],$_POST['FirstName'],$_POST['LastName'],$_POST['BirthDate'],
+  $_POST['GenderCode'],$_POST['PhoneNumber'],$_POST['EmailAddress']); //assign output from addUser function to validation
+  if($validation==true)
+  {
+    $printReturn = "<p>User Info added successfully</p>";
+  }
+  else
+  {
+    $printReturn = "<p>User Info not added</p>";
+  }
+}
 }
 ?>
+
+<h1>Add New User Info</h1>
+
+<form id="AdminAddUserInfoPage" method="POST" action="Admin_Add_User_Info_Page.php">
+  <!-- create form wih post method to the same page -->
+  <label>User Id: </label>
+  <input type="text" id="UserId" name="UserId" required><br><br>
+  <!-- create input text for Username for user to input username text -->
+  <label>First Name: </label>
+  <input type="text" id="FirstName" name="FirstName" required><br><br>
+  <!-- create password text for Username for user to input username text -->
+  <label>Last Name: </label>
+  <input type="text" id="LastName" name="LastName" required><br><br>
+  <label>Birth Date: </label>
+  <input type="date" id="BirthDate" name="BirthDate" required><br><br>
+  <label>Gender Code: </label>
+  <select name = "GenderCode" id="GenderCode">
+            <option value = "M" >M</option>
+            <option value = "F" >F</option>
+  </select><br><br>
+  <label>Phone Number: </label>
+  <input type="tel" id="PhoneNumber" name="PhoneNumber" required>
+  <label class="error"><?php echo $phonenumber_err; ?></label>
+  <br><br>
+  <label>Email Address: </label>
+  <input type="email" id="EmailAddress" name="EmailAddress" required>
+  <label class="error"><?php echo $emailaddress_err; ?></label>
+  <br><br>
+  <label class="error"><?php echo $printReturn; ?></label>
+
+  <button class="button" type="submit" value="Submit">Submit</button>
+</form>
+
+
+<p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 
 </body>
 </html>
+

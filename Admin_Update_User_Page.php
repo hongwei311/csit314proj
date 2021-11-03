@@ -12,7 +12,7 @@ session_start();
 </head>
 <body>
 
-<h1>Update user</h1>
+<h1>Update User</h1>
 
 
 <form id="AdminSearchUserPage" method="POST" action="Admin_Update_User_Page.php">
@@ -44,18 +44,18 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $printresult = "User not found";
         }
-
+    }
 ?>      
         <form id="AdminUpdateUserPage" method="POST" action="Admin_Update_User_Page.php">
             <label><?php echo $printresult;?></label><br><br>
             <label>User ID : <?php echo $userid;?></label><br><br> 
             <label>Username : </label>
-            <input type="text" id="Username" name="username" value="<?php echo $username;?>"><br><br>
+            <input type="text" id="Username" name="username" value="<?php echo $username;?>" required><br><br>
             <label>Password : </label>
-            <input type="password" id="Password" name="password" value="<?php echo $password;?>"><br><br>
-            <label>Current User Profile : <?php echo $userprofile;?></label><br><br>
+            <input type="password" id="Password" name="password" value="<?php echo $password;?>" required><br><br>
             <label>User Profile</label>&ensp;
-                    <select name = "userprofile" id="userprofile">
+                    <select name = "userprofile" id="userprofile" value="<?php $userprofile;?>" required>
+                        <option><?php echo $userprofile;?></option>
                         <option value = "Admin" >Admin</option>
                         <option value = "Doctor" >Doctor</option>
                         <option value = "Patient" >Patient</option>
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         </form>
 
 <?php
-    }
+    
     if($_POST['action']==='UpdateUser')
     {
         $UserControl = new UserControl();

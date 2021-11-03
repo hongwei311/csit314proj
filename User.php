@@ -195,7 +195,7 @@ class User{
 	
 	
 
-class Doctor extends User
+/* class Doctor extends User
 
 {
 	public function approveAcc($userid)
@@ -223,7 +223,7 @@ class Doctor extends User
 	}
 	
 	
-}
+} */
 
 
 

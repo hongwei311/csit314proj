@@ -6,6 +6,7 @@ class UserInfo{
     private $LastName;
     private $BirthDate;
     private $GenderCode;
+    private $PhoneNumber;
     private $EmailAddress;
 	
 	function setUserId($UserId){
@@ -48,6 +49,14 @@ class UserInfo{
         return $this -> GenderCode;
     }
 
+    function setPhoneNumber($PhoneNumber){
+        $this -> PhoneNumber = $PhoneNumber;
+    }
+
+    function getPhoneNumber(){
+        return $this -> PhoneNumber;
+    }
+
     function setEmailAddress($EmailAddress){
         $this -> EmailAddress = $EmailAddress;
     }
@@ -66,52 +75,57 @@ class UserInfo{
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","","","");
+            return $userinformation = array("","","","","","","");
         }
         else
         {
             $Row = mysqli_fetch_assoc($qRes);
-            $userinformation = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["GenderCode"],$Row["BirthDate"],$Row["EmailAddress"]);
-            return $userinformation;
+            $userinformation = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"]);
+            if($Row["UserId"]!=""){
+                return $userinformation;
+            }
+            else{
+                return $userinformation = false;
+            }
         }
     }
 
-    function add($FirstName, $LastName, $BirthDate, $GenderCode, $EmailAddress)
+    function add($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
     {       
         $TableName = "userinfo";
         $conn = mysqli_connect("localhost","root","","csit314");
         
-        $sql = "INSERT INTO $TableName (FirstName, LastName, BirthDate, GenderCode, EmailAddress)" .
-        " VALUES ('$FirstName', '$LastName', '$BirthDate', '$GenderCode', '$EmailAddress')";
+        $sql = "INSERT INTO $TableName (UserId, FirstName, LastName, BirthDate, GenderCode, PhoneNumber, EmailAddress)" .
+        " VALUES ('$UserId', '$FirstName', '$LastName', '$BirthDate', '$GenderCode', '$PhoneNumber', '$EmailAddress')";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return false;
+            return $validation = false;
         }
         else
         {
-            return true;
+            return $validation = true;
         }
     }   
 
-    function update($FirstName, $LastName, $BirthDate, $GenderCode, $EmailAddress)
+    function update($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
     {
         $TableName = "userinfo";
         $conn = mysqli_connect("localhost","root","","csit314");
 
         $sql = "UPDATE $TableName 
-                SET FirstName = '$FirstName', LastName = '$LastName', BirthDate = '$BirthDate', GenderCode='$GenderCode', EmailAddress = '$EmailAddress'
+                SET FirstName = '$FirstName', LastName = '$LastName', BirthDate = '$BirthDate', GenderCode='$GenderCode', PhoneNumber='$PhoneNumber', EmailAddress = '$EmailAddress'
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return false;
+            return $validation = false;
         }
         else
         {
-            return true;
+            return $validation = true;
         }
     }
 	

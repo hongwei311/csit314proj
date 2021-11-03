@@ -57,3 +57,6 @@ table, th, td {
   color: white;
 }
 
+.error{
+  color: #FF0000;
+}

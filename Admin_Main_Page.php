@@ -20,13 +20,13 @@ session_start();
 
 <p><a href="Admin_View_User_Page.php"><button class="button">View User Accounts</button></a></p>
 
-<p><a href="Admin_Add_User_Profile_Page.php"><button class="button">Add New User Profiles</button></p></a></p>
+<p><a href="Admin_Add_User_Info_Page.php"><button class="button">Add New User Info</button></p></a></p>
 
-<p><a href="Admin_Search_User_Profile_Page.php"><button class="button">Search For User Profiles</button></p></a></p>
+<p><a href="Admin_Search_User_Info_Page.php"><button class="button">Search For User Info</button></p></a></p>
 
-<p><a href="Admin_Update_User_Profile_Page.php"><button class="button">Update User Profiles</button></p></a></p>
+<p><a href="Admin_Update_User_Info_Page.php"><button class="button">Update User Info</button></p></a></p>
 
-<p><a href="Admin_View_User_Profile_Page.php"><button class="button">View User Profiles</button></p></a></p>
+<p><a href="Admin_View_User_Info_Page.php"><button class="button">View User Info</button></p></a></p>
 
 <p><a href="Admin_Dashboard_Page.php"><button class="button">View Full Details</button></p></a>
 

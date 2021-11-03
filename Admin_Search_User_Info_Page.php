@@ -1,5 +1,5 @@
 <?php
-include_once("UserController.php");
+include_once("UserInfoController.php");
 session_start();
 // $userid = $username = $password = "";
 
@@ -7,12 +7,12 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Search User</title>
+<title>Search User Info</title>
 	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
 
-<h1>Search User</h1>
+<h1>Search User Info</h1>
 
 
 <!-- 				<label class="question-text">Search Category</label>
@@ -31,10 +31,10 @@ session_start();
 				<input href="SearchFunction.php" name= "submit" type="submit" class="submit" value="Search"> -->
 
 
-<form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
+<form id="AdminSearchUserInfoPage" method="POST" action="Admin_Search_User_Info_Page.php">
   <label>Enter User ID: </label>
-  <input type="text" id="UserId" name="userid"><br><br>
-  <input type='hidden' name = 'action' value = 'SearchUser'>
+  <input type="text" id="UserId" name="UserId"><br><br>
+  <input type='hidden' name = 'action' value = 'SearchUserInfo'>
   <button class="button" type="submit" value="Search">Search</button>
 </form><br><br> 
 
@@ -43,28 +43,36 @@ session_start();
 if($_SERVER['REQUEST_METHOD']=='POST')
 {        
     
-        $UserControl = new UserControl();
-        $userdetails = $UserControl->searchUser($_POST['userid']);
-        $_SESSION['userid']=$_POST['userid'];
-        $userid = $userdetails["0"];
-        $username = $userdetails["1"];
-        $password = $userdetails["2"];
-        $userprofile = $userdetails["3"];
+        $UserInfoControl = new UserInfoController();
+        $userinformation = $UserInfoControl->searchUserInfo($_POST['UserId']);
+        $_SESSION['UserId']=$_POST['UserId'];
+        $UserId = $userinformation["0"];
+        $FirstName = $userinformation["1"];
+        $LastName = $userinformation["2"];
+        $BirthDate = $userinformation["3"];
+        $GenderCode = $userinformation["4"];
+        $PhoneNumber = $userinformation["5"];
+        $EmailAddress = $userinformation["6"];
         $printresult = "";
 
-        if($userdetails==true)
+        if($userinformation==true)
         {
             $printresult = "";
-            unset($_SESSION['userid']);
+            unset($_SESSION['UserId']);
         }
-        elseif($userdetails == false)
+        elseif($userinformation == false)
         {
             $printresult = "User not found";
         }
         echo "<form>
-            <label>User ID : $userid</label><br><br> 
-            <label>Username : $username</label><br><br>
-            <label>UserProfile :$userprofile</label><br><br>
+            <label>User ID : $UserId</label><br><br> 
+            <label>First Name : $FirstName</label><br><br> 
+            <label>Last Name : $LastName</label><br><br> 
+            <label>Birth Date (YYYY-MM-DD) : $BirthDate</label><br><br> 
+            <label>Gender Code (M/F): $GenderCode</label><br><br> 
+            <label>Phone Number : $PhoneNumber</label><br><br> 
+            <label>Email Address: $EmailAddress</label><br><br> 
+            
             <label>$printresult</label><br><br>
             </form>";
 }
