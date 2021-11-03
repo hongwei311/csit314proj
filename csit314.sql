@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2021 at 03:22 PM
+-- Generation Time: Nov 03, 2021 at 01:44 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -33,6 +33,14 @@ CREATE TABLE `admin` (
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`AdminId`, `UserId`, `CreatedDateTime`) VALUES
+(1, 1, '2021-11-03 20:26:56'),
+(2, 2, '2021-11-03 20:26:56');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +55,14 @@ CREATE TABLE `doctor` (
   `YearsOfExperience` int(11) DEFAULT NULL,
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`DoctorId`, `UserId`, `HealthFacility`, `Profession`, `YearsOfExperience`, `CreatedDateTime`) VALUES
+(3, 3, 'Singapore General Hospital', 'Radiologist', 7, '2021-11-03 20:27:30'),
+(4, 4, 'Tan Tock Seng Hospital', 'Cardiologist', 11, '2021-11-03 20:27:30');
 
 -- --------------------------------------------------------
 
@@ -150,6 +166,16 @@ CREATE TABLE `patient` (
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`PatientId`, `UserId`, `DrugAllergy`, `PrescriptionNotifcation`, `CreatedDateTime`) VALUES
+(3, 5, 'Antibiotics', 'Email', '2021-11-03 20:28:51'),
+(4, 6, 'NA', 'QR Code', '2021-11-03 20:28:51'),
+(5, 9, 'Amoxicillin', 'Email', '2021-11-03 20:29:22'),
+(6, 10, 'Painkillers', 'Email', '2021-11-03 20:29:22');
+
 -- --------------------------------------------------------
 
 --
@@ -159,11 +185,19 @@ CREATE TABLE `patient` (
 CREATE TABLE `pharmacist` (
   `PharmacistId` int(11) NOT NULL,
   `UserId` int(11) NOT NULL,
-  `PharmacyName` varchar(30) NOT NULL,
-  `PharmacyLocation` varchar(30) NOT NULL,
-  `YearsOfExperience` int(11) NOT NULL,
-  `CreatedDateTime` datetime NOT NULL
+  `PharmacyName` varchar(30) DEFAULT NULL,
+  `PharmacyLocation` varchar(30) DEFAULT NULL,
+  `YearsOfExperience` int(11) DEFAULT NULL,
+  `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pharmacist`
+--
+
+INSERT INTO `pharmacist` (`PharmacistId`, `UserId`, `PharmacyName`, `PharmacyLocation`, `YearsOfExperience`, `CreatedDateTime`) VALUES
+(3, 7, 'Singapore General Hospital', 'SGH', 3, '2021-11-03 20:30:23'),
+(4, 8, 'Yishun Pharmacists', 'Yishun', 7, '2021-11-03 20:30:23');
 
 -- --------------------------------------------------------
 
@@ -178,7 +212,7 @@ CREATE TABLE `prescription` (
   `DoctorId` int(11) NOT NULL,
   `PatientId` int(11) NOT NULL,
   `PharmacistId` int(11) DEFAULT NULL,
-  `CreatedDateTime` datetime NOT NULL,
+  `CreatedDateTime` datetime DEFAULT current_timestamp(),
   `DispensedDateTime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -192,7 +226,7 @@ CREATE TABLE `token` (
   `PrescriptionId` int(11) NOT NULL,
   `TokenId` int(11) NOT NULL,
   `TokenCode` char(30) NOT NULL,
-  `CreatedDateTime` datetime NOT NULL
+  `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -214,8 +248,16 @@ CREATE TABLE `useraccount` (
 --
 
 INSERT INTO `useraccount` (`UserId`, `UserName`, `Password`, `UserProfile`, `CreatedDateTime`) VALUES
-(1, 'AdminUser1', '$2y$10$DatZg/rPwEwQdUi9tO7iKOcxggmpf5vXQZkgYRAzT6kL8HDh3yqpa', 'Admin', '2021-10-31 22:19:24'),
-(2, 'AdminUser2', '$2y$10$i3GUMJzXVFZg/JR0ZCDlOuUvY5k9CkUK62fn/AlH7lPjn28/vyNZ2', 'Admin', '2021-10-31 22:19:30');
+(1, 'AdminUser1', '$2y$10$piZuxMLHBIn.vAlXBGht3.IT6p5EEdnGmfM7Kg0s7NPYaSDUu0DdO', 'admin', '2021-10-31 22:19:24'),
+(2, 'AdminUser2', '$2y$10$/JKNSmDkatE4Bi4OvBlLRue8DSnQj7iuu1e66WnVKMd0T1HcflrKK', 'admin', '2021-10-31 22:19:30'),
+(3, 'Doctor1', '$2y$10$07fByEtF/c9OKaWx3pIiSe8EDztAVI2xAUWwyCpCHiuP5JY1Xs/2q', 'doctor', '2021-10-31 22:36:55'),
+(4, 'Doctor2', '$2y$10$XZ1g2hAtrxFjFaLu92anFez4wA7YF9Yb4TcUnzHuhckJGCdmmTqT.', 'doctor', '2021-10-31 22:38:00'),
+(5, 'Patient1', '$2y$10$qdi11HbRehrR3WZxa1aDOeGoPqXS3MJX1VYAP9ADjFe1bUWkGUhGO', 'patient', '2021-11-01 21:43:22'),
+(6, 'Patient2', '$2y$10$FXvRZjbSzkvbOKEKBV4SLupt5hLpgjqbljQ.heL2V4twTG9r5U0vi', 'patient', '2021-11-01 21:43:28'),
+(7, 'Pharmacist1', '$2y$10$k8aVMSzAUDhxixji6H9G7.LjLPMBKa4FTtz0ITT3flSi7V2ET170.', 'pharmacist', '2021-11-01 21:44:27'),
+(8, 'Pharmacist2', '$2y$10$niqBaVyM6WThCxmnHGnw6erdqYaWamoKkhuM12FWCpzeHP2ZV9MzK', 'pharmacist', '2021-11-01 21:44:43'),
+(9, 'Patient3', '$2y$10$QCXjf6YXwD6d1QZnoO9D9u4/PCYueF5m6ykIM9bZUhOIji3p7HSM2', 'patient', '2021-11-03 18:09:39'),
+(10, 'Patient4', '$2y$10$73pYnKRfCVQXTPKp59sXIOUbqVMWmAXsC3njTzmKWX0kUC3hppnFO', 'patient', '2021-11-03 18:09:46');
 
 -- --------------------------------------------------------
 
@@ -233,6 +275,22 @@ CREATE TABLE `userinfo` (
   `EmailAddress` char(30) NOT NULL,
   `CreatedDateTime` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userinfo`
+--
+
+INSERT INTO `userinfo` (`UserId`, `FirstName`, `LastName`, `BirthDate`, `GenderCode`, `PhoneNumber`, `EmailAddress`, `CreatedDateTime`) VALUES
+(1, 'Dominic', 'Loh', '1998-03-01', 'M', '96441242', 'dominic.loh@hotmail.com', '2021-11-02 15:54:11'),
+(2, 'Felicia', 'Teo', '1998-03-03', 'F', '91377118', 'TestEmail@Hotmail.com', '2021-11-03 02:59:11'),
+(3, 'Darren', 'Lim', '1998-03-03', 'M', '97815538', 'TestEmail1@hotmail.com', '2021-11-03 03:07:34'),
+(4, 'Pearlyn', 'Chan', '1998-03-03', 'F', '90188343', 'PearlynChan@moh.gov.sg', '2021-11-03 03:13:01'),
+(5, 'Joyce', 'Simple', '2021-08-10', 'F', '96443233', 'JoyceSimp@Pharmacist.sg', '2021-11-03 04:37:42'),
+(6, 'Owen', 'Lim', '2003-05-13', 'M', '91103497', 'owenLim@patient.sg', '2021-11-03 18:11:20'),
+(7, 'Peter', 'Loh', '1982-10-12', 'M', '96448812', 'dddxe3@hotmail.com', '2021-11-03 18:12:04'),
+(8, 'John', 'Doe', '2021-07-06', 'M', '98769920', 'johndoe@testmail.com', '2021-11-03 18:12:43'),
+(9, 'Lim Zheng', 'Yang', '1993-01-03', 'M', '81190234', 'LZY@cool.com', '2021-11-03 18:13:27'),
+(10, 'Rachel', 'Ee', '1976-09-08', 'F', '98177390', 'RachelEe@mapletree.com', '2021-11-03 18:16:27');
 
 -- --------------------------------------------------------
 
@@ -342,25 +400,25 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `AdminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `AdminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `DoctorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `DoctorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `PatientId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PatientId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pharmacist`
 --
 ALTER TABLE `pharmacist`
-  MODIFY `PharmacistId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PharmacistId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prescription`
@@ -378,7 +436,7 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT for table `useraccount`
 --
 ALTER TABLE `useraccount`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- Constraints for dumped tables
@@ -388,25 +446,25 @@ ALTER TABLE `useraccount`
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `AdminToUserInfo_FK` FOREIGN KEY (`UserId`) REFERENCES `userinfo` (`UserId`);
+  ADD CONSTRAINT `AdminToUserAccount_FK` FOREIGN KEY (`UserId`) REFERENCES `useraccount` (`UserId`);
 
 --
 -- Constraints for table `doctor`
 --
 ALTER TABLE `doctor`
-  ADD CONSTRAINT `DoctorToUserInfo_FK` FOREIGN KEY (`UserId`) REFERENCES `userinfo` (`UserId`);
+  ADD CONSTRAINT `DoctorToUserAccount_FK` FOREIGN KEY (`UserId`) REFERENCES `useraccount` (`UserId`);
 
 --
 -- Constraints for table `patient`
 --
 ALTER TABLE `patient`
-  ADD CONSTRAINT `PatientToUserInfo_FK` FOREIGN KEY (`UserId`) REFERENCES `userinfo` (`UserId`);
+  ADD CONSTRAINT `PatientToUserAccount_FK` FOREIGN KEY (`UserId`) REFERENCES `useraccount` (`UserId`);
 
 --
 -- Constraints for table `pharmacist`
 --
 ALTER TABLE `pharmacist`
-  ADD CONSTRAINT `PharmacistToUserInfo_FK` FOREIGN KEY (`UserId`) REFERENCES `userinfo` (`UserId`);
+  ADD CONSTRAINT `PharmacistToUserAccount_FK` FOREIGN KEY (`UserId`) REFERENCES `useraccount` (`UserId`);
 
 --
 -- Constraints for table `prescription`
