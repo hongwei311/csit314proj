@@ -29,19 +29,19 @@
             if ($_SESSION['UserProfile']!=null){
                 switch($_SESSION['UserProfile'])
                 {
-                    case 'Admin':
+                    case 'admin':
                         header("Location:Admin_Main_Page.php");
                         break;
 
-                    case 'Doctor':
+                    case 'doctor':
                         header("Location:Doctor_Main_Page.php");
                         break;
 
-                    case 'Patient':
+                    case 'patient':
                         header("Location:Patient_Main_Page.php");
                         break;
 
-                    case 'Pharmacist':
+                    case 'pharmacist':
                         header("Location:Pharmacist_Main_Page.php");
                         break;
                 }
