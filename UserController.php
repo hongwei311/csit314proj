@@ -29,6 +29,13 @@ class UserControl
 		$userdetails = $User->view();
 		return $userdetails;
 	}
+
+	function retrieveUserProfileID($UserId, $UserProfile)
+	{
+		$User = new User();
+		$userdetails = $User->retrieveUserProfileID($UserId,$UserProfile);
+		return $userdetails;
+	}
 	
     function viewFullAdmin()
 	{

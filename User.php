@@ -198,6 +198,38 @@ class User{
             return $userdetails;
         }
 	}
+
+    function retrieveUserProfileID($UserId, $UserProfile)
+    {
+        $TableName = $UserProfile;
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $TableName" . " where UserId ='" . $UserId . "'";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $userdetails = array("","","","");
+        }
+        else
+        {
+            //create array
+            $userdetails=array();
+            //loop the array
+            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+            {
+                //check if array is empty
+                if(empty($userdetails))
+                {
+                    //add in the first array row
+                    array_push($userdetails,$Row);
+                }
+                //if array is not empty push new row into last position
+                else array_push($userdetails,$Row);
+            }
+            
+            return $userdetails;
+        }
+    }
 	
 	function viewFullAdminDetails()
 	{

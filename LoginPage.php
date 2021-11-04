@@ -1,5 +1,6 @@
 <?php
     include_once("LoginController.php");
+    include_once("UserController.php");
       session_start();
       $_SESSION = array();
 	  
@@ -25,6 +26,14 @@
             $_SESSION['username']=$username;
             //$_SESSION['password']=$password;
             $_SESSION['UserProfile']=$UserProfile;
+
+            $UserControl = new UserControl(); //create new user controller class to run retrieveUserProfileID function
+            $userdetails = $UserControl->retrieveUserProfileID($userid,$UserProfile); // retrieves UserProfile info using userid and userprofile
+            $UserProfileInfo = $userdetails["0"]; // uses first entry of userprofile info
+            $UCUserProfile = ucfirst($UserProfile); // changes userprofile first letter to capital
+            $ProfileID = $UCUserProfile."Id"; // add ID to userprofile to reference to the desired userprofileid
+            $UserProfileID = $UserProfileInfo[$ProfileID]; // assigns to the userprofileid
+            $_SESSION['UserProfileID']=$UserProfileID; //assigns to the session userprofileid
             
             if ($_SESSION['UserProfile']!=null){
                 switch($_SESSION['UserProfile'])
