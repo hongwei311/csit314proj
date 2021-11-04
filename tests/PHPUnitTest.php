@@ -6,8 +6,8 @@ class Sprint_3Test extends \PHPUnit\Framework\TestCase {
     public function testLoginPositive(){
         $User = new User;
 
-        $User->setUsername("test");
-        $User->setPassword("test");
+        $User->setUsername("AdminUser1");
+        $User->setPassword("AdminUser1");
 
         $result = $User->validateLogin($User->getUsername(), $User->getPassword());
 
@@ -73,7 +73,7 @@ class Sprint_3Test extends \PHPUnit\Framework\TestCase {
 
         $Prescription = new Prescription;
 
-        $Prescription->setPrescriptionId("7");
+        $Prescription->setPrescriptionId("1");
 
         $result = $Prescription->search($Prescription->getPrescriptionId());
 
