@@ -9,6 +9,13 @@ class TokenControl
         $validation = $Token->add($PrescriptionId);
         return $validation;
     }
+
+    function sendToken($PatientId,$PrescriptionId)
+    {
+        $Token = new Token();
+        $validation = $Token->send($PatientId,$PrescriptionId);
+        return $validation;
+    }
 }
 
 ?>
