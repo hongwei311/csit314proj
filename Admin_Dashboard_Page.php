@@ -21,7 +21,7 @@ include_once("UserController.php");
 </head>
 <body>
     <h1 class="header">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
-	<h1>View Full Admin</h1>
+	<h1>View Full Admin123213</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
