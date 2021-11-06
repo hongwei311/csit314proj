@@ -50,7 +50,7 @@ class User{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
+            $_SESSION['errmsg'] = "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
 			$validation = array("","","","");
             return $validation;
 		}
@@ -76,7 +76,7 @@ class User{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else

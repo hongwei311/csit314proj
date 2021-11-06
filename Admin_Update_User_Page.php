@@ -38,15 +38,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($userdetails==true)
         {
-            $printresult = "";
-        }
-        elseif($userdetails==false)
-        {
-            $printresult = "User not found";
-        }
-    
-?>      
-        <form id="AdminUpdateUserPage" method="POST" action="Admin_Update_User_Page.php">
+            ?>
+            <form id="AdminUpdateUserPage" method="POST" action="Admin_Update_User_Page.php">
             <label><?php echo $printresult;?></label><br><br>
             <label>User ID : <?php echo $userid;?></label><br><br> 
             <label>Username : </label>
@@ -63,9 +56,16 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                     </select> <br><br>
             <input type="hidden" name = "action" value = "UpdateUser">
             <button class="button" type="submit" value="Update">Update</button>
-        </form>
+        </form><?php
+        }
+        else
+        {
+            echo '<script>alert("User ID not found!")</script>';
+        }
+         
+        
 
-<?php
+
     }
     if($_POST['action']==='UpdateUser')
     {
