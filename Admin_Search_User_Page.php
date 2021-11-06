@@ -13,27 +13,9 @@ session_start();
 <body>
 
 <h1>Search User</h1>
-
-
-<!-- 				<label class="question-text">Search Category</label>
-				<input class="input-field" name="category" type="text" autocomplete="off" placeholder="Enter Category" />
-				<label></label>
-				<label class="question-text">Search Brand</label>
-				<input class="input-field" name="brand" type="text" autocomplete="off" placeholder="Enter Brand" />
-				<label></label>
-				<label class="question-text">Search Characteristics</label>
-				<input class="input-field" name="characteristics" type="text" autocomplete="off" placeholder="Enter Characteristics" />
-				<label></label>
-				<label class="question-text">Search Status</label>
-				<input class="input-field" name="status" type="statustext" autocomplete="off" placeholder="Enter Status" />
-				<label></label>
-				
-				<input href="SearchFunction.php" name= "submit" type="submit" class="submit" value="Search"> -->
-
-
 <form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
   <label>Enter User ID: </label>
-  <input type="text" id="UserId" name="userid"><br><br>
+  <input type="text" id="UserId" name="userid" required><br><br>
   <input type='hidden' name = 'action' value = 'SearchUser'>
   <button class="button" type="submit" value="Search">Search</button>
 </form><br><br> 
@@ -54,19 +36,19 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($userdetails==true)
         {
-            $printresult = "";
-            unset($_SESSION['userid']);
-        }
-        elseif($userdetails == false)
-        {
-            $printresult = "User not found";
-        }
-        echo "<form>
+            echo "<form>
             <label>User ID : $userid</label><br><br> 
             <label>Username : $username</label><br><br>
-            <label>UserProfile :$userprofile</label><br><br>
+            <label>UserProfile : $userprofile</label><br><br>
             <label>$printresult</label><br><br>
             </form>";
+            unset($_SESSION['userid']);
+        }
+        else
+        {
+            echo '<script>alert("User ID not found!")</script>';
+        }
+        
 }
 
 ?>
