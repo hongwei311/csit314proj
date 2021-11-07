@@ -43,7 +43,7 @@ session_start();
 
       echo $prescriptiondetails['PrescriptionId'];
       
-      for($i = 0; $i < count($userinformation); $i++) {
+      for($i = 0; $i < count($prescriptiondetails); $i++) {
         echo "<tr>";
         echo "<td>" . $row['PrescriptionId'] . "</td>";
         echo "<td>" . $row['PrescriptionDetails'] . "</td>";

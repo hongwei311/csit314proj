@@ -41,7 +41,7 @@ session_start();
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionSearched = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
 
-      for($i = 0; $i < count($userinformation); $i++) {
+      for($i = 0; $i < count($prescriptionSearched); $i++) {
         echo "<tr>";
         echo "<td>" . $row['PrescriptionId'] . "</td>";
         echo "<td>" . $row['PrescriptionDetails'] . "</td>";

@@ -40,10 +40,10 @@ session_start();
         <?php
         $prescriptionId = $_POST['prescriptionId'];
         $PrescriptionControl = new PrescriptionControl();
-        $prescriptionSearch = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
+        $prescriptionSearched = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
 
 
-        for($i = 0; $i < count($userinformation); $i++) {
+        for($i = 0; $i < count($prescriptionSearched); $i++) {
           echo "<tr>";
           echo "<td>" . $row['PrescriptionId'] . "</td>";
           echo "<td>" . $row['PrescriptionDetails'] . "</td>";
@@ -86,7 +86,7 @@ session_start();
           </thead>
           <tbody>
           <?php
-                for($i = 0; $i < count($userinformation); $i++) {
+                for($i = 0; $i < count($prescriptionSearched); $i++) {
                   echo "<tr>";
                   echo "<td>" . $row['PrescriptionId'] . "</td>";
                   echo "<td>" . $row['PrescriptionDetails'] . "</td>";
