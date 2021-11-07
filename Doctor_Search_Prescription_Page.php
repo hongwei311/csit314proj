@@ -41,27 +41,17 @@ session_start();
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionSearched = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
 
-      // Attempt select query execution
-      $conn = mysqli_connect("localhost", "root", "", "csit314");
-      $sql = "SELECT * FROM prescription" . " where PrescriptionId ='"  . $_POST['prescriptionId'] . "'";
-      if ($result = $conn->query($sql)) {
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_array()) {
-            echo "<tr>";
-            echo "<td>" . $row['PrescriptionId'] . "</td>";
-            echo "<td>" . $row['PrescriptionDetails'] . "</td>";
-            echo "<td>" . $row['PrescriptionStatus'] . "</td>";
-            echo "<td>" . $row['DoctorId'] . "</td>";
-            echo "<td>" . $row['PatientId'] . "</td>";
-            echo "<td>" . $row['PharmacistId'] . "</td>";
-            echo "</tr>";
-          }
-          // Free result set
-          $result->free();
-        } else {
-          echo "<label class='question-text'>No records were found.</label>";
-        }
+      for($i = 0; $i < count($prescriptionSearched); $i++) {
+        echo "<tr>";
+        echo "<td>" . $row['PrescriptionId'] . "</td>";
+        echo "<td>" . $row['PrescriptionDetails'] . "</td>";
+        echo "<td>" . $row['PrescriptionStatus'] . "</td>";
+        echo "<td>" . $row['DoctorId'] . "</td>";
+        echo "<td>" . $row['PatientId'] . "</td>";
+        echo "<td>" . $row['PharmacistId'] . "</td>";
+        echo "</tr>";
       }
+
     }
       ?>
       </tbody>
