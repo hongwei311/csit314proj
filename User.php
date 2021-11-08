@@ -103,7 +103,6 @@ class User{
             $insertUserInfo = "INSERT INTO userinfo (UserId)" .
             " VALUES ('$UserId')";
             $executeUserInfo = @mysqli_query($conn,$insertUserInfo);
-
             return $validation = true;
         } 
      }
