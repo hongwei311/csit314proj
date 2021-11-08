@@ -25,6 +25,7 @@ h1 {
 </style>
 </head>
 <body>
+	<br>
 <h1 class="header">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 <br>
 <h1>View User</h1>

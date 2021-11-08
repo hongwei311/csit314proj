@@ -25,7 +25,7 @@ h1 {
 </style>
 </head>
 <body>
-
+<br>
 <h1>View User Info</h1>
 <br>
 
