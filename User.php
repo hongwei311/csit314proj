@@ -94,10 +94,16 @@ class User{
             $getrow=$run->fetch_assoc();
             $UserId = $getrow['UserId'];
             
-            //access userinfo table
+            //access userprofile table
             $insertUserProfile = "INSERT INTO $UserProfile (UserId)" .
             " VALUES ('$UserId')";
             $execute = @mysqli_query($conn,$insertUserProfile);
+
+            //access userinfo table
+            $insertUserInfo = "INSERT INTO userinfo (UserId)" .
+            " VALUES ('$UserId')";
+            $executeUserInfo = @mysqli_query($conn,$insertUserInfo);
+
             return $validation = true;
         } 
      }
