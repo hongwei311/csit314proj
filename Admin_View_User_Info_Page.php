@@ -12,12 +12,24 @@ session_start();
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+	.table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+}
+h1 {
+	margin: 0 0 0 50px;
+}
+</style>
 </head>
 <body>
 
 <h1>View User Info</h1>
+<br>
 
-<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
+<table class="table table-bordered table-striped" >
 		<thead>
 			<tr>
 				<th width="5%">User Id</th>

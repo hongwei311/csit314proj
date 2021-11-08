@@ -38,7 +38,7 @@ session_start();
   <label>Enter User ID: </label>
   <input type="text" id="UserId" name="UserId"><br><br>
   <input type='hidden' name = 'action' value = 'SearchUserInfo'>
-  <button class="button" type="submit" value="Search">Search</button>
+  <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
 </form><br><br> 
 
 
