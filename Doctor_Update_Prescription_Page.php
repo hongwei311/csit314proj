@@ -45,12 +45,12 @@ session_start();
 
         for($i = 0; $i < count($prescriptionSearched); $i++) {
           echo "<tr>";
-          echo "<td>" . $row['PrescriptionId'] . "</td>";
-          echo "<td>" . $row['PrescriptionDetails'] . "</td>";
-          echo "<td>" . $row['PrescriptionStatus'] . "</td>";
-          echo "<td>" . $row['DoctorId'] . "</td>";
-          echo "<td>" . $row['PatientId'] . "</td>";
-          echo "<td>" . $row['PharmacistId'] . "</td>";
+          echo "<td>" . $prescriptionSearched[$i]['PrescriptionId'] . "</td>";
+          echo "<td>" . $prescriptionSearched[$i]['PrescriptionDetails'] . "</td>";
+          echo "<td>" . $prescriptionSearched[$i]['PrescriptionStatus'] . "</td>";
+          echo "<td>" . $prescriptionSearched[$i]['DoctorId'] . "</td>";
+          echo "<td>" . $prescriptionSearched[$i]['PatientId'] . "</td>";
+          echo "<td>" . $prescriptionSearched[$i]['PharmacistId'] . "</td>";
           echo "</tr>";
         }
         $_SESSION['prescriptionID'] = $prescriptionId;
@@ -70,6 +70,7 @@ session_start();
     if (isset($_POST['update'])) {
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
+      $prescriptionSearched = $PrescriptionControl->searchPrescription($_SESSION['prescriptionID']);
 
       echo 'Successfully updated!!';
       ?>
@@ -88,12 +89,12 @@ session_start();
           <?php
                 for($i = 0; $i < count($prescriptionSearched); $i++) {
                   echo "<tr>";
-                  echo "<td>" . $row['PrescriptionId'] . "</td>";
-                  echo "<td>" . $row['PrescriptionDetails'] . "</td>";
-                  echo "<td>" . $row['PrescriptionStatus'] . "</td>";
-                  echo "<td>" . $row['DoctorId'] . "</td>";
-                  echo "<td>" . $row['PatientId'] . "</td>";
-                  echo "<td>" . $row['PharmacistId'] . "</td>";
+                  echo "<td>" . $prescriptionSearched[$i]['PrescriptionId'] . "</td>";
+                  echo "<td>" . $prescriptionSearched[$i]['PrescriptionDetails'] . "</td>";
+                  echo "<td>" . $prescriptionSearched[$i]['PrescriptionStatus'] . "</td>";
+                  echo "<td>" . $prescriptionSearched[$i]['DoctorId'] . "</td>";
+                  echo "<td>" . $prescriptionSearched[$i]['PatientId'] . "</td>";
+                  echo "<td>" . $prescriptionSearched[$i]['PharmacistId'] . "</td>";
                   echo "</tr>";
                 }
           unset($_SESSION['prescriptionID']);
