@@ -8,8 +8,8 @@ session_start(); // start session to manipulate session variables
 <html>
 <head>
 <title>Add New User Info</title>
-  <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+<link rel="stylesheet" href="stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
@@ -78,11 +78,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   <br><br>
   <label><?php echo $printReturn; ?></label>
 
-  <button class="button" type="submit" value="Submit">Submit</button>
+  <button class="btn btn-primary btn-lg" type="submit" value="Submit">Submit</button>
 </form>
 
 
-<p><a href="Admin_Main_Page.php"><button class="button navigate" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 
 </body>
 </html>

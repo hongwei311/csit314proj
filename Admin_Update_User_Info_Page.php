@@ -10,6 +10,9 @@ session_start();
 <head>
 <title>Update User Info</title>
 <link rel="stylesheet" href="stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -125,6 +128,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 ?>
 
-<p><a href="Admin_Main_Page.php"><button class="button navigate" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
 </html>

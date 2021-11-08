@@ -63,3 +63,7 @@ table, th, td {
   color: #FF0000;
 }
 
+.btn {
+  width: 300px;
+  margin: 5px 0 0 20px;
+}
