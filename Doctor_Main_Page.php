@@ -12,17 +12,17 @@ session_start();
 
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 
-<p><a href="Doctor_Add_Prescription_Page.php"><button class="button">Add new prescription</button></a></p>
+<p><a href="Doctor_Add_Prescription_Page.php"><button class="button navigate">Add new prescription</button></a></p>
 
-<p><a href="Doctor_Search_Prescription_Page.php"><button class="button">Search for prescription</button></a></p>
+<p><a href="Doctor_Search_Prescription_Page.php"><button class="button navigate">Search for prescription</button></a></p>
 
-<p><a href="Doctor_Update_Prescription_Page.php"><button class="button">Update prescriptions</button></a></p>
+<p><a href="Doctor_Update_Prescription_Page.php"><button class="button navigate">Update prescriptions</button></a></p>
 
-<p><a href="Doctor_View_Prescription_Page.php"><button class="button">View prescriptions</button></a></p>
+<p><a href="Doctor_View_Prescription_Page.php"><button class="button navigate">View prescriptions</button></a></p>
 
-<p><a href="Doctor_Generate_Token_Page.php"><button class="button">Generate Token</button></a></p>
+<p><a href="Doctor_Generate_Token_Page.php"><button class="button navigate">Generate Token</button></a></p>
 
-<p><a href="Logout.php"><button class="button" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>
 </html>

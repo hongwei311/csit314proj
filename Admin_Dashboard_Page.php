@@ -217,7 +217,7 @@ include_once("UserController.php");
 	</div>
 	</div>
 
-	<p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+	<p><a href="Admin_Main_Page.php"><button class="button navigate" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 	
 </body>
 </html>

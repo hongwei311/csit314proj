@@ -13,7 +13,7 @@ session_start();
 <body>
 
   <h1>Welcome, <?php echo $_SESSION['username'] ?> </h1>
-  <p><a href="Doctor_Main_Page.php"><button class="button">Main Page</button></p></a></p>
+  <p><a href="Doctor_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
   <h1>Update Prescription</h1>
   <form method="POST">
     <label>Prescription ID to update</label>
