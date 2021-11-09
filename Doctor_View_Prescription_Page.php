@@ -44,19 +44,14 @@ session_start();
       $PrescriptionControl = new PrescriptionControl();
       $prescriptiondetails = $PrescriptionControl->viewPrescription($_POST['past']);
       
-      echo count($prescriptiondetails);
-      print_r(array_filter($prescriptiondetails));
-
-      echo $prescriptiondetails['PrescriptionId'];
-      
       for($i = 0; $i < count($prescriptiondetails); $i++) {
         echo "<tr>";
-        echo "<td>" . $row['PrescriptionId'] . "</td>";
-        echo "<td>" . $row['PrescriptionDetails'] . "</td>";
-        echo "<td>" . $row['PrescriptionStatus'] . "</td>";
-        echo "<td>" . $row['DoctorId'] . "</td>";
-        echo "<td>" . $row['PatientId'] . "</td>";
-        echo "<td>" . $row['PharmacistId'] . "</td>";
+        echo "<td>" . $prescriptiondetails[$i]['PrescriptionId'] . "</td>";
+        echo "<td>" . $prescriptiondetails[$i]['PrescriptionDetails'] . "</td>";
+        echo "<td>" . $prescriptiondetails[$i]['PrescriptionStatus'] . "</td>";
+        echo "<td>" . $prescriptiondetails[$i]['DoctorId'] . "</td>";
+        echo "<td>" . $prescriptiondetails[$i]['PatientId'] . "</td>";
+        echo "<td>" . $prescriptiondetails[$i]['PharmacistId'] . "</td>";
         echo "</tr>";
       }
     }
