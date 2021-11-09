@@ -8,19 +8,43 @@ session_start();
 <head>
   <title>Search Prescription</title>
   <link rel="stylesheet" href="stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+      h1{
+        margin: 0 0 0 50px;
+      }
+    .container{
+      width:50%;
+    }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
+    .table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+}
+    </style>
 
 </head>
 
 <body>
-
-  <h1>Welcome, <?php echo $_SESSION['username'] ?> </h1>
-  <p><a href="Doctor_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-  <h1>Search Prescription</h1>
+<br>
+  <br>
+  <h1 class="text-center">Search Prescription</h1>
+  <div class="container">
   <form method="POST">
+  <div class="form-group">
     <label>Prescription ID</label>
-    <input type="text" id="Prescription ID" name="prescriptionId" required><br><br>
-    <input type="submit" value="Search" name="search">
+    <input type="text" class="form-control id="Prescription ID" name="prescriptionId" required><br><br>
+    <input type="submit" class="btn btn-primary btn-lg" value="Search" name="search">
+  </div>
   </form>
+  </div>
 
   <?php
   if (isset($_POST['search'])) {
@@ -59,13 +83,15 @@ session_start();
           // Free result set
           $result->free();
         } else {
-          echo "<label class='question-text'>No records were found.</label>";
+          echo "<p class='question-text'>No records were found.</p>";
         }
       }
     }
       ?>
       </tbody>
     </table>
+    <br>
+    <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 </body>
 
 </html>

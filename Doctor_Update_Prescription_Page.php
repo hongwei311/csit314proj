@@ -8,19 +8,47 @@ session_start();
 <head>
   <title>Update Prescription</title>
   <link rel="stylesheet" href="stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+      h1{
+        margin: 0 0 0 50px;
+      }
+    .container{
+      width:50%;
+    }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
+    .table{
+    width: 80%;
+    margin: 0 0 0 50px;
+    text-align:left;"
+    cellspacing="0"
+  }
+  .update{
+    width:30%;
+    margin: 0 0 0 50px;
+  }
+    </style>
 </head>
 
 <body>
-
-  <h1>Welcome, <?php echo $_SESSION['username'] ?> </h1>
-  <p><a href="Doctor_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-  <h1>Update Prescription</h1>
+<br>
+  <br>
+  <h1 class="text-center">Update Prescription</h1>
+  <br>
+  <div class="container">
   <form method="POST">
+  <div class="form-group">
     <label>Prescription ID to update</label>
-    <input type="text" id="Prescription ID" name="prescriptionId" required><br><br>
-    <input type="submit" value="Search" name="search">
+    <input type="text" class="form-control id="Prescription ID" name="prescriptionId" required><br><br>
+    <input type="submit" class="btn btn-primary btn-lg" value="Search" name="search">
+  </div>
   </form>
-
+  </div>
   <?php
 
   if (isset($_POST['search'])) {
@@ -61,7 +89,7 @@ session_start();
             // Free result set
             $result->free();
           } else {
-            echo "<label class='question-text'>No records were found.</label>";
+            echo "<p class='question-text'>No records were found.</p>";
           }
         }
         $_SESSION['prescriptionID'] = $prescriptionId;
@@ -69,20 +97,22 @@ session_start();
 
         ?>
         <form method="POST">
-          <label>Prescription ID:</label>
-          <?php echo $_POST['prescriptionId']; ?>
+          <p>Prescription ID: <?php echo $_POST['prescriptionId']; ?></p>
+          
           <br>
-          <label>Enter prescription Details to update</label>
-          <input type="text" id="Prescription Details" name="prescriptionDetails" required><br><br>
-          <input type="submit" value="Update" name="update">
+          <label class="update">Enter prescription Details to update</label>
+          
+          <input type="text" class="form-control update" id="Prescription Details" name="prescriptionDetails" required><br><br>
+          <input type="submit" class="btn btn-primary btn-sm update" value="Update" name="update">
         </form>
+        <br><br>
       <?php
     }
     if (isset($_POST['update'])) {
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
 
-      echo 'Successfully updated!!';
+      echo '<p>Successfully updated!!</p>';
       ?>
         <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
           <thead>
@@ -115,7 +145,7 @@ session_start();
               // Free result set
               $result->free();
             } else {
-              echo "<label class='question-text'>No records were found.</label>";
+              echo "<p class='question-text'>No records were found.</p>";
             }
           }
           unset($_SESSION['prescriptionID']);
@@ -127,7 +157,8 @@ session_start();
           ?>
           </tbody>
         </table>
-
+        <br>
+        <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 </body>
 
 </html>
