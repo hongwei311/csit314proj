@@ -15,7 +15,7 @@
 <p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 
-<form action="ViewPatientRecord!!!!!!!!!!!!!!">
+<form action="ViewPatientRecord">
     <label for="viewPatientRecord">Date: </label>
     <select name="viewPatientRecord" id="viewPatientRecord">
       <option value="date">Auto input date from DB</option>

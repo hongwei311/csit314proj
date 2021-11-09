@@ -57,11 +57,14 @@ class Prescription{
 
     }     
     
-    function view($PrescriptionStatus)
+    function view($PatientId, $PrescriptionStatus)
     {
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
-        $sql = "SELECT * FROM $TableName" . " where PrescriptionStatus ='" . $PrescriptionStatus . "'";
+        $sql = "SELECT * FROM $TableName" . 
+        " WHERE PrescriptionStatus ='" . $PrescriptionStatus . "' 
+        AND PatientId = '$PatientId'
+        ";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
@@ -94,21 +97,19 @@ class Prescription{
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionSearched = array("","","","");
+            return $prescriptionDetails = array("","","","");
         }
         else
         {
-            $prescriptionSearched=array();
-            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
-            {
-                if(empty($prescriptionSearched))
-                {
-                    array_push($prescriptionSearched,$Row);
-                }
-                else array_push($prescriptionSearched,$Row);
+            $Row = mysqli_fetch_assoc($qRes);
+            $prescriptionDetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["PrescriptionStatus"],$Row["DoctorId"],
+            $Row["PatientId"],$Row["PharmacistId"],$Row["CreatedDateTime"],$Row["DispensedDateTime"]);
+            if($Row["PrescriptionId"]!=""){
+                return $prescriptionDetails;
             }
-            
-            return $prescriptionSearched;
+            else{
+                return $prescriptionDetails = false;
+            }
         }
     }
 

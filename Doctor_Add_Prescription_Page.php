@@ -20,10 +20,11 @@ session_start();
   <h1>Add Prescription</h1>
   <form method="POST">
     <label>Patient ID : </label>
-    <input type="text" id="Patient ID" name="patientId"><br><br>
+    <input type="text" id="Patient ID" name="patientId"></input><br><br>
     <label>Prescription Details : </label>
-    <input type="text" id="Prescription Details" name="prescriptionDetails"><br><br>
-    <input type="submit" value="Submit">
+    <br>
+    <textarea rows="5" cols="30" id="Prescription Details" name="prescriptionDetails"></textarea><br><br>
+    <input type="submit" value="Submit"></input>
   </form>
   <?php
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {

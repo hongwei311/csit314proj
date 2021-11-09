@@ -1,4 +1,7 @@
-<?php?>
+<?php
+session_start();
+include_once("PrescriptionController.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,32 +17,41 @@
 
 <p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
+<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
+		<thead>
+			<tr>
+		    <th>PrescriptionId</th>
+            <th>PrescriptionDetails</th>
+			<th>PrescriptionStatus</th>
+            <th>DoctorId</th>
+            <th>PatientId</th>
+			<th>PharmacistId</th>
+            <th>CreatedDateTime</th>
+            <th>DispensedDateTime</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php
+                    // Attempt select query execution
+                    $PrescriptionControl = new PrescriptionControl();
+                    $PatientId = $_SESSION['UserProfileID'];
+                    $prescriptionDetails = $PrescriptionControl->viewPrescription($PatientId,"Collected");
+                    for($i = 0; $i < count($prescriptionDetails); $i++) {
+                        echo "<tr>";
+                        echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
+                        echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+                        echo "</tr>";
+                      }
+                    
+         ?>
+		</tbody>
+</table>
 
-    <table style="width: 70%;">
-        <tr>
-            <th>Date</th>
-            <th>Medications</th>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input
-                <br>
-                Testing
-                <br>
-                Testing
-                <br>
-                Testing
-            </td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-
-    </table>
 </body>
 </html>
