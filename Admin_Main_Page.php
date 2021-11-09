@@ -17,8 +17,8 @@ session_start();
 </head>
 <body>
 
-<h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
-<div class="span2">
+<h1 class="text-center">Welcome, <?php echo $_SESSION['username']?>  </h1>
+<div class="span2 text-center">
 <p><a href="Admin_Add_User_Page.php"><button class="btn btn-primary btn-lg">Add New User Accounts</button></p></a></p>
 
 <p><a href="Admin_Search_User_Page.php"><button class="btn btn-primary btn-lg">Search For User Accounts</button></a></p>

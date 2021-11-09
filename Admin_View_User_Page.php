@@ -26,9 +26,9 @@ h1 {
 </head>
 <body>
 	<br>
-<h1 class="header">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
+<h1 class="header text-center">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 <br>
-<h1>View User</h1>
+<h1 class="text-center">View User</h1>
 <br>
 
 <table class="table table-bordered table-striped">

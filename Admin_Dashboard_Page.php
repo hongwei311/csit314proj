@@ -32,9 +32,9 @@ h1 {
 </head>
 <body>
 	<br>
-    <h1 class="header">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
+    <h1 class="header text-center">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 	<br>
-	<h1>View Full Admin</h1>
+	<h1 class="text-center">View Full Admin</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>

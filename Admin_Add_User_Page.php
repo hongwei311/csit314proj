@@ -17,11 +17,15 @@ session_start(); // start session to manipulate session variables
     .container{
       width:50%;
     }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
     </style>
 </head>
 <body>
 <br>
-<h1>Add New User</h1>
+<h1 class="text-center">Add New User</h1>
 
 <div class="container">
 <form id="AdminAddUserPage" method="POST" action="Admin_Add_User_Page.php">

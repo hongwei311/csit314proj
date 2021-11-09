@@ -15,7 +15,7 @@ session_start();
 </head>
 <body>
 
-<h1>Search User Info</h1>
+<h1 class="text-center">Search User Info</h1>
 
 
 <!-- 				<label class="question-text">Search Category</label>

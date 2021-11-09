@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 ?>
 <br>
-<h1>Add New User Info</h1>
+<h1 class="text-center">Add New User Info</h1>
 <div class="container">
 <form id="AdminAddUserInfoPage" method="POST" action="Admin_Add_User_Info_Page.php">
   <div class="form-group">

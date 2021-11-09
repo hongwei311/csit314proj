@@ -26,7 +26,7 @@ h1 {
 </head>
 <body>
 <br>
-<h1>View User Info</h1>
+<h1 class="text-center">View User Info</h1>
 <br>
 
 <table class="table table-bordered table-striped" >

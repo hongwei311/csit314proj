@@ -16,7 +16,7 @@ session_start();
 </head>
 <body>
 
-<h1>Update User Info</h1>
+<h1 class="text-center">Update User Info</h1>
 
 
 <form id="AdminSearchUserInfoPage" method="POST" action="Admin_Update_User_Info_Page.php">
