@@ -3,35 +3,10 @@
 <html>
 <head>
 <title>Search Past Prescription</title>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-
-.button {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.navigate {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.navigate:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
+<link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
 <body>
 
