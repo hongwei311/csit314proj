@@ -33,7 +33,7 @@ session_start();
     if ($validation == true) {
       echo "Prescription added successfully";
     } else {
-      echo "Prescripton not added";
+      echo "Prescripton not added, patientID is not found!";
     }
   }
   ?>
