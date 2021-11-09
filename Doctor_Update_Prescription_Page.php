@@ -70,6 +70,7 @@ session_start();
     if (isset($_POST['update'])) {
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
+      $prescriptionSearched = $PrescriptionControl->searchPrescription($_SESSION['prescriptionID']);
 
       echo 'Successfully updated!!';
       ?>

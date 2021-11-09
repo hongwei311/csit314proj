@@ -54,30 +54,57 @@ table, th, td {
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 <p><a href="Doctor_Main_Page.php"><button class="button">Main Page</button></p></a></p>
 <h1>Generate Token</h1>
-<form method="POST">
+<form method="POST" action="Doctor_Generate_Token_Page.php">
   <label>Prescription ID</label>
   <input type="text" id="Prescription ID" name="prescriptionId"><br><br>
+  <input type="hidden" name = "action" value = "GenerateToken">
   <input type="submit" value="Generate" name="Generate">
 </form>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
-  $TokenControl = new TokenControl();
-  $validation = $TokenControl->generateToken($_POST['prescriptionId']);
-  if($validation==true)
+  if($_POST['action']==="GenerateToken")
   {
-    echo "Token generated successfully";
-    // $PrescriptionControl = new PrescriptionControl();
-    // $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
-    // $patientId = $prescriptionDetails['PatientId'];
-    // $sendToken = $TokenControl->sendToken();
+    $TokenControl = new TokenControl();
+    $validation = $TokenControl->generateToken($_POST['prescriptionId']);
+    
+    $PrescriptionControl = new PrescriptionControl();
+    $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
+    $_SESSION['patientid'] = $prescriptionDetails['PatientId'];
+    $_SESSION['prescriptionid'] = $_POST['prescriptionId'];
+
+    if($validation==true)
+    {
+      echo "Token generated successfully";
+?>
+      <form id="DoctorGenerateTokenPage" method="POST" action="Doctor_Generate_Token_Page.php">
+        <input type="hidden" name = "action" value = "SendToken">
+        <input type="submit" value="Send" name="Send">
+      </form>
+<?php
+    }
+      
+    elseif($validation==false)
+    {
+      echo "Token not generated";
+    }
   }
-  else
+  if($_POST['action']==="SendToken")
   {
-    echo "Token not generated";
+    $TokenControl = new TokenControl();
+    $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
+    if($validation2===true)
+    {
+      echo "Token sent successfully";
+    }
+    else
+    {
+      echo "Token not sent.";
+    }
   }
 }
+
 ?>
 
 </body>

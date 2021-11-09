@@ -75,11 +75,10 @@ class Prescription{
             {
                 if(empty($prescriptionDetails))
                 {
-                    $prescriptionDetails=$Row;
+                    array_push($prescriptionDetails,$Row);
                 }
                 else array_push($prescriptionDetails,$Row);
             }
-            
             return $prescriptionDetails;
         }
     }
@@ -104,7 +103,7 @@ class Prescription{
             {
                 if(empty($prescriptionSearched))
                 {
-                    $prescriptionSearched=$Row;
+                    array_push($prescriptionSearched,$Row);
                 }
                 else array_push($prescriptionSearched,$Row);
             }

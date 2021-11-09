@@ -50,7 +50,7 @@ class User{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
+            $_SESSION['errmsg'] = "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
 			$validation = array("","","","");
             return $validation;
 		}
@@ -76,46 +76,34 @@ class User{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else
         {
-            return $validation = true;
-
-
-            /* // testing insert into multiple tables
+            
+            $conn = mysqli_connect("localhost","root","","csit314");
+            
             //select all details of newly created account based on entered username
             $getuserID = "SELECT * FROM $TableName WHERE UserName='$Username'";
+            
             //run query
             $run = @mysqli_query($conn,$getuserID);
+            
             //get userid
-            $getrow=mysqli_fetch_array($run);
-            {
-                $UserId = $getrow['UserId'];
-            }
+            $getrow=$run->fetch_assoc();
+            $UserId = $getrow['UserId'];
             
-            //access userinfo table
-            $UserInfoTable = "userinfo";
-            $insertUserInfo = "INSERT INTO userinfo (UserId)" .
-            " VALUES ('$UserId')";
-            $execute = @mysqli_query($conn,$insertUserInfo);
-
-            $getuserID = "SELECT * FROM $TableName WHERE UserName='$Username'";
-            //run query
-            $run = @mysqli_query($conn,$getuserID);
-            //get userid
-            $getrow=mysqli_fetch_array($run);
-            {
-                $UserId = $getrow['UserId'];
-                $UserProfile = $getrow['UserProfile'];
-            }
-            
-            //access userinfo table
-            
+            //access userprofile table
             $insertUserProfile = "INSERT INTO $UserProfile (UserId)" .
             " VALUES ('$UserId')";
-            $execute = @mysqli_query($conn,$insertUserProfile); */
+            $execute = @mysqli_query($conn,$insertUserProfile);
+
+            //access userinfo table
+            $insertUserInfo = "INSERT INTO userinfo (UserId)" .
+            " VALUES ('$UserId')";
+            $executeUserInfo = @mysqli_query($conn,$insertUserInfo);
+            return $validation = true;
         } 
      }
         
