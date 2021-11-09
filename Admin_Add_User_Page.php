@@ -32,10 +32,10 @@ session_start(); // start session to manipulate session variables
   <div class="form-group">
   <!-- create form wih post method to the same page -->
   <label>Username: </label>
-  <input type="text" class="form-control" id="Username" name="username" required><br><br>
+  <input type="text" class="form-control" id="Username" name="username" placeholder="Username" required><br><br>
   <!-- create input text for Username for user to input username text -->
   <label>Password: </label>
-  <input type="Password" class="form-control" id="Password" name="password" required><br><br>
+  <input type="Password" class="form-control" id="Password" name="password" placeholder="Password" required><br><br>
   <!-- create password text for Username for user to input username text -->
   <label for="sel1">User Profile</label>&ensp;
   <select class="form-control form-select-sm" name = "userprofile" id="userprofile">

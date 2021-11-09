@@ -19,6 +19,10 @@ session_start();
     .container{
       width:50%;
     }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
     
     </style>
 </head>
@@ -47,7 +51,7 @@ session_start();
 <form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
 <div class="form-group">
   <label>Enter User ID: </label>
-  <input type="text" class="form-control" id="UserId" name="userid"><br><br>
+  <input type="text" class="form-control" id="UserId" name="userid" placeholder="User ID"><br><br>
   <input type='hidden' name = 'action' value = 'SearchUser'>
   <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
 </div>
@@ -91,11 +95,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $printresult = "User not found";
             echo "
             <div class='container'>
-            <form>
-            <div class='form-group'>
-            <label>$printresult</label><br><br>
-            </div>
-            </form>
+            <p>$printresult</p>
             </div>";
         }
 }

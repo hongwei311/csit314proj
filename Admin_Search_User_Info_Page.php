@@ -12,9 +12,21 @@ session_start();
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+      h1{
+        margin: 0 0 0 50px;
+      }
+    .container{
+      width:50%;
+    }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
+    </style>
 </head>
 <body>
-
+<br>
 <h1 class="text-center">Search User Info</h1>
 
 
@@ -34,12 +46,17 @@ session_start();
 				<input href="SearchFunction.php" name= "submit" type="submit" class="submit" value="Search"> -->
 
 
+<div class="container">
 <form id="AdminSearchUserInfoPage" method="POST" action="Admin_Search_User_Info_Page.php">
+<div class="form-group">
   <label>Enter User ID: </label>
-  <input type="text" id="UserId" name="UserId"><br><br>
-  <input type='hidden' name = 'action' value = 'SearchUserInfo'>
+  <input type="text" class="form-control" id="UserId" name="UserId"><br><br>
+  <input type='hidden' class="form-control" name = 'action' value = 'SearchUserInfo'>
   <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
-</form><br><br> 
+</div>
+</form>
+</div>
+<br><br> 
 
 
 <?php
@@ -62,12 +79,10 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         {
             $printresult = "";
             unset($_SESSION['UserId']);
-        }
-        elseif($userinformation == false)
-        {
-            $printresult = "User not found";
-        }
-        echo "<form>
+            echo "
+            <div class='container'>
+            <form>
+            <div class='form-group'>
             <label>User ID : $UserId</label><br><br> 
             <label>First Name : $FirstName</label><br><br> 
             <label>Last Name : $LastName</label><br><br> 
@@ -76,8 +91,20 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <label>Phone Number : $PhoneNumber</label><br><br> 
             <label>Email Address: $EmailAddress</label><br><br> 
             
-            <label>$printresult</label><br><br>
-            </form>";
+            <label>$printresult</label>
+            </div>
+            <br><br>
+            </form>
+            </div>";
+        }
+        elseif($userinformation == false)
+        {
+            $printresult = "User not found";
+            echo "<div class='container'>
+            <p>$printresult</p>
+            </div>";
+        }
+        
 }
 
 ?>
