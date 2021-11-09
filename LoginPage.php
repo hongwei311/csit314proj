@@ -89,6 +89,7 @@
     border-radius: 2px;
 }
 .btn {        
+    margin: 0 0 0 0;
     font-size: 15px;
     font-weight: bold;
 }
@@ -107,7 +108,7 @@ img{
         <label>Username</label>&ensp;<input type="text" class="form-control" name="username" placeholder="Username" required> <br>
         <label>Password</label>&ensp;<input type="password" class="form-control" name="password" placeholder="Password" required> <br>
         <br>
-        <button type="submit" class="btn btn-primary btn-block name="submit" value="Login">Login</button>
+        <button type="submit" class="btn btn-primary btn-block" name="submit" value="Login">Login</button>
     </form>
 </div> 
 </body>

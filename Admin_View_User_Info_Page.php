@@ -62,7 +62,7 @@ h1 {
          ?>
 		</tbody>
 </table>
-
+<br>
 <p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
 </html>
