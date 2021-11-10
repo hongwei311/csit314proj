@@ -10,12 +10,22 @@ include_once("PrescriptionController.php");
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+	.table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+}
+h1 {
+	margin: 0 0 0 50px;
+}
+</style>
 </head>
 <body>
-
-<h1>View Patient Record</h1>
-
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
+<br>
+<h1 class="text-center">View Patient Record</h1>
+<br>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
@@ -57,7 +67,7 @@ include_once("PrescriptionController.php");
                    ?>
 		</tbody>
 </table>
-
-
+<br>
+<p><a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
 </html>

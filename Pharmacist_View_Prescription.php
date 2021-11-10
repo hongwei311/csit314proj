@@ -10,30 +10,45 @@ include_once("PrescriptionController.php");
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+	.table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+}
+h1 {
+	margin: 0 0 0 50px;
+}
+p{
+  margin: 0 0 0 25px;
+  font-size:25px
+}
+</style>
 </head>
 <body>
-
-<h1>View Prescription Status</h1>
-
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-
-<label>Select Prescription Status</label>
-
+<br>
+<h1 class="text-center">View Prescription Status</h1>
+<br>
+<div class="container">
+<p>Select Prescription Status</p>
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
+<div class="form-group">
 <input type='hidden' name = 'action' value = 'Combined'>
-<button type="submit" class="button" value="Combined">Combined</button>
+<button type="submit" class="button btn btn-primary btn-lg" value="Combined">Combined</button>
 </form>
 
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Not Collected'>
-<button type="submit" class="button" value="Not Collected">Not Collected</button>
+<button type="submit" class="button btn btn-primary btn-lg" value="Not Collected">Not Collected</button>
 </form>
 
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Collected'>
-<button type="submit" class="button" value="Collected">Collected</button>
+<button type="submit" class="button btn btn-primary btn-lg" value="Collected">Collected</button>
 </form>
-
+</div>
+</div>
 <br><br>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
@@ -129,6 +144,7 @@ include_once("PrescriptionController.php");
         ?>
 		</tbody>
 </table>
-
+<br>
+<p><a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
 </html>
