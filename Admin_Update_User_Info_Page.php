@@ -10,21 +10,39 @@ session_start();
 <head>
 <title>Update User Info</title>
 <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+      h1{
+        margin: 0 0 0 50px;
+      }
+    .container{
+      width:50%;
+    }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
+    
+    </style>
+
 </head>
 <body>
-
-<h1>Update User Info</h1>
-
-
+<br>
+<h1 class="text-center">Update User Info</h1>
+<br>
+<div class="container">
 <form id="AdminSearchUserInfoPage" method="POST" action="Admin_Update_User_Info_Page.php">
+<div class="form-group">
   <label>Enter User ID: </label>
-  <input type="text" id="UserId" name="UserId"><br><br>
+  <input type="text" class="form-control"id="UserId" name="UserId"><br><br>
   <input type='hidden' name = 'action' value = 'SearchUserInfo'>
-  <button class="button" type="submit" value="Search">Search</button>
-</form><br><br> 
+  <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
+  </div>
+</form>
+</div><br><br> 
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -53,41 +71,52 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         if($userinformation==true)
         {
             $printresult = "";
+            echo "
+            <div class='container'>
+            <form id='AdminUpdateUserInfoPage' method='POST' action='Admin_Update_User_Info_Page.php'>
+            <div class='form-group'>
+            <label>$printresult</label><br><br>
+            <label>User ID : $UserId</label><br><br> 
+            <label>First Name : </label>
+            <input type='text' class='form-control' id='FirstName' name='FirstName' value='$FirstName' required><br><br>
+            <label>Last Name : </label>
+            <input type='text' class='form-control' id='LastName' name='LastName' value='$LastName' required><br><br>
+            <label>Birth Date: </label>
+            <input type='date' class='form-control' id='BirthDate' name='BirthDate' value='$BirthDate' required><br><br>
+            <label>Gender Code: </label>
+            <select name = 'GenderCode' class='form-control form-select-sm' id='GenderCode' value='<?php $GenderCode'>
+                <option>$GenderCode</option>
+                <option value = 'M' >M</option>
+                <option value = 'F' >F</option>
+            </select><br><br>
+            <label>Phone Number: </label>
+            <input type='tel' class='form-control' id='PhoneNumber' name='PhoneNumber' value='$PhoneNumber' required>
+            <label class='error'>$phonenumber_err</label>
+            <br><br>
+            <label>Email Address: </label>
+            <input type='email' class='form-control' id='EmailAddress' name='EmailAddress' value='$EmailAddress' required>
+            <label class='error'>$emailaddress_err</label>
+            <br><br>
+
+            <input type='hidden' name = 'action' value = 'UpdateUserInfo'>
+
+            <button class='btn btn-primary btn-lg' type='submit' value='Update'>Update</button>
+            <div>
+        </form>
+    </div>
+    ";
         }
         elseif($userinformation==false)
         {
             $printresult = "User not found";
+            echo"<div class='container'>
+            <p>$printresult</p>
+            </div>
+            ";
         }
 
-?>      
-        <form id="AdminUpdateUserInfoPage" method="POST" action="Admin_Update_User_Info_Page.php">
-            <label><?php echo $printresult;?></label><br><br>
-            <label>User ID : <?php echo $UserId;?></label><br><br> 
-            <label>First Name : </label>
-            <input type="text" id="FirstName" name="FirstName" value="<?php echo $FirstName;?>" required><br><br>
-            <label>Last Name : </label>
-            <input type="text" id="LastName" name="LastName" value="<?php echo $LastName;?>" required><br><br>
-            <label>Birth Date: </label>
-            <input type="date" id="BirthDate" name="BirthDate" value="<?php echo $BirthDate;?>" required><br><br>
-            <label>Gender Code: </label>
-            <select name = "GenderCode" id="GenderCode" value="<?php $GenderCode;?>">
-                <option><?php echo $GenderCode;?></option>
-                <option value = "M" >M</option>
-                <option value = "F" >F</option>
-            </select><br><br>
-            <label>Phone Number: </label>
-            <input type="tel" id="PhoneNumber" name="PhoneNumber" value="<?php echo $PhoneNumber;?>" required>
-            <label class="error"><?php echo $phonenumber_err; ?></label>
-            <br><br>
-            <label>Email Address: </label>
-            <input type="email" id="EmailAddress" name="EmailAddress" value="<?php echo $EmailAddress;?>" required>
-            <label class="error"><?php echo $emailaddress_err; ?></label>
-            <br><br>
+?>     
 
-            <input type="hidden" name = "action" value = "UpdateUserInfo">
-
-            <button class="button" type="submit" value="Update">Update</button>
-        </form>
 
 <?php
     }
@@ -110,11 +139,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($validation==true)
         {
-            echo "User Info updated successfully";
+            echo "<p>User Info updated successfully</p>";
         }
         else
         {
-            echo "User Info not updated";
+            echo "<p>User Info not updated</p>";
         }
         }
         elseif($phonenumber_err != "" || $emailaddress_err != ""){
@@ -128,6 +157,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 ?>
 
-<p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
 </html>

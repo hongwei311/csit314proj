@@ -38,6 +38,8 @@ table, th, td {
   background-color: white; 
   color: black; 
   border: 2px solid #008CBA;
+  width: 300px !important;
+	height: 50px;
 }
 
 .navigate:hover {
@@ -59,4 +61,12 @@ table, th, td {
 
 .error{
   color: #FF0000;
+}
+
+.btn {
+  width: 300px;
+  margin: 5px 0 0 20px;
+}
+h1{
+  margin: 0 0 0 50px;
 }

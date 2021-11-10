@@ -8,21 +8,43 @@ session_start();
 <head>
   <title>View Prescription</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+      h1{
+        margin: 0 0 0 50px;
+      }
+    .container{
+      width:50%;
+    }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
+    .table{
+    width: 80%;
+    margin: 0 0 0 50px;
+    text-align:left;"
+    cellspacing="0"
+  }
+    </style>
+
 </head>
 
 <body>
-
-  <h1>Welcome, <?php echo $_SESSION['username'] ?> </h1>
-  <p><a href="Doctor_Main_Page.php"><button class="button">Main Page</button></p></a></p>
-  <h2>View Prescription</h2>
-  <label>Select Prescription Type</label>&ensp;
+  <br>
+  <h1 class="text-center">View Prescription</h1>
+  <br>
+  <div class="container">
+  <p>Select Prescription Type Below</p>&ensp;
   <form method="POST">
-    <button type="submit" name="new" value="Not Collected">Not Collected</button>
-    <button type="submit" name="past" value="Collected">Collected</button>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-lg" name="new" value="Not Collected">Not Collected</button>
+    <button type="submit" class="btn btn-primary btn-lg" name="past" value="Collected">Collected</button>
+  </div>
   </form>
+  </div>
 
   <?php
 
@@ -43,16 +65,27 @@ session_start();
       <?php
       $PrescriptionControl = new PrescriptionControl();
       $prescriptiondetails = $PrescriptionControl->viewPrescription($_POST['past']);
-      
-      for($i = 0; $i < count($prescriptiondetails); $i++) {
-        echo "<tr>";
-        echo "<td>" . $prescriptiondetails[$i]['PrescriptionId'] . "</td>";
-        echo "<td>" . $prescriptiondetails[$i]['PrescriptionDetails'] . "</td>";
-        echo "<td>" . $prescriptiondetails[$i]['PrescriptionStatus'] . "</td>";
-        echo "<td>" . $prescriptiondetails[$i]['DoctorId'] . "</td>";
-        echo "<td>" . $prescriptiondetails[$i]['PatientId'] . "</td>";
-        echo "<td>" . $prescriptiondetails[$i]['PharmacistId'] . "</td>";
-        echo "</tr>";
+      echo $prescriptiondetails['PrescriptionId'];
+      // Attempt select query execution
+      $conn = mysqli_connect("localhost", "root", "", "csit314");
+      $sql = "SELECT * FROM prescription" . " where PrescriptionStatus ='"  . 'Collected' . "'";
+      if ($result = $conn->query($sql)) {
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_array()) {
+            echo "<tr>";
+            echo "<td>" . $row['PrescriptionId'] . "</td>";
+            echo "<td>" . $row['PrescriptionDetails'] . "</td>";
+            echo "<td>" . $row['PrescriptionStatus'] . "</td>";
+            echo "<td>" . $row['DoctorId'] . "</td>";
+            echo "<td>" . $row['PatientId'] . "</td>";
+            echo "<td>" . $row['PharmacistId'] . "</td>";
+            echo "</tr>";
+          }
+          // Free result set
+          $result->free();
+        } else {
+          echo "<p class='question-text'>No records were found.</p>";
+        }
       }
     }
       ?>
@@ -88,13 +121,20 @@ session_start();
               echo "<td>" . $prescriptiondetails[$i]['PharmacistId'] . "</td>";
               echo "</tr>";
             }
-   
-        
+            // Free result set
+            $result->free();
+          } else {
+            echo "<p class='question-text'>No records were found.</p>";
+          }
+        }
+
       }
 
         ?>
         </tbody>
       </table>
+      <br>
+        <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 </body>
 
 </html>
