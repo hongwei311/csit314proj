@@ -33,6 +33,7 @@ session_start();
     margin: 0 0 0 50px;
   }
     </style>
+
 </head>
 
 <body>
@@ -91,6 +92,7 @@ session_start();
           } else {
             echo "<p class='question-text'>No records were found.</p>";
           }
+
         }
         $_SESSION['prescriptionID'] = $prescriptionId;
 
@@ -111,6 +113,7 @@ session_start();
     if (isset($_POST['update'])) {
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
+      $prescriptionSearched = $PrescriptionControl->searchPrescription($_SESSION['prescriptionID']);
 
       echo '<p>Successfully updated!!</p>';
       ?>
@@ -148,6 +151,7 @@ session_start();
               echo "<p class='question-text'>No records were found.</p>";
             }
           }
+
           unset($_SESSION['prescriptionID']);
         }
 

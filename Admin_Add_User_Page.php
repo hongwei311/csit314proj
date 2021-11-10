@@ -22,6 +22,7 @@ session_start(); // start session to manipulate session variables
       text-align:center;
     }
     </style>
+
 </head>
 <body>
 <br>
@@ -56,11 +57,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   $validation = $UserControl->addUser($_POST['username'],$_POST['password'],$_POST['userprofile']); //assign output from addUser function to validation
   if($validation==true)
   {
-    echo "<p>User added successfully</p>";
+    echo '<script>alert("User added succesfully")</script>';
   }
   else
   {
-    echo "<p>User not added</p>";
+    echo '<script>alert("Unable to add user.'. $_SESSION['errmsg'] . '")</script>';
+    unset($_SESSION['errmsg']);
   }
 }
 ?>

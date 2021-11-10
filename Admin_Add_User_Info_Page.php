@@ -47,11 +47,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   $_POST['GenderCode'],$_POST['PhoneNumber'],$_POST['EmailAddress']); //assign output from addUser function to validation
   if($validation==true)
   {
-    $printReturn = "<p>User Info added successfully</p>";
+    echo '<script>alert("User added succesfully")</script>';
   }
   else
   {
-    $printReturn = "<p>User Info not added</p>";
+    echo '<script>alert("Unable to add user info.'. $_SESSION['errmsg'] . '")</script>';
+    unset($_SESSION['errmsg']);
   }
 }
 }

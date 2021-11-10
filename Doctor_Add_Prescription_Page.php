@@ -23,6 +23,7 @@ session_start();
       text-align:center;
     }
     </style>
+
 </head>
 
 <body>
@@ -48,6 +49,7 @@ session_start();
       echo "<p>Prescription added successfully</p>";
     } else {
       echo "<p>Prescripton not added</p>";
+
     }
   }
   ?>

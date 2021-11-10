@@ -14,7 +14,7 @@
 		
         if($validation["0"]=="")
         {
-            echo "Wrong Username/Password";
+            echo '<script>alert("Wrong Username/Password")</script>';
         }
         else{
             $userid = $validation["0"];
@@ -98,6 +98,7 @@ img{
     height: auto;
 }
     </style>
+
 </head>
 
 <body>

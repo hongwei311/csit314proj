@@ -7,6 +7,7 @@ session_start();
 <html>
 <head>
 <title>Generate Token</title>
+
   <link rel="stylesheet" href="stylesheet.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -41,27 +42,57 @@ session_start();
   <input type="text"class="form-control id="Prescription ID" name="prescriptionId"><br><br>
   <input type="submit" class="btn btn-primary btn-lg" value="Generate" name="Generate">
 </div>
+
 </form>
 </div>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
-  $TokenControl = new TokenControl();
-  $validation = $TokenControl->generateToken($_POST['prescriptionId']);
-  if($validation==true)
+  if($_POST['action']==="GenerateToken")
   {
-    echo "<p>Token generated successfully</p>";
-    // $PrescriptionControl = new PrescriptionControl();
-    // $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
-    // $patientId = $prescriptionDetails['PatientId'];
-    // $sendToken = $TokenControl->sendToken();
+
+    $TokenControl = new TokenControl();
+    $validation = $TokenControl->generateToken($_POST['prescriptionId']);
+    
+    $PrescriptionControl = new PrescriptionControl();
+    $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
+    $_SESSION['patientid'] = $prescriptionDetails['PatientId'];
+    $_SESSION['prescriptionid'] = $_POST['prescriptionId'];
+
+    if($validation==true)
+    {
+      echo "Token generated successfully";
+?>
+      <form id="DoctorGenerateTokenPage" method="POST" action="Doctor_Generate_Token_Page.php">
+        <input type="hidden" name = "action" value = "SendToken">
+        <input type="submit" value="Send" name="Send">
+      </form>
+<?php
+    }
+      
+    elseif($validation==false)
+    {
+      echo "Token not generated";
+    }
+
   }
-  else
+  if($_POST['action']==="SendToken")
   {
-    echo "<p>Token not generated</p>";
+
+    $TokenControl = new TokenControl();
+    $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
+    if($validation2===true)
+    {
+      echo "Token sent successfully";
+    }
+    else
+    {
+      echo "Token not sent.";
+    }
   }
 }
+
 ?>
 <br>
         <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>

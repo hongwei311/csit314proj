@@ -1,55 +1,14 @@
-<?php?>
+<?php
+include_once("PrescriptionController.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Search Patient Prescription</title>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-.button-align {
-width: 200px;
-margin: 0 auto;
-display: inline;}
-
-.button {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  
-}
-
-.navigate {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.navigate:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
-
-</style>
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -57,26 +16,52 @@ display: inline;}
 
 <p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
+<form id="PharmacistSearchPrescription" method="POST" action="Pharmacist_Search_Patient_Prescription.php">
+  <label>Enter Prescription ID: </label>
+  <input type="text" id="PrescriptionId" name="PrescriptionId" required><br><br>
+  <button class="button" type="submit" value="Search">Search</button>
+</form><br><br> 
 
-<form action="/action_page.php">
-  <label for="fname">Enter Prescription ID</label><br>
-  <input type="text" id="fname" name="fname" value=""><br>
+<?php
+if($_SERVER['REQUEST_METHOD']=='POST')
+{        
+        $PrescriptionControl = new PrescriptionControl();
+        $prescriptionDetails = $PrescriptionControl->searchPatientPrescription($_POST['PrescriptionId'], "Not Collected");
+        $_SESSION['PrescriptionId']=$_POST['PrescriptionId'];
+        $PrescriptionId = $prescriptionDetails["0"];
+        $searchedPrescriptionDetails = $prescriptionDetails["1"];
+        $PrescriptionStatus = $prescriptionDetails["2"];
+        $DoctorId = $prescriptionDetails["3"];
+        $PatientId = $prescriptionDetails["4"];
+        $PharmacistId = $prescriptionDetails["5"];
+        $CreatedDateTime = $prescriptionDetails["6"];
+        $DispensedDateTime = $prescriptionDetails["7"];
+        $printresult = "";
 
-  <input type="submit" value="Submit"> <!-- search from DB then update the table below -->
-</form> 
+        if($prescriptionDetails==true)
+        {
+            echo "<form>
+            <label>Prescription Id : $PrescriptionId</label><br><br> 
+            <label>Prescription Details : $searchedPrescriptionDetails</label><br><br>
+            <label>Prescription Status : $PrescriptionStatus</label><br><br>
+            <label>Doctor Id : $DoctorId</label><br><br>
+            <label>Patient Id : $PatientId</label><br><br>
+            <label>Pharmacist Id : $PharmacistId</label><br><br>
+            <label>Created Date Time : $CreatedDateTime</label><br><br>
+            <label>Dispensed Date Time : $DispensedDateTime</label><br><br>
 
-<table style="width: 70%;"> <!-- Auto input data from the dates -->
-        <tr>
-            <th>Date</th>
-            <th>Medications</th>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
+            <label>$printresult</label><br><br>
+            </form>";
+            unset($_SESSION['PrescriptionId']);
+        }
+        else
+        {
+            echo '<script>alert("Prescription ID not found!")</script>';
+        }
         
+}
 
-    </table>
+?>
 
 </body>
 </html>

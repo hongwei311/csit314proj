@@ -29,6 +29,7 @@ session_start();
     cellspacing="0"
   }
     </style>
+
 </head>
 
 <body>
@@ -64,7 +65,6 @@ session_start();
       <?php
       $PrescriptionControl = new PrescriptionControl();
       $prescriptiondetails = $PrescriptionControl->viewPrescription($_POST['past']);
-
       echo $prescriptiondetails['PrescriptionId'];
       // Attempt select query execution
       $conn = mysqli_connect("localhost", "root", "", "csit314");
@@ -110,19 +110,15 @@ session_start();
         <?php
         $PrescriptionControl = new PrescriptionControl();
         $prescriptiondetails = $PrescriptionControl->viewPrescription($_POST['new']);
-        // Attempt select query execution
-        $conn = mysqli_connect("localhost", "root", "", "csit314");
-        $sql = "SELECT * FROM prescription" . " where PrescriptionStatus ='"  . 'Not Collected' . "'";
-        if ($result = $conn->query($sql)) {
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_array()) {
+        
+        for($i = 0; $i < count($prescriptiondetails); $i++) {
               echo "<tr>";
-              echo "<td>" . $row['PrescriptionId'] . "</td>";
-              echo "<td>" . $row['PrescriptionDetails'] . "</td>";
-              echo "<td>" . $row['PrescriptionStatus'] . "</td>";
-              echo "<td>" . $row['DoctorId'] . "</td>";
-              echo "<td>" . $row['PatientId'] . "</td>";
-              echo "<td>" . $row['PharmacistId'] . "</td>";
+              echo "<td>" . $prescriptiondetails[$i]['PrescriptionId'] . "</td>";
+              echo "<td>" . $prescriptiondetails[$i]['PrescriptionDetails'] . "</td>";
+              echo "<td>" . $prescriptiondetails[$i]['PrescriptionStatus'] . "</td>";
+              echo "<td>" . $prescriptiondetails[$i]['DoctorId'] . "</td>";
+              echo "<td>" . $prescriptiondetails[$i]['PatientId'] . "</td>";
+              echo "<td>" . $prescriptiondetails[$i]['PharmacistId'] . "</td>";
               echo "</tr>";
             }
             // Free result set
@@ -131,6 +127,7 @@ session_start();
             echo "<p class='question-text'>No records were found.</p>";
           }
         }
+
       }
 
         ?>

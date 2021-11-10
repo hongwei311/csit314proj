@@ -9,6 +9,7 @@ session_start();
 <head>
 <title>Search User Info</title>
 <link rel="stylesheet" href="stylesheet.css">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -47,6 +48,7 @@ session_start();
 
 
 <div class="container">
+
 <form id="AdminSearchUserInfoPage" method="POST" action="Admin_Search_User_Info_Page.php">
 <div class="form-group">
   <label>Enter User ID: </label>
@@ -83,6 +85,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <div class='container'>
             <form>
             <div class='form-group'>
+
             <label>User ID : $UserId</label><br><br> 
             <label>First Name : $FirstName</label><br><br> 
             <label>Last Name : $LastName</label><br><br> 
@@ -91,6 +94,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <label>Phone Number : $PhoneNumber</label><br><br> 
             <label>Email Address: $EmailAddress</label><br><br> 
             
+
             <label>$printresult</label>
             </div>
             <br><br>
@@ -103,6 +107,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             echo "<div class='container'>
             <p>$printresult</p>
             </div>";
+
         }
         
 }
