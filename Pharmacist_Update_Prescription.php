@@ -68,7 +68,7 @@ session_start();
         <th>Dispensed Date Time</th>
 			</tr>
 		</thead>
-		<table>
+    <tbody>
       
 		<?php
 
@@ -113,6 +113,8 @@ session_start();
 
 
     ?>
+    </tbody>
+  </table>
 
 
 <br><br>
