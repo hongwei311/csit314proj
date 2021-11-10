@@ -18,21 +18,21 @@ session_start();
 
 <h1 class="text-center">Welcome, <?php echo $_SESSION['username']?>  </h1>
 <div class="span2 text-center">
-<p><a href="Admin_Add_User_Page.php"><button class="btn btn-primary btn-lg">Add New User Accounts</button></p></a></p>
+<a href="Admin_Add_User_Page.php"><button class="btn btn-primary btn-lg">Add New User Accounts</button></a> &nbsp; 
 
-<p><a href="Admin_Search_User_Page.php"><button class="btn btn-primary btn-lg">Search For User Accounts</button></a></p>
+<a href="Admin_Add_User_Info_Page.php"><button class="btn btn-primary btn-lg">Add New User Info</button></a></p>
 
-<p><a href="Admin_Update_User_Page.php"><button class="btn btn-primary btn-lg">Update User Accounts</button></a></p>
+<a href="Admin_Search_User_Page.php"><button class="btn btn-primary btn-lg">Search For User Accounts</button></a> &nbsp; 
 
-<p><a href="Admin_View_User_Page.php"><button class="btn btn-primary btn-lg">View User Accounts</button></a></p>
+<a href="Admin_Search_User_Info_Page.php"><button class="btn btn-primary btn-lg">Search For User Info</button></a></p>
 
-<p><a href="Admin_Add_User_Info_Page.php"><button class="btn btn-primary btn-lg">Add New User Info</button></p></a></p>
+<a href="Admin_Update_User_Page.php"><button class="btn btn-primary btn-lg">Update User Accounts</button></a> &nbsp; 
 
-<p><a href="Admin_Search_User_Info_Page.php"><button class="btn btn-primary btn-lg">Search For User Info</button></p></a></p>
+<a href="Admin_Update_User_Info_Page.php"><button class="btn btn-primary btn-lg">Update User Info</button></a></p>
 
-<p><a href="Admin_Update_User_Info_Page.php"><button class="btn btn-primary btn-lg">Update User Info</button></p></a></p>
+<a href="Admin_View_User_Page.php"><button class="btn btn-primary btn-lg">View User Accounts</button></a> &nbsp; 
 
-<p><a href="Admin_View_User_Info_Page.php"><button class="btn btn-primary btn-lg">View User Info</button></p></a></p>
+<a href="Admin_View_User_Info_Page.php"><button class="btn btn-primary btn-lg">View User Info</button></a></p>
 
 <p><a href="Admin_Dashboard_Page.php"><button class="btn btn-primary btn-lg">View Full Details</button></p></a>
 </div>
