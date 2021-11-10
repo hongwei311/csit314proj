@@ -73,38 +73,37 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $printresult = "";
             echo "
             <div class='container'>
-            <form id='AdminUpdateUserInfoPage' method='POST' action='Admin_Update_User_Info_Page.php'>
-            <div class='form-group'>
-            <label>$printresult</label><br><br>
-            <label>User ID : $UserId</label><br><br> 
-            <label>First Name : </label>
-            <input type='text' class='form-control' id='FirstName' name='FirstName' value='$FirstName' required><br><br>
-            <label>Last Name : </label>
-            <input type='text' class='form-control' id='LastName' name='LastName' value='$LastName' required><br><br>
-            <label>Birth Date: </label>
-            <input type='date' class='form-control' id='BirthDate' name='BirthDate' value='$BirthDate' required><br><br>
-            <label>Gender Code: </label>
-            <select name = 'GenderCode' class='form-control form-select-sm' id='GenderCode' value='<?php $GenderCode'>
-                <option>$GenderCode</option>
-                <option value = 'M' >M</option>
-                <option value = 'F' >F</option>
-            </select><br><br>
-            <label>Phone Number: </label>
-            <input type='tel' class='form-control' id='PhoneNumber' name='PhoneNumber' value='$PhoneNumber' required>
-            <label class='error'>$phonenumber_err</label>
-            <br><br>
-            <label>Email Address: </label>
-            <input type='email' class='form-control' id='EmailAddress' name='EmailAddress' value='$EmailAddress' required>
-            <label class='error'>$emailaddress_err</label>
-            <br><br>
+                <form id='AdminUpdateUserInfoPage' method='POST' action='Admin_Update_User_Info_Page.php'>
+                <div class='form-group'>
+                <label>$printresult</label><br><br>
+                <label>User ID : $UserId</label><br><br> 
+                <label>First Name : </label>
+                <input type='text' class='form-control' id='FirstName' name='FirstName' value='$FirstName' required><br><br>
+                <label>Last Name : </label>
+                <input type='text' class='form-control' id='LastName' name='LastName' value='$LastName' required><br><br>
+                <label>Birth Date: </label>
+                <input type='date' class='form-control' id='BirthDate' name='BirthDate' value='$BirthDate' required><br><br>
+                <label>Gender Code: </label>
+                <select name = 'GenderCode' class='form-control form-select-sm' id='GenderCode' value='<?php $GenderCode'>
+                    <option>$GenderCode</option>
+                    <option value = 'M' >M</option>
+                    <option value = 'F' >F</option>
+                </select><br><br>
+                <label>Phone Number: </label>
+                <input type='tel' class='form-control' id='PhoneNumber' name='PhoneNumber' value='$PhoneNumber' required>
+                <label class='error'>$phonenumber_err</label>
+                <br><br>
+                <label>Email Address: </label>
+                <input type='email' class='form-control' id='EmailAddress' name='EmailAddress' value='$EmailAddress' required>
+                <label class='error'>$emailaddress_err</label>
+                <br><br>
 
-            <input type='hidden' name = 'action' value = 'UpdateUserInfo'>
+                <input type='hidden' name = 'action' value = 'UpdateUserInfo'>
 
-            <button class='btn btn-primary btn-lg' type='submit' value='Update'>Update</button>
-            <div>
-        </form>
-    </div>
-    ";
+                <button class='btn btn-primary btn-lg' type='submit' value='Update'>Update</button>
+                <div>
+                </form>
+            </div>";
         }
         elseif($userinformation==false)
         {
@@ -115,48 +114,47 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             ";
         }
 
-?>     
-
-
-<?php
     }
 
-        if($_POST['action']==='UpdateUserInfo'){
-        
-            if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
+    if($_POST['action']==='UpdateUserInfo')
+    {
+            if (!preg_match($phoneregex, $_POST["PhoneNumber"])) 
+            {
                 $phonenumber_err="Please enter a valid phone number."; 
-                }
+            }
                 
-            if (!preg_match($emailregex, $_POST["EmailAddress"])) {
+            elseif (!preg_match($emailregex, $_POST["EmailAddress"])) 
+            {
                 $emailaddress_err="Please enter a valid email address.";
-                }
+            }
         
+            elseif($phonenumber_err != "" || $emailaddress_err != "")
+            {
+                echo "<p>User Info not updated</p>";
+                echo "<p>$phonenumber_err</p>";
+                echo "<p>$emailaddress_err</p>";
+            }
 
-        if($phonenumber_err == "" && $emailaddress_err == ""){
-        $UserControl = new UserInfoController();
-        $validation = $UserControl ->updateUserInfo($_SESSION['UserId'],$_POST['FirstName'],$_POST['LastName'],
-        $_POST['BirthDate'],$_POST['GenderCode'],$_POST['PhoneNumber'],$_POST['EmailAddress']);
+            elseif($phonenumber_err == "" && $emailaddress_err == "")
+            {
+                $UserControl = new UserInfoController();
+                $validation = $UserControl ->updateUserInfo($_SESSION['UserId'],$_POST['FirstName'],$_POST['LastName'],
+                $_POST['BirthDate'],$_POST['GenderCode'],$_POST['PhoneNumber'],$_POST['EmailAddress']);
 
-        if($validation==true)
-        {
-            echo "<p>User Info updated successfully</p>";
-        }
-        else
-        {
-            echo "<p>User Info not updated</p>";
-        }
-        }
-        elseif($phonenumber_err != "" || $emailaddress_err != ""){
-            echo "<p>User Info not updated</p>";
-            echo "<p>$phonenumber_err</p>";
-            echo "<p>$emailaddress_err</p>";
-        }
-    }
-    
+                if($validation==true)
+                {
+                    echo "<p>User Info updated successfully</p>";
+                }
+                else
+                {
+                    echo "<p>User Info not updated</p>";
+                }
+            }
+    } 
 }
 
 ?>
-
-<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<br>
+<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 10px 0 0;">Back</button></a></p>
 </body>
 </html>

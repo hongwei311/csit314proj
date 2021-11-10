@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 <label>Username : </label>
                 <input type='text' class='form-control' id='Username' name='username' value='$username' required><br><br>
                 <label>Password : </label>
-                <input type='password' class='form-control' id='Password' name='password' value='$password' required><br><br>
+                <input type='password' class='form-control' id='Password' name='password' required><br><br>
                 <label>User Profile</label>&ensp;
                         <select class='form-control form-select-sm' name = 'userprofile' id='userprofile' value='$userprofile' required>
                             <option>$userprofile</option>
@@ -93,11 +93,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             </p>
             ";
         }
-    
-?>  
-
-
-
     }
     if($_POST['action']==='UpdateUser')
     {
