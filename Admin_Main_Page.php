@@ -19,11 +19,11 @@ session_start();
 <h1 class="text-center">Welcome, <?php echo $_SESSION['username']?>  </h1>
 <div class="span2 text-center">
 	
-<a href="Admin_Add_User_Page.php"><button class="btn btn-primary btn-lg">Add New User Accounts</button></a>
+<a href="Admin_Add_User_Page.php"><button class="btn btn-primary btn-lg">Add New User Accounts</button></a>&nbsp;
 
 <a href="Admin_Add_User_Info_Page.php"><button class="btn btn-primary btn-lg">Add New User Info</button></a></p>
 
-<a href="Admin_Search_User_Page.php"><button class="btn btn-primary btn-lg">Search For User Accounts</button></a>
+<a href="Admin_Search_User_Page.php"><button class="btn btn-primary btn-lg">Search For User Accounts</button></a> &nbsp;
 
 <a href="Admin_Search_User_Info_Page.php"><button class="btn btn-primary btn-lg">Search For User Info</button></a></p>
 
