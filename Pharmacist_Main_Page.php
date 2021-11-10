@@ -30,6 +30,7 @@ session_start();
       <div class="button-align">
         <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription Status</button></a>
         <a href="Pharmacist_Update_Prescription.php"><button class="button navigate">Update Prescription Status</button></a>
+        <p><a href="Update_Personal_User_Info.php"><button class="button">Update Your Personal User Info</button></p></a>
       </div>
   </div>
 

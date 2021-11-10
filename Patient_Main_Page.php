@@ -24,6 +24,8 @@ session_start();
 
 <p><a href="Patient_Search_Prescription.php"><button class="button navigate">Search Prescription</button></a></p>
 
+<p><a href="Update_Personal_User_Info.php"><button class="button">Update Your Personal User Info</button></p></a>
+
 <p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>

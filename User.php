@@ -100,7 +100,8 @@ class User{
             $execute = @mysqli_query($conn,$insertUserProfile);
 
             //access userinfo table
-            $insertUserInfo = "INSERT INTO userinfo (UserId)" .
+            $Table = "userinfo";
+            $insertUserInfo = "INSERT INTO $Table (UserId)" .
             " VALUES ('$UserId')";
             $executeUserInfo = @mysqli_query($conn,$insertUserInfo);
             return $validation = true;

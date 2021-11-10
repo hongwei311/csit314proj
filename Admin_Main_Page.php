@@ -33,6 +33,10 @@ session_start();
 
 <p><a href="Admin_Dashboard_Page.php"><button class="button">View Full Details</button></p></a>
 
+<p><a href="Update_Personal_User_Info.php"><button class="button">Update Your Personal User Info</button></p></a>
+
+<p><a href="GenerateUsers.php"><button class="button">Generate User Accounts</button></p></a>
+
 <p><a href="Logout.php"><button class="button" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>
