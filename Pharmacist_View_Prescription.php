@@ -15,24 +15,28 @@ include_once("PrescriptionController.php");
 
 <h1>View Prescription Status</h1>
 
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-
 <label>Select Prescription Status</label>
 
+<p>
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Combined'>
-<button type="submit" class="button" value="Combined">Combined</button>
+<button type="submit" class="btn btn-primary btn-lg" value="Combined">Combined</button>
 </form>
+</p>
 
+<p>
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Not Collected'>
-<button type="submit" class="button" value="Not Collected">Not Collected</button>
+<button type="submit" class="btn btn-primary btn-lg" value="Not Collected">Not Collected</button>
 </form>
+</p>
 
+<p>
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Collected'>
-<button type="submit" class="button" value="Collected">Collected</button>
+<button type="submit" class="btn btn-primary btn-lg" value="Collected">Collected</button>
 </form>
+</p>
 
 <br><br>
 
@@ -129,6 +133,6 @@ include_once("PrescriptionController.php");
         ?>
 		</tbody>
 </table>
-
+<a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 </body>
 </html>

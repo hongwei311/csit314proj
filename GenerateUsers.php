@@ -30,7 +30,7 @@ session_start(); // start session to manipulate session variables
             <option value = "pharmacist" >Pharmacist</option>
         </select> <br><br>
    <!-- create option input for User Profile for user to select user profile -->
-  <button class="button" type="submit" value="Submit">Submit</button>
+  <button class="btn btn-primary btn-lg" type="submit" value="Submit">Submit</button>
 </form> 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -45,7 +45,7 @@ for ($i=1; $i<=100; $i++){
 }
 ?>
 
-<p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 
 </body>
 </html>

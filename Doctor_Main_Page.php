@@ -25,12 +25,12 @@ session_start();
 
 <p><a href="Doctor_View_Prescription_Page.php"><button class="btn btn-primary btn-lg">View prescriptions</button></a></p>
 
-<p><a href="Update_Personal_User_Info.php"><button class="button">Update Your Personal User Info</button></p></a>
+<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
 
-<p><a href="Logout.php"><button class="button" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+
 <p><a href="Doctor_Generate_Token_Page.php"><button class="btn btn-primary btn-lg">Generate Token</button></a></p>
-</div>
-<p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
+<p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+</div>
 </body>
 </html>

@@ -123,18 +123,17 @@ session_start();
             }
             // Free result set
             $result->free();
-          } else {
-            echo "<p class='question-text'>No records were found.</p>";
-          }
         }
-
-      }
+        else {
+          echo "<p class='question-text'>No records were found.</p>";
+        }
 
         ?>
         </tbody>
       </table>
       <br>
-        <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
+
+      <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 </body>
 
 </html>

@@ -15,7 +15,6 @@ include_once("PrescriptionController.php");
 
 <h1>Current Prescription</h1>
 
-<p><a href="Patient_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
@@ -53,6 +52,7 @@ include_once("PrescriptionController.php");
 		</tbody>
 </table>
 
+<a href="Patient_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
 </body>
 

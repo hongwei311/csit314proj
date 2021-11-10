@@ -14,12 +14,10 @@ include_once("PrescriptionController.php");
 
 <h1>Search Patient Prescription</h1>
 
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-
 <form id="PharmacistSearchPrescription" method="POST" action="Pharmacist_Search_Patient_Prescription.php">
   <label>Enter Prescription ID: </label>
   <input type="text" id="PrescriptionId" name="PrescriptionId" required><br><br>
-  <button class="button" type="submit" value="Search">Search</button>
+  <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
 </form><br><br> 
 
 <?php
@@ -62,6 +60,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 
 ?>
+
+<a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
 </body>
 </html>

@@ -70,7 +70,7 @@ session_start();
             <label class="error"><?php echo $emailaddress_err; ?></label>
             <br><br>
             <input type="hidden" name = "action" value = "UpdateUserInfo">
-            <button class="button" type="submit" value="Update">Update</button>
+            <button class="btn btn-primary btn-lg" type="submit" value="Update">Update</button>
         </form>
 
 <?php
@@ -106,12 +106,39 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             echo "<p>$phonenumber_err</p>";
             echo "<p>$emailaddress_err</p>";
         }
-    
+
+        if($_POST['action']==='Back') {
+            if ($_SESSION['UserProfile']!=null){
+                switch($_SESSION['UserProfile'])
+                {
+                    case 'admin':
+                        header("Location:Admin_Main_Page.php");
+                        break;
+            
+                    case 'doctor':
+                        header("Location:Doctor_Main_Page.php");
+                        break;
+            
+                    case 'patient':
+                        header("Location:Patient_Main_Page.php");
+                        break;
+            
+                    case 'pharmacist':
+                        header("Location:Pharmacist_Main_Page.php");
+                        break;
+                }
+             }
+            }
     
 }
 
 ?>
 
-<p><a href="Admin_Main_Page.php"><button class="button" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<form id="UpdatePersonalUserInfo" method="POST" action="Update_Personal_User_Info.php">
+<input type='hidden' name = 'action' value = 'Back'>
+<button type="submit" name="back" class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button>
+</form>
+
+
 </body>
 </html>

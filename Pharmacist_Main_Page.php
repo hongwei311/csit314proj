@@ -19,34 +19,19 @@ session_start();
 <h1 class="text-center">Welcome, <?php echo $_SESSION['username']?>  </h1>
 <div class="span2 text-center">
 
-  <div class="button">
     <div class="button-align">
-      <a href="Pharmacist_View_Patient_Record.php"><button class="button navigate">View Patient Records</button></a>
-      <a href="Pharmacist_search_patient_record.php"><button class="button navigate">Search Patient Records</button></a>
-      <a href="Pharmacist_Search_Patient_Prescription.php"><button class="button navigate">Search Patient Current Prescription</button></a>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="button">
-      <div class="button-align">
-        <a href="Pharmacist_View_Prescription.php"><button class="button navigate">View Prescription Status</button></a>
-        <a href="Pharmacist_Update_Prescription.php"><button class="button navigate">Update Prescription Status</button></a>
-        <p><a href="Update_Personal_User_Info.php"><button class="button">Update Your Personal User Info</button></p></a>
+      <p><a href="Pharmacist_View_Prescription.php"><button class="btn btn-primary btn-lg">View Prescription Status</button></a></p>
+        <p><a href="Pharmacist_Update_Prescription.php"><button class="btn btn-primary btn-lg">Update Prescription Status</button></a></p>
+        <p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></a></p>
           <p><a href="Pharmacist_View_Patient_Record.php"><button class="btn btn-primary btn-lg">View Patients Records</button></a></p>
-          <p><a href="Pharmacist_View_Prescription.php"><button class="btn btn-primary btn-lg">View Prescription</button></a></p> <!-- Currently same as VIEW Prescription Status -->
           <p><a href="Pharmacist_search_patient_record.php"><button class="btn btn-primary btn-lg">Search Patient's Records</button></a></p>
-          <p><a href="Pharmacist_View_Prescription.php"><button class="btn btn-primary btn-lg">View Prescription Status</button></a></p>
           <p><a href="Pharmacist_Search_Patient_Prescription.php"><button class="btn btn-primary btn-lg">Search Patient's Prescription</button></a></p>
-          <p><a href="Pharmacist_Update_Prescription.php"><button class="btn btn-primary btn-lg">Update Prescription Status</button></a></p>
-    
-      </div>
+    </div>
+
+</div>
 
 
-
-
-      <p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+<p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 
 </body>
 </html>

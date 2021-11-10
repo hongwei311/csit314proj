@@ -15,12 +15,10 @@ include_once("PrescriptionController.php");
 
 <h1>Search Patient Record</h1>
 
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-
 <form id="PharmacistSearchPatientRecord" method="POST" action="Pharmacist_Search_Patient_Record.php">
   <label>Enter Patient Id: </label>
   <input type="text" id="PatientId" name="PatientId" required><br><br>
-  <button class="button" type="submit" value="Search">Search</button>
+  <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
 </form><br><br> 
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
@@ -69,6 +67,7 @@ include_once("PrescriptionController.php");
 		</tbody>
 </table>
 
+<a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
 </body>
 </html>

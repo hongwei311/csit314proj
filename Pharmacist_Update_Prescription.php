@@ -15,11 +15,6 @@ session_start();
 
 <h1>Update Prescription Status</h1>
 
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
-
-
-<label>Update Prescription Status</label>&ensp;
-
 <form id="PharmacistUpdatePrescription" method="POST" action="Pharmacist_Update_Prescription.php">
   <label>Enter Prescription ID: </label>
   <input type="text" id="PrescriptionId" name="PrescriptionId"><br><br>
@@ -29,7 +24,7 @@ session_start();
       <option value="Not Collected">Not Collected</option>
   </select><br><br>
 <input type='hidden' name = 'action' value = 'Update'>
-<button type="submit" class="button" value="Update">Update</button>
+<button type="submit" class="btn btn-primary btn-lg" value="Update">Update</button>
 </form>
 
 <br><br>
@@ -92,5 +87,11 @@ session_start();
 
 
     ?>
+
+</table>
+
+<a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
+
 </body>
+
 </html>
