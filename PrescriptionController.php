@@ -13,14 +13,14 @@ class PrescriptionControl
     function viewPrescription($PatientId,$PrescriptionStatus)
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->view($PatientId, $PrescriptionStatus);
+        $prescriptionDetails = $Prescription->view($PatientId,$PrescriptionStatus);
         return $prescriptionDetails;
     }
 
-    function searchPrescription($PrescriptionId)
+    function searchPrescription($PatientId, $PrescriptionId)
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->search($PrescriptionId);
+        $prescriptionDetails = $Prescription->search($PatientId, $PrescriptionId);
         return $prescriptionDetails;
     }
 
@@ -31,6 +31,35 @@ class PrescriptionControl
         return $validation;
     }
 
+    function viewPrescriptionRecord($PrescriptionStatus)
+    {
+        $Prescription = new Prescription();
+        $prescriptionDetails = $Prescription->viewRecord($PrescriptionStatus);
+        return $prescriptionDetails;
+    }
+
+    function searchPrescriptionRecord($PatientId, $PrescriptionStatus)
+    {
+        $Prescription = new Prescription();
+        $prescriptionDetails = $Prescription->searchRecord($PatientId, $PrescriptionStatus);
+        return $prescriptionDetails;
+    }
+
+    function searchPatientPrescription($PrescriptionId, $PrescriptionStatus)
+    {
+        $Prescription = new Prescription();
+        $prescriptionDetails = $Prescription->searchPrescriptionRecord($PrescriptionId, $PrescriptionStatus);
+        return $prescriptionDetails;
+    }
+
+    function viewPrescriptionStatus()
+    {
+        $Prescription = new Prescription();
+        $prescriptionDetails = $Prescription->viewPrescriptionStatus();
+        return $prescriptionDetails;
+    }
+
+    
 }
 
 ?>

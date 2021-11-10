@@ -20,7 +20,6 @@ session_start();
 <form id="PatientSearchPrescription" method="POST" action="Patient_Search_Prescription.php">
   <label>Enter Prescription ID: </label>
   <input type="text" id="PrescriptionId" name="PrescriptionId" required><br><br>
-  <input type='hidden' name = 'action' value = 'SearchUser'>
   <button class="button" type="submit" value="Search">Search</button>
 </form><br><br> 
 
@@ -28,7 +27,7 @@ session_start();
 if($_SERVER['REQUEST_METHOD']=='POST')
 {        
         $PrescriptionControl = new PrescriptionControl();
-        $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['PrescriptionId']);
+        $prescriptionDetails = $PrescriptionControl->searchPrescription($_SESSION['UserProfileID'], $_POST['PrescriptionId']);
         $_SESSION['PrescriptionId']=$_POST['PrescriptionId'];
         $PrescriptionId = $prescriptionDetails["0"];
         $searchedPrescriptionDetails = $prescriptionDetails["1"];
