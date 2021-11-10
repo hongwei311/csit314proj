@@ -17,10 +17,10 @@ class PrescriptionControl
         return $prescriptionDetails;
     }
 
-    function searchPrescription($PatientId, $PrescriptionId)
+    function searchPrescription($PrescriptionId)
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->search($PatientId, $PrescriptionId);
+        $prescriptionDetails = $Prescription->search($PrescriptionId);
         return $prescriptionDetails;
     }
 
