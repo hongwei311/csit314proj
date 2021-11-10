@@ -20,32 +20,14 @@ session_start();
 
 <label>Update Prescription Status</label>&ensp;
 
-<form  method="POST">
-<label for="prescriptionID">Prescription ID:  </label>
-    <select name="prescriptionID" id="prescriptionID">
-      <option value="prescriptionID">Auto input from DB</option>
-      <option value="prescriptionID">Auto input from DB</option>
-      <option value="prescriptionID">Auto input from DB</option>
-      <option value="prescriptionID">Auto input from DB</option>
-    </select>
-<br>
-<label for="status">Status</label>
-<select name="status" id="status">
-      <option value="Collected">Collected</option>
-      <option value="Not Collected">Not Collected</option>
-      
-    </select>
-<br>
-<br>
-<button type="submit" name="update" value="Update">UPDATE</button> <!-- Post to DB -->
-</form>
-
-
-
 <form id="PharmacistUpdatePrescription" method="POST" action="Pharmacist_Update_Prescription.php">
   <label>Enter Prescription ID: </label>
-  <input type="text" id="UserId" name="UserId"><br><br>
-  
+  <input type="text" id="PrescriptionId" name="PrescriptionId"><br><br>
+  <label>Prescription Status</label>
+  <select name="PrescriptionStatus" id="PrescriptionStatus">
+      <option value="Collected">Collected</option>
+      <option value="Not Collected">Not Collected</option>
+  </select><br><br>
 <input type='hidden' name = 'action' value = 'Update'>
 <button type="submit" class="button" value="Update">Update</button>
 </form>
@@ -69,6 +51,23 @@ session_start();
       
 		<?php
 
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+      $PrescriptionId=$_POST['PrescriptionId'];
+      $PrescriptionStatus=$_POST['PrescriptionStatus'];
+      $PharmacistId=$_SESSION['UserProfileID'];
+      $PrescriptionControl = new PrescriptionControl();
+      $prescriptionDetails = $PrescriptionControl->updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId);
+      if($prescriptionDetails==true)
+      {
+        echo '<script>alert("Prescription Status Updated succesfully")</script>';
+      }
+      else
+      {
+        echo '<script>alert("Unable to Update Prescription.'. $_SESSION['errmsg'] . '")</script>';
+        unset($_SESSION['errmsg']);
+      }
+    }
+
     $PrescriptionControl = new PrescriptionControl();
     $prescriptionDetails = $PrescriptionControl->viewPrescriptionStatus();
     if($prescriptionDetails==true)
@@ -90,6 +89,7 @@ session_start();
     {
         echo '<script>alert("Records not found!")</script>';
     }
+
 
     ?>
 </body>

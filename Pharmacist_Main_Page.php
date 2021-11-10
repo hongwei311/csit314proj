@@ -15,6 +15,7 @@ session_start();
 
 <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 
+
   <div class="button">
     <div class="button-align">
       <a href="Pharmacist_View_Patient_Record.php"><button class="button navigate">View Patient Records</button></a>

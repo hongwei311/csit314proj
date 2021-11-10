@@ -59,6 +59,13 @@ class PrescriptionControl
         return $prescriptionDetails;
     }
 
+    function updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId)
+    {
+        $Prescription = new Prescription();
+        $prescriptionDetails = $Prescription->updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId);
+        return $prescriptionDetails;
+    }
+
     
 }
 

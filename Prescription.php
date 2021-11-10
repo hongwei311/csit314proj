@@ -265,6 +265,25 @@ class Prescription{
         }
     }
 
+    function updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId)
+    {
+        $TableName = "prescription";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "UPDATE $TableName 
+                SET PrescriptionStatus = '$PrescriptionStatus', PharmacistId = '$PharmacistId', DispensedDateTime = CURRENT_TIMESTAMP 
+                WHERE PrescriptionId = $PrescriptionId";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $prescriptionDetails = false;
+        }
+        else
+        {
+            return $prescriptionDetails = true;
+        }
+    }
+
 }
 
 
