@@ -42,6 +42,14 @@ for ($i=1; $i<=100; $i++){
   $UserControl = new UserControl(); // create User Controller to run function
   $validation = $UserControl->addUser($Username++,$Password++,$UserProfile); //assign output from addUser function to validation
   }
+  if($validation==true)
+  {
+      echo "<p>User account added successfully</p>";
+  }
+  else
+  {
+      echo "<p>User account not added</p>";
+  }
 }
 ?>
 

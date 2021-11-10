@@ -39,6 +39,8 @@ session_start();
 
 <p><a href="GenerateUsers.php"><button class="btn btn-primary btn-lg">Generate User Accounts</button></p></a>
 
+<p><a href="GenerateUserInfo.php"><button class="btn btn-primary btn-lg">Generate User Information</button></p></a>
+
 <p><a href="Admin_Dashboard_Page.php"><button class="btn btn-primary btn-lg">View Full Details</button></p></a>
 </div>
 
