@@ -18,7 +18,7 @@ session_start(); // start session to manipulate session variables
 <?php
 
 $phoneregex = "/^(^[689]{1})(\d{7})$/";
-$emailregex = "/^[^0-9][_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z0-9-]{2,3})$/";
+$emailregex = "/^[^0-9][_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/";
 $phonenumber_err = $emailaddress_err = "";
 
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $EmailAddress = $_POST['EmailAddress'];
 
     if($phonenumber_err =="" && $emailaddress_err == ""){
-    for ($i=1; $i<=300; $i++){
+    for ($i=1; $i<=302; $i++){
   $UserInfoControl = new UserInfoController(); // create User Controller to run function
   $validation = $UserInfoControl->updateUserInfo($UserId++, $FirstName++,$LastName++,$BirthDate,$GenderCode,$PhoneNumber++,$EmailAddress++); //assign output from addUser function to validation
   }
