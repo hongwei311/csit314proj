@@ -10,16 +10,32 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-</head>
+    <style>
+	.table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+  }
+  h1 {
+    margin: 0 0 0 50px;
+  }
+
+</style>
+  </head>
 <body>
 
-<h1>Search Prescription</h1>
-
+<h1 class="text-center">Search Prescription</h1>
+<div class="container">
 <form id="PatientSearchPrescription" method="POST" action="Patient_Search_Prescription.php">
-  <label>Enter Prescription ID: </label>
-  <input type="text" id="PrescriptionId" name="PrescriptionId" required><br><br>
+  <div class="form-group">
+<label>Enter Prescription ID: </label>
+  <input type="text" class="form-control" id="PrescriptionId" name="PrescriptionId" required><br><br>
   <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
-</form><br><br> 
+</div>
+</form>
+</div>
+<br><br> 
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
