@@ -24,8 +24,9 @@ session_start();
 </style>
   </head>
 <body>
-
+<br>
 <h1 class="text-center">Search Prescription</h1>
+<br>
 <div class="container">
 <form id="PatientSearchPrescription" method="POST" action="Patient_Search_Prescription.php">
   <div class="form-group">

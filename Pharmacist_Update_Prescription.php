@@ -10,23 +10,44 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+	.table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+  }
+  h1 {
+    margin: 0 0 0 50px;
+  }
+  p{
+      font-size:30px;
+      text-align:center;
+    }
+
+</style>
 </head>
 <body>
 
-<h1>Update Prescription Status</h1>
+<br>
+<h1 class="text-center">Update Prescription Status</h1>
+<br>
 
+<div class="container">
 <form id="PharmacistUpdatePrescription" method="POST" action="Pharmacist_Update_Prescription.php">
+  <div class="form-group">
   <label>Enter Prescription ID: </label>
-  <input type="text" id="PrescriptionId" name="PrescriptionId"><br><br>
+  <input type="text" class="form-control" id="PrescriptionId" name="PrescriptionId"><br><br>
   <label>Prescription Status</label>
-  <select name="PrescriptionStatus" id="PrescriptionStatus">
+  <select name="PrescriptionStatus" class="form-control" id="PrescriptionStatus">
       <option value="Collected">Collected</option>
       <option value="Not Collected">Not Collected</option>
   </select><br><br>
 <input type='hidden' name = 'action' value = 'Update'>
 <button type="submit" class="btn btn-primary btn-lg" value="Update">Update</button>
+</div>
 </form>
-
+  </div>
 <br><br>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
@@ -89,7 +110,7 @@ session_start();
     ?>
 
 </table>
-
+<br>
 <a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
 </body>
