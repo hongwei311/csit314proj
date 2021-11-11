@@ -81,11 +81,11 @@ session_start();
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
         
-            if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
+        if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
                 $phonenumber_err="Please enter a valid phone number."; 
                 }
                 
-            if (!preg_match($emailregex, $_POST["EmailAddress"])) {
+        if (!preg_match($emailregex, $_POST["EmailAddress"])) {
                 $emailaddress_err="Please enter a valid email address.";
                 }
         
