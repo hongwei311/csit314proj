@@ -12,11 +12,24 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+	.table{
+	width: 80%;
+	margin: 0 0 0 50px;
+	text-align:left;"
+	cellspacing="0"
+  }
+  h1 {
+    margin: 0 0 0 50px;
+  }
+
+</style>
 </head>
 <body>
 
-<h1>Update User Info</h1>
-
+<br>
+<h1 class="text-center">Update User Info</h1>
+<br>
 <?php
 
     $phoneregex = "/^(^[689]{1})(\d{7})$/";
@@ -46,32 +59,36 @@ session_start();
         }
 
 ?>
+<div class="container">
     <form id="UpdatePersonalUserInfo" method="POST" action="Update_Personal_User_Info.php">
+        <class="form-group">
             <label><?php echo $printresult;?></label><br><br>
             <label>User ID : <?php echo $UserId;?></label><br><br> 
             <label>First Name : </label>
-            <input type="text" id="FirstName" name="FirstName" value="<?php echo $FirstName;?>" required><br><br>
+            <input type="text" class="form-control" id="FirstName" name="FirstName" value="<?php echo $FirstName;?>" required><br><br>
             <label>Last Name : </label>
-            <input type="text" id="LastName" name="LastName" value="<?php echo $LastName;?>" required><br><br>
+            <input type="text" class="form-control" id="LastName" name="LastName" value="<?php echo $LastName;?>" required><br><br>
             <label>Birth Date: </label>
-            <input type="date" id="BirthDate" name="BirthDate" value="<?php echo $BirthDate;?>" required><br><br>
+            <input type="date" class="form-control" id="BirthDate" name="BirthDate" value="<?php echo $BirthDate;?>" required><br><br>
             <label>Gender Code: </label>
-            <select name = "GenderCode" id="GenderCode" value="<?php $GenderCode;?>">
+            <select name = "GenderCode" class="form-control" id="GenderCode" value="<?php $GenderCode;?>">
                 <option><?php echo $GenderCode;?></option>
                 <option value = "M" >M</option>
                 <option value = "F" >F</option>
             </select><br><br>
             <label>Phone Number: </label>
-            <input type="tel" id="PhoneNumber" name="PhoneNumber" value="<?php echo $PhoneNumber;?>" required>
+            <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" value="<?php echo $PhoneNumber;?>" required>
             <label class="error"><?php echo $phonenumber_err; ?></label>
             <br><br>
             <label>Email Address: </label>
-            <input type="email" id="EmailAddress" name="EmailAddress" value="<?php echo $EmailAddress;?>" required>
+            <input type="email" class="form-control" id="EmailAddress" name="EmailAddress" value="<?php echo $EmailAddress;?>" required>
             <label class="error"><?php echo $emailaddress_err; ?></label>
             <br><br>
             <input type="hidden" name = "action" value = "UpdateUserInfo">
             <button class="btn btn-primary btn-lg" type="submit" value="Update">Update</button>
+    </div>
         </form>
+    </div>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -134,7 +151,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 
 ?>
-
+<br>
 <form id="UpdatePersonalUserInfo" method="POST" action="Update_Personal_User_Info.php">
 <input type='hidden' name = 'action' value = 'Back'>
 <button type="submit" name="back" class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button>
