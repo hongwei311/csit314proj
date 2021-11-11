@@ -39,7 +39,7 @@ session_start();
 <form method="POST">
   <div class="form-group">
   <label>Prescription ID</label>
-  <input type="text"class="form-control id="Prescription ID" name="prescriptionId"><br><br>
+  <input type="text"class="form-control" id="Prescription ID" name="prescriptionId"><br><br>
   <input type="submit" class="btn btn-primary btn-lg" value="Generate" name="Generate">
 </div>
 

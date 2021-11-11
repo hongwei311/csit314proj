@@ -35,14 +35,14 @@ session_start();
 <br>
 <div class="container">
 <form id="AdminSearchUserInfoPage" method="POST" action="Admin_Update_User_Info_Page.php">
-<div class="form-group">
-  <label>Enter User ID: </label>
-  <input type="text" class="form-control"id="UserId" name="UserId"><br><br>
-  <input type='hidden' name = 'action' value = 'SearchUserInfo'>
-  <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
-  </div>
+    <div class="form-group">
+        <label>Enter User ID: </label>
+        <input type="text" class="form-control"id="UserId" name="UserId"><br><br>
+        <input type='hidden' name = 'action' value = 'SearchUserInfo'>
+        <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
+    </div>
 </form>
-</div><br><br> 
+</div>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -101,7 +101,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 <input type='hidden' name = 'action' value = 'UpdateUserInfo'>
 
                 <button class='btn btn-primary btn-lg' type='submit' value='Update'>Update</button>
-                <div>
+                </div>
                 </form>
             </div>";
         }
@@ -123,19 +123,19 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 $phonenumber_err="Please enter a valid phone number."; 
             }
                 
-            elseif (!preg_match($emailregex, $_POST["EmailAddress"])) 
+            if (!preg_match($emailregex, $_POST["EmailAddress"])) 
             {
                 $emailaddress_err="Please enter a valid email address.";
             }
         
-            elseif($phonenumber_err != "" || $emailaddress_err != "")
+            if($phonenumber_err != "" || $emailaddress_err != "")
             {
-                echo "<p>User Info not updated</p>";
+                echo '<p>User Info Not updated</p>';
                 echo "<p>$phonenumber_err</p>";
                 echo "<p>$emailaddress_err</p>";
             }
 
-            elseif($phonenumber_err == "" && $emailaddress_err == "")
+            if($phonenumber_err == "" && $emailaddress_err == "")
             {
                 $UserControl = new UserInfoController();
                 $validation = $UserControl ->updateUserInfo($_SESSION['UserId'],$_POST['FirstName'],$_POST['LastName'],
@@ -152,9 +152,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             }
     } 
 }
-
 ?>
+
 <br>
-<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 10px 0 0;">Back</button></a></p>
+<p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 </body>
 </html>

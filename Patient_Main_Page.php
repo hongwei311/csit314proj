@@ -16,6 +16,7 @@ session_start();
 
 <div class="span2 text-center">
   <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
+
 <!-- <p><a href="Patient_Current_Prescription.php"><button class="button navigate">Current Prescription</button></p></a></p> -->
 <p>
 <form id="PatientCurrentPrescription" method="POST" action="Patient_Current_Prescription.php">

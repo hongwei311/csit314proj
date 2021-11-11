@@ -7,9 +7,7 @@ session_start();
 <head>
 	<title>Doctor Main Page</title>
 	<link rel="stylesheet" href="stylesheet.css">
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
@@ -27,6 +25,7 @@ session_start();
 
 <p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
 
+<p><a href="GeneratePrescription.php"><button class="btn btn-primary btn-lg">Generate Prescription</button></p></a>
 
 <p><a href="Doctor_Generate_Token_Page.php"><button class="btn btn-primary btn-lg">Generate Token</button></a></p>
 

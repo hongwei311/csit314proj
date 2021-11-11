@@ -15,6 +15,48 @@ session_start(); // start session to manipulate session variables
 
 <h1>Generate New User Info</h1>
 
+<?php
+
+$phoneregex = "/^(^[689]{1})(\d{7})$/";
+$emailregex = "/^[^0-9][_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z0-9-]{2,3})$/";
+$phonenumber_err = $emailaddress_err = "";
+
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+
+  if (!preg_match($phoneregex, $_POST["PhoneNumber"])) {
+    $phonenumber_err="Please enter a valid phone number."; 
+    }
+    
+  if (!preg_match($emailregex, $_POST["EmailAddress"])) {
+    $emailaddress_err="Please enter a valid email address.";
+    }
+
+    $UserId = $_POST['UserId'];
+    $FirstName = $_POST['FirstName'];
+    $LastName = $_POST['LastName'];
+    $BirthDate = $_POST['BirthDate'];
+    $GenderCode = $_POST['GenderCode'];
+    $PhoneNumber = $_POST['PhoneNumber'];
+    $EmailAddress = $_POST['EmailAddress'];
+
+    if($phonenumber_err =="" && $emailaddress_err == ""){
+    for ($i=1; $i<=300; $i++){
+  $UserInfoControl = new UserInfoController(); // create User Controller to run function
+  $validation = $UserInfoControl->updateUserInfo($UserId++, $FirstName++,$LastName++,$BirthDate,$GenderCode,$PhoneNumber++,$EmailAddress++); //assign output from addUser function to validation
+  }
+  if($validation==true)
+  {
+      echo "<p>User Info updated successfully</p>";
+  }
+  else
+  {
+      echo "<p>User Info not updated</p>";
+  }
+}
+}
+?>
+
 <form id="AdminGenerateUsersInfo" method="POST" action="GenerateUserInfo.php">
   <!-- create form wih post method to the same page -->
   <label>First User Id (300 Records): </label>
@@ -31,33 +73,21 @@ session_start(); // start session to manipulate session variables
     <select name = "GenderCode" id="GenderCode">
             <option value = "M" >M</option>
             <option value = "F" >F</option>
-    </select> <br><br>
+    </select>
+    <br><br>
+  <label>Phone Number: </label>
+  <input type="tel" id="PhoneNumber" name="PhoneNumber" required>
+  <label class="error"><?php echo $phonenumber_err; ?></label>
+  <br><br>
+  <label>Email Address: </label>
+  <input type="email" id="EmailAddress" name="EmailAddress" required>
+  <label class="error"><?php echo $emailaddress_err; ?></label>
+    <br><br>
    <!-- create option input for User Profile for user to select user profile -->
   <button class="btn btn-primary btn-lg" type="submit" value="Submit">Submit</button>
 </form>
 
-<?php
-if($_SERVER['REQUEST_METHOD']=='POST')
-{
-    $UserId = $_POST['UserId'];
-    $FirstName = $_POST['FirstName'];
-    $LastName = $_POST['LastName'];
-    $BirthDate = $_POST['BirthDate'];
-    $GenderCode = $_POST['GenderCode'];
-for ($i=1; $i<=300; $i++){
-  $UserInfoControl = new UserInfoController(); // create User Controller to run function
-  $userinformation = $UserInfoControl->generateUserInfo($UserId++, $FirstName++,$LastName++,$BirthDate,$GenderCode); //assign output from addUser function to validation
-  }
-  if($userinformation==true)
-  {
-      echo "<p>User Info updated successfully</p>";
-  }
-  else
-  {
-      echo "<p>User Info not updated</p>";
-  }
-}
-?>
+
 
 <p><a href="Admin_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
 

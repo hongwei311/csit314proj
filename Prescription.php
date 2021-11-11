@@ -84,12 +84,12 @@ class Prescription{
         }
     }
 
-    function search($PrescriptionId)
+    function search($PatientId, $PrescriptionId)
     {
         $TableName = "prescription";
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName" . " where PrescriptionId ='" . $PrescriptionId . "'
-        AND PrescriptionId = '$PrescriptionId'
+        AND PatientId = '$PatientId'
         ";
         
 
@@ -107,9 +107,8 @@ class Prescription{
             if($Row["PrescriptionId"]!=""){
                 return $prescriptionDetails;
             }
-            else
-            {
-                return $prescriptionDetails= array("","","","");
+            else{
+                return $prescriptionDetails = false;
             }
         }
 
