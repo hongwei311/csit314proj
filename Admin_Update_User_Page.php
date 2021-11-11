@@ -59,7 +59,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($userdetails==true)
         {
-
             $printresult = "";
             echo"    <div class='container'>
             <form id='AdminUpdateUserPage' method='POST' action='Admin_Update_User_Page.php'>
@@ -86,12 +85,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         }
         elseif($userdetails==false)
         {
-            
-            echo "
-            <p class='container'>
-            User not found
-            </p>
-            ";
+            echo '<script>alert("User Id Not Found")</script>';
         }
     }
     if($_POST['action']==='UpdateUser')
@@ -100,19 +94,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $validation = $UserControl ->updateUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['userprofile']);
         if($validation==true)
         {
-            echo "
-            <p class='container'>
-            User updated successfully
-            </p>
-            ";
+            echo '<script>alert("User Account Updated")</script>';
         }
         else
         {
-            echo "
-            <p class='container'>
-            User not updated
-            </p>
-            ";
+            echo '<script>alert("User Account Updated")</script>';
         }
     }
     

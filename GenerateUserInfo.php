@@ -47,11 +47,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   }
   if($validation==true)
   {
-      echo "<p>User Info updated successfully</p>";
+    echo '<script>alert("User Info Generated Successfully")</script>';
   }
   else
   {
-      echo "<p>User Info not updated</p>";
+    echo '<script>alert("User Info Could Not be Generated")</script>';
   }
 }
 }

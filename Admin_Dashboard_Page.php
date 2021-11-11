@@ -82,7 +82,7 @@ h1 {
 	</div>
 	<br>
 
-	<h1>View Full Doctor</h1>
+	<h1 class="text-center">View Full Doctor (First 20 Records)</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
@@ -110,7 +110,8 @@ h1 {
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$userdetails = $UserControl->viewFullDoctor();
-					for($i = 0; $i < count($userdetails); $i++) {
+					//for($i = 0; $i < count($userdetails); $i++) { Display all records
+						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
                         echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
 						echo "<td>" . $userdetails[$i]['DoctorId'] . "</td>";
@@ -133,7 +134,7 @@ h1 {
 	</div>
 	</div>
 <br>
-	<h1>View Full Patient</h1>
+	<h1 class="text-center">View Full Patient (First 20 Records)</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
@@ -160,7 +161,8 @@ h1 {
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$userdetails = $UserControl->viewFullPatient();
-					for($i = 0; $i < count($userdetails); $i++) {
+					//for($i = 0; $i < count($userdetails); $i++) { Display all records
+						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
                         echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
 						echo "<td>" . $userdetails[$i]['PatientId'] . "</td>";
@@ -182,7 +184,7 @@ h1 {
 	</div>
 	</div>
 	<br>
-	<h1>View Full Pharmacist</h1>
+	<h1 class="text-center">View Full Pharmacist (First 20 Records)</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
@@ -210,7 +212,8 @@ h1 {
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$userdetails = $UserControl->viewFullPharmacist();
-					for($i = 0; $i < count($userdetails); $i++) {
+					//for($i = 0; $i < count($userdetails); $i++) { Display all records
+						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
                         echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
 						echo "<td>" . $userdetails[$i]['PharmacistId'] . "</td>";

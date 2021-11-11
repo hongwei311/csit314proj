@@ -37,9 +37,9 @@ session_start();
 
 <p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
 
-<p><a href="GenerateUsers.php"><button class="btn btn-primary btn-lg">Generate User Accounts</button></p></a>
+<p hidden><a href="GenerateUsers.php"><button class="btn btn-primary btn-lg">Generate User Accounts</button></p></a>
 
-<p><a href="GenerateUserInfo.php"><button class="btn btn-primary btn-lg">Generate User Information</button></p></a>
+<p hidden><a href="GenerateUserInfo.php"><button class="btn btn-primary btn-lg">Generate User Information</button></p></a>
 
 <p><a href="Admin_Dashboard_Page.php"><button class="btn btn-primary btn-lg">View Full Details</button></p></a>
 </div>

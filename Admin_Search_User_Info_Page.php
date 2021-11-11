@@ -64,7 +64,6 @@ session_start();
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {        
-    
         $UserInfoControl = new UserInfoController();
         $userinformation = $UserInfoControl->searchUserInfo($_POST['UserId']);
         $_SESSION['UserId']=$_POST['UserId'];
@@ -94,7 +93,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <label>Phone Number : $PhoneNumber</label><br><br> 
             <label>Email Address: $EmailAddress</label><br><br> 
             
-
             <label>$printresult</label>
             </div>
             <br><br>
@@ -103,13 +101,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         }
         elseif($userinformation == false)
         {
-            $printresult = "User not found";
-            echo "<div class='container'>
-            <p>$printresult</p>
-            </div>";
-
+          echo '<script>alert("User Info Not Found")</script>';
         }
-        
 }
 
 ?>

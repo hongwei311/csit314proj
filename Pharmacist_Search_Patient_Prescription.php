@@ -24,7 +24,7 @@ include_once("PrescriptionController.php");
 </head>
 <body>
 <br>
-<h1 class="text-center">Search Patient Prescription</h1>
+<h1 class="text-center">Search Patient Prescription (Not Collected)</h1>
 <br>
 
 <div class="container">

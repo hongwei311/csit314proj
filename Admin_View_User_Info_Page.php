@@ -47,7 +47,8 @@ h1 {
 					$UserControl = new UserInfoController();
 					//send validation to login controller class
 					$userinformation = $UserControl->viewUserInfo();
-                    for($i = 0; $i < count($userinformation); $i++) {
+                    //for($i = 0; $i < count($userdetails); $i++) { Display all records
+						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
                         echo "<td>" . $userinformation[$i]['UserId'] . "</td>";
                         echo "<td>" . $userinformation[$i]['FirstName'] . "</td>";

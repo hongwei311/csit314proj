@@ -26,7 +26,7 @@ include_once("PrescriptionController.php");
 <body>
 
 <br>
-<h1 class="text-center">View Patient Record</h1>
+<h1 class="text-center">View Patient Record (First 20 Records)</h1>
 <br>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
@@ -49,7 +49,8 @@ include_once("PrescriptionController.php");
                    $prescriptionDetails = $PrescriptionControl->viewPrescriptionRecord("Collected");
                    if($prescriptionDetails==true)
                    {
-                              for($i = 0; $i < count($prescriptionDetails); $i++) {
+                              //for($i = 0; $i < count($prescriptionDetails); $i++) {
+                                for($i = 0; $i < 20; $i++) {
                                   echo "<tr>";
                                   echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
                                   echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";

@@ -38,7 +38,7 @@ include_once("PrescriptionController.php");
 <p>
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Combined'>
-<button type="submit" class="btn btn-primary btn-lg" value="Combined">Combined</button>
+<button type="submit" class="btn btn-primary btn-lg" value="Combined">Combined (First 20 Records)</button>
 </form>
 </p>
 
@@ -80,7 +80,8 @@ include_once("PrescriptionController.php");
             $prescriptionDetails = $PrescriptionControl->viewPrescriptionStatus();
             if($prescriptionDetails==true)
             {
-              for($i = 0; $i < count($prescriptionDetails); $i++) {
+              //for($i = 0; $i < count($prescriptionDetails); $i++) {
+                for($i = 0; $i < 20; $i++) {
                     echo "<tr>";
                     echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
                     echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";

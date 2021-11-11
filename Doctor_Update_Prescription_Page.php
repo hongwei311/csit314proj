@@ -117,7 +117,7 @@ session_start();
       $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
       $prescriptionSearched = $PrescriptionControl->doctorSearchPrescription($_SESSION['prescriptionID']);
 
-      echo '<p>Successfully updated!!</p>';
+      echo '<script>alert("Prescription updated succesfully!")</script>';
       ?>
         <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
           <thead>

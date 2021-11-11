@@ -106,9 +106,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         }
         }
         elseif($phonenumber_err != "" || $emailaddress_err != ""){
-            echo "<p>User Info not updated</p>";
-            echo "<p>$phonenumber_err</p>";
-            echo "<p>$emailaddress_err</p>";
+            echo '<script>alert("Unable to update user info. '. $phonenumber_err . $emailaddress_err . ' ")</script>';
         }
 
         if($_POST['action']==='Back') {

@@ -25,8 +25,7 @@ h1 {
 </style>
 </head>
 <body>
-	<br>
-<h1 class="header text-center">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
+	
 <br>
 <h1 class="text-center">View User</h1>
 <br>
@@ -45,7 +44,8 @@ h1 {
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$userdetails = $UserControl->viewUser();
-                    for($i = 0; $i < count($userdetails); $i++) {
+                    //for($i = 0; $i < count($userdetails); $i++) { Display all records
+						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
                         echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
                         echo "<td>" . $userdetails[$i]['UserName'] . "</td>";

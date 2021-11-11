@@ -25,7 +25,7 @@ session_start();
 
 <p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
 
-<p><a href="GeneratePrescription.php"><button class="btn btn-primary btn-lg">Generate Prescription</button></p></a>
+<p hidden><a href="GeneratePrescription.php"><button class="btn btn-primary btn-lg">Generate Prescription</button></p></a>
 
 <p><a href="Doctor_Generate_Token_Page.php"><button class="btn btn-primary btn-lg">Generate Token</button></a></p>
 

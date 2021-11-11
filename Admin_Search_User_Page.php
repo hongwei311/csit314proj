@@ -95,11 +95,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         }
         elseif($userdetails == false)
         {
-            $printresult = "User not found";
-            echo "
-            <div class='container'>
-            <p>$printresult</p>
-            </div>";
+          echo '<script>alert("User Info Not Found")</script>';
         }
 
 }

@@ -62,7 +62,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
     if($validation==true)
     {
-      echo "Token generated successfully";
+      echo '<script>alert("Token Generated succesfully!")</script>';
 ?>
       <form id="DoctorGenerateTokenPage" method="POST" action="Doctor_Generate_Token_Page.php">
         <input type="hidden" name = "action" value = "SendToken">
@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
       
     elseif($validation==false)
     {
-      echo "Token not generated";
+      echo '<script>alert("Token Not Generated!")</script>';
     }
 
   }
@@ -84,11 +84,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
     if($validation2===true)
     {
-      echo "Token sent successfully";
+      echo '<script>alert("Token Sent succesfully!")</script>';
     }
     else
     {
-      echo "Token not sent.";
+      echo '<script>alert("Token Not Sent!")</script>';
     }
   }
 }

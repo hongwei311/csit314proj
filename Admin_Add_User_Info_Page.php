@@ -64,26 +64,26 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   <div class="form-group">
   <!-- create form wih post method to the same page -->
   <label>User Id: </label>
-  <input type="text"class="form-control id="UserId" name="UserId" required><br><br>
+  <input type="text"class="form-control" id="UserId" name="UserId" required><br><br>
   <!-- create input text for Username for user to input username text -->
   <label>First Name: </label>
-  <input type="text"class="form-control id="FirstName" name="FirstName" required><br><br>
+  <input type="text"class="form-control" id="FirstName" name="FirstName" required><br><br>
   <!-- create password text for Username for user to input username text -->
   <label>Last Name: </label>
-  <input type="text"class="form-control id="LastName" name="LastName" required><br><br>
+  <input type="text"class="form-control" id="LastName" name="LastName" required><br><br>
   <label>Birth Date: </label>
-  <input type="date" class="form-control id="BirthDate" name="BirthDate" required><br><br>
+  <input type="date" class="form-control" id="BirthDate" name="BirthDate" required><br><br>
   <label>Gender Code: </label>
   <select class="form-control form-select-sm" name = "GenderCode" id="GenderCode">
             <option value = "M" >M</option>
             <option value = "F" >F</option>
   </select><br><br>
   <label>Phone Number: </label>
-  <input type="tel" class="form-control id="PhoneNumber" name="PhoneNumber" required>
+  <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" required>
   <label class="error"><?php echo $phonenumber_err; ?></label>
   <br><br>
   <label>Email Address: </label>
-  <input type="email" class="form-control id="EmailAddress" name="EmailAddress" required>
+  <input type="email" class="form-control" id="EmailAddress" name="EmailAddress" required>
   <label class="error"><?php echo $emailaddress_err; ?></label>
   <br><br>
   <label><?php echo $printReturn; ?></label>

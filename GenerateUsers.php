@@ -44,11 +44,11 @@ for ($i=1; $i<=100; $i++){
   }
   if($validation==true)
   {
-      echo "<p>User account added successfully</p>";
+    echo '<script>alert("User Accounts Generated Successfully")</script>';
   }
   else
   {
-      echo "<p>User account not added</p>";
+    echo '<script>alert("User Accounts Could Not be Generated")</script>';
   }
 }
 ?>

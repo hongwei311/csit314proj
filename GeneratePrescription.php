@@ -38,9 +38,9 @@ for ($i=1; $i<=10; $i++){
     $validation = $PrescriptionControl->addPrescription($_POST['patientId'], $_POST['prescriptionDetails'], 'Not Collected', $_SESSION['UserProfileID']);
 }
 if ($validation == true) {
-    echo "<p>Prescription added successfully</p>";
+    echo '<script>alert("Prescriptions Generated Successfully")</script>';
   } else {
-    echo "<p>Prescripton not added</p>";
+    echo '<script>alert("Prescriptions Could Not be Generated")</script>';
   }
 }
 ?>

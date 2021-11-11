@@ -14,6 +14,7 @@ session_start();
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    
     <style>
       h1{
         margin: 0 0 0 50px;
@@ -25,7 +26,6 @@ session_start();
       font-size:30px;
       text-align:center;
     }
-    
     </style>
 
 </head>
@@ -107,11 +107,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         }
         elseif($userinformation==false)
         {
-            $printresult = "User not found";
-            echo"<div class='container'>
-            <p>$printresult</p>
-            </div>
-            ";
+            echo '<script>alert("User Info Not Found")</script>';
         }
 
     }
@@ -120,19 +116,17 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     {
             if (!preg_match($phoneregex, $_POST["PhoneNumber"])) 
             {
-                $phonenumber_err="Please enter a valid phone number."; 
+                $phonenumber_err="Please enter a valid phone number. "; 
             }
                 
             if (!preg_match($emailregex, $_POST["EmailAddress"])) 
             {
-                $emailaddress_err="Please enter a valid email address.";
+                $emailaddress_err="Please enter a valid email address. ";
             }
         
             if($phonenumber_err != "" || $emailaddress_err != "")
             {
-                echo '<p>User Info Not updated</p>';
-                echo "<p>$phonenumber_err</p>";
-                echo "<p>$emailaddress_err</p>";
+                echo '<script>alert("Unable to update user info. '. $phonenumber_err . $emailaddress_err . ' ")</script>';
             }
 
             if($phonenumber_err == "" && $emailaddress_err == "")
@@ -143,11 +137,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
                 if($validation==true)
                 {
-                    echo "<p>User Info updated successfully</p>";
+                    echo '<script>alert("User Info Updated Sucessfully")</script>';
                 }
                 else
                 {
-                    echo "<p>User Info not updated</p>";
+                    echo '<script>alert("User Info Not Updated")</script>';
                 }
             }
     } 
