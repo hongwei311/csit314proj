@@ -50,7 +50,7 @@ class User{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            $_SESSION['errmsg'] = "<p>* Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
+            $_SESSION['errmsg'] = "Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
 			$validation = array("","","","");
             return $validation;
 		}
@@ -76,7 +76,7 @@ class User{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            $_SESSION['errmsg'] = "Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else
@@ -94,10 +94,16 @@ class User{
             $getrow=$run->fetch_assoc();
             $UserId = $getrow['UserId'];
             
-            //access userinfo table
+            //access userprofile table
             $insertUserProfile = "INSERT INTO $UserProfile (UserId)" .
             " VALUES ('$UserId')";
             $execute = @mysqli_query($conn,$insertUserProfile);
+
+            //access userinfo table
+            $Table = "userinfo";
+            $insertUserInfo = "INSERT INTO $Table (UserId)" .
+            " VALUES ('$UserId')";
+            $executeUserInfo = @mysqli_query($conn,$insertUserInfo);
             return $validation = true;
         } 
      }

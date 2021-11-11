@@ -30,6 +30,13 @@ class UserInfoController
 		$userinformation = $UserInfo->view();
 		return $userinformation;
 	}
+
+    function generateUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode)
+	{
+		$UserInfo = new UserInfo();
+		$userinformation = $UserInfo->generate($UserId, $FirstName, $LastName, $BirthDate, $GenderCode);
+		return $userinformation;
+	}
 }
 
 ?>

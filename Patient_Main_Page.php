@@ -1,59 +1,36 @@
-<?php?>
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Main Page</title>
-<style>
-.button {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.navigate {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.navigate:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
-
-</style>
+  <title>Patient Main Page</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
 <body>
 
-<h1>Welcome Patient XXX</h1>
+
+<div class="span2 text-center">
+  <h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
 
 <!-- <p><a href="Patient_Current_Prescription.php"><button class="button navigate">Current Prescription</button></p></a></p> -->
+<p>
 <form id="PatientCurrentPrescription" method="POST" action="Patient_Current_Prescription.php">
-<input type="submit" value="Current Prescription" class="button navigate"></form>  
-<p><a href="Patient_Past_Prescription.php"><button class="button navigate">Past Prescription</button></a></p>
+<input type="submit" value="Current Prescription" class="btn btn-primary btn-lg">
+</form>  
+</p>
 
-<p><a href="Patient_Search_Prescription.php"><button class="button navigate">Search Prescription</button></a></p>
+<p><a href="Patient_Past_Prescription.php"><button class="btn btn-primary btn-lg">Past Prescription</button></a></p>
 
-<p><a href="Logout.php"><button class="button Logout" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+<p><a href="Patient_Search_Prescription.php"><button class="btn btn-primary btn-lg">Search Prescription</button></a></p>
 
+<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
+
+<p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
+</div>
 </body>
 </html>

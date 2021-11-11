@@ -154,6 +154,27 @@ class UserInfo{
             return $userinformation;
         }
 	}
+
+    function generate($UserId, $FirstName, $LastName, $BirthDate, $GenderCode)
+    {       
+        $TableName = "userinfo";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        
+        $sql = "UPDATE $TableName 
+        SET FirstName = '$FirstName', LastName = '$LastName', BirthDate = '$BirthDate', GenderCode='$GenderCode'
+        WHERE UserId = $UserId";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $userinformation = false;
+        }
+        else
+        {
+            return $userinformation = true;
+        }
+    }  
+
 }
 
 

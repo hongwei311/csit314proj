@@ -1,86 +1,138 @@
-<?php?>
+<?php
+session_start();
+include_once("PrescriptionController.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Pharmacist View Prescription Page</title>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-.button-align {
-width: 200px;
-margin: 0 auto;
-display: inline;}
-
-.button {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  
-}
-
-.navigate {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.navigate:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
-
-</style>
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 </head>
 <body>
 
 <h1>View Prescription Status</h1>
 
-<p><a href="Pharmacist_Main_Page.php"><button class="button navigate">Main Page</button></p></a></p>
+<label>Select Prescription Status</label>
 
-
-<label>Select Prescription Type</label>&ensp;
-<form  method="POST">
-<button type="submit" name="new" value="Not Collected">Not Collected</button>
-<button type="submit" name="past" value="Collected">Collected</button>
+<p>
+<form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
+<input type='hidden' name = 'action' value = 'Combined'>
+<button type="submit" class="btn btn-primary btn-lg" value="Combined">Combined</button>
 </form>
+</p>
+
+<p>
+<form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
+<input type='hidden' name = 'action' value = 'Not Collected'>
+<button type="submit" class="btn btn-primary btn-lg" value="Not Collected">Not Collected</button>
+</form>
+</p>
+
+<p>
+<form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
+<input type='hidden' name = 'action' value = 'Collected'>
+<button type="submit" class="btn btn-primary btn-lg" value="Collected">Collected</button>
+</form>
+</p>
+
 <br><br>
 
-<table style="width: 70%;"> <!-- Auto input data from the dates -->
-        <tr>
-            <th>Prescription</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        <tr>
-            <td>PHP code to auto input</td>
-            <td>PHP code to auto input</td>
-        </tr>
-        
+<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
+		<thead>
+			<tr>
+				<th>Prescription Id</th>
+				<th>Prescription Details</th>
+				<th>Prescription Status</th>
+        <th>Doctor Id</th>
+        <th>Patient Id</th>
+        <th>Pharmacist Id</th>
+        <th>Created Date Time</th>
+        <th>Dispensed Date Time</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php
+    if($_SERVER['REQUEST_METHOD']=='POST'){
 
-    </table>
+      if($_POST['action']==='Combined'){
+            $PrescriptionControl = new PrescriptionControl();
+            $prescriptionDetails = $PrescriptionControl->viewPrescriptionStatus();
+            if($prescriptionDetails==true)
+            {
+              for($i = 0; $i < count($prescriptionDetails); $i++) {
+                    echo "<tr>";
+                    echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
+                    echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+                    echo "</tr>";
+              }
+            }
+            else
+            {
+                echo '<script>alert("Records not found!")</script>';
+            }
+        }
 
+        if($_POST['action']==='Not Collected'){
+          $PrescriptionControl = new PrescriptionControl();
+          $prescriptionDetails = $PrescriptionControl->viewPrescriptionRecord("Not Collected");
+          if($prescriptionDetails==true)
+          {
+            for($i = 0; $i < count($prescriptionDetails); $i++) {
+                  echo "<tr>";
+                  echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
+                  echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+                  echo "</tr>";
+            }
+          }
+          else
+          {
+              echo '<script>alert("Records not found!")</script>';
+          }
+      }
+
+      if($_POST['action']==='Collected'){
+        $PrescriptionControl = new PrescriptionControl();
+        $prescriptionDetails = $PrescriptionControl->viewPrescriptionRecord("Collected");
+        if($prescriptionDetails==true)
+        {
+          for($i = 0; $i < count($prescriptionDetails); $i++) {
+                echo "<tr>";
+                echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
+                echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+                echo "</tr>";
+          }
+        }
+        else
+        {
+            echo '<script>alert("Records not found!")</script>';
+        }
+      }
+
+  }
+        ?>
+		</tbody>
+</table>
+<a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 </body>
 </html>

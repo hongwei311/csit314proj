@@ -7,65 +7,51 @@ session_start();
 <html>
 <head>
 <title>Generate Token</title>
-<style>
-table, th, td {
-  border:1px solid black;
-}
 
-.button {
-  border: none;
-  color: black;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.navigate {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.navigate:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-.Logout {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #FF0000;
-}
-
-.Logout:hover {
-  background-color: #008CBA;
-  color: white;
-}
+  <link rel="stylesheet" href="stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style>
+      h1{
+        margin: 0 0 0 50px;
+      }
+    .container{
+      width:50%;
+    }
+    p{
+      font-size:30px;
+      text-align:center;
+    }
+    .table{
+    width: 80%;
+    margin: 0 0 0 50px;
+    text-align:left;"
+    cellspacing="0"
+  }
 </style>
 </head>
 <body>
- 
-<h1>Welcome, <?php echo $_SESSION['username']?>  </h1>
-<p><a href="Doctor_Main_Page.php"><button class="button">Main Page</button></p></a></p>
-<h1>Generate Token</h1>
-<form method="POST" action="Doctor_Generate_Token_Page.php">
+ <br>
+ <h1 class="text-center">Generate Token</h1>
+<br>
+<div class="container">
+<form method="POST">
+  <div class="form-group">
   <label>Prescription ID</label>
-  <input type="text" id="Prescription ID" name="prescriptionId"><br><br>
-  <input type="hidden" name = "action" value = "GenerateToken">
-  <input type="submit" value="Generate" name="Generate">
+  <input type="text"class="form-control" id="Prescription ID" name="prescriptionId"><br><br>
+  <input type="submit" class="btn btn-primary btn-lg" value="Generate" name="Generate">
+</div>
+
 </form>
+</div>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {
   if($_POST['action']==="GenerateToken")
   {
+
     $TokenControl = new TokenControl();
     $validation = $TokenControl->generateToken($_POST['prescriptionId']);
     
@@ -89,9 +75,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     {
       echo "Token not generated";
     }
+
   }
   if($_POST['action']==="SendToken")
   {
+
     $TokenControl = new TokenControl();
     $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
     if($validation2===true)
@@ -106,6 +94,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 
 ?>
+<br>
+        <a href="Doctor_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
 </body>
 </html>
