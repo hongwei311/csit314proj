@@ -27,9 +27,11 @@ session_start();
     $PrescriptionControl = new PrescriptionControl();
     $validation = $PrescriptionControl->addPrescription($_POST['patientId'], $_POST['prescriptionDetails'], 'Not Collected', $_SESSION['UserProfileID']);
     if ($validation == true) {
-      echo "Prescription added successfully";
+      // echo "<p>Prescription added successfully</p>";
+      echo '<script>alert("Prescription added succesfully!")</script>';
     } else {
-      echo "Prescripton not added";
+      // echo "Prescripton not added";
+      echo '<script>alert("Prescription not added!")</script>';
     }
   }
   ?>
