@@ -137,9 +137,11 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 
 ?>
-
 <br>
-<p><a href="Patient_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a></p>
+<form id="UpdatePersonalUserInfo" method="POST" action="Update_Personal_User_Info.php">
+<input type='hidden' name = 'action' value = 'Back'>
+<button type="submit" name="back" class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button>
+</form>
 
 
 </body>
