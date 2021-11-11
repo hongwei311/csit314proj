@@ -71,7 +71,7 @@ session_start();
         <?php
         $prescriptionId = $_POST['prescriptionId'];
         $PrescriptionControl = new PrescriptionControl();
-        $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
+        $prescriptionDetails = $PrescriptionControl->doctorSearchPrescription($_POST['prescriptionId']);
         if($prescriptionDetails==true)
           {
             for($i = 0; $i < count($prescriptionDetails); $i++) {
@@ -115,7 +115,7 @@ session_start();
     if (isset($_POST['update'])) {
       $PrescriptionControl = new PrescriptionControl();
       $prescriptionUpdate = $PrescriptionControl->updatePrescription($_SESSION['prescriptionID'], $_POST['prescriptionDetails']);
-      $prescriptionSearched = $PrescriptionControl->searchPrescription($_SESSION['prescriptionID']);
+      $prescriptionSearched = $PrescriptionControl->doctorSearchPrescription($_SESSION['prescriptionID']);
 
       echo '<p>Successfully updated!!</p>';
       ?>

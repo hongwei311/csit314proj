@@ -114,6 +114,42 @@ class Prescription{
 
     }
 
+    function doctorSearchPrescription($PrescriptionId)
+    {
+        $TableName = "prescription";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $TableName" . " where PrescriptionId ='" . $PrescriptionId . "'
+        ";
+        
+
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $prescriptionDetails = array("","","","");
+        }
+        else
+        {
+            //create array
+            $prescriptionDetails=array();
+            //loop the array
+            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
+            {
+                //check if array is empty
+                if(empty($prescriptionDetails))
+                {
+                    //add in the first array row
+                    array_push($prescriptionDetails,$Row);
+                }
+                //if array is not empty push new row into last position
+                else array_push($prescriptionDetails,$Row);
+            }
+            
+            return $prescriptionDetails;
+        }
+
+    }
+
     function update($PrescriptionId, $PrescriptionDetails)
     {
         $TableName = "prescription";

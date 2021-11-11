@@ -42,7 +42,7 @@ session_start();
   <form method="POST">
   <div class="form-group">
     <label>Prescription ID</label>
-    <input type="text" class="form-control id="Prescription ID" name="prescriptionId" required><br><br>
+    <input type="text" class="form-control" id="Prescription ID" name="prescriptionId" required><br><br>
     <input type="submit" class="btn btn-primary btn-lg" value="Search" name="search">
   </div>
   </form>
@@ -67,7 +67,7 @@ session_start();
       <tbody>
       <?php
       $PrescriptionControl = new PrescriptionControl();
-      $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
+      $prescriptionDetails = $PrescriptionControl->doctorSearchPrescription($_POST['prescriptionId']);
       // Attempt select query execution
       if($prescriptionDetails==true)
           {
