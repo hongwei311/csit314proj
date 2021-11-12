@@ -44,19 +44,20 @@ echo $UCUserProfile;
     if($_SESSION['UserProfile'] === 'doctor'){
         
         $UserControl = new UserProfileController();
-        $userinformation = $UserControl->searchUserProfile($UserProfile, $UserId);
-        $DoctorId = $userinformation["0"];
-        $UserId = $userinformation["1"];
-        $HealthFacility = $userinformation["2"];
-        $Profession = $userinformation["3"];
-        $DoctorYearsOfExperience = $userinformation["4"];
+        $validation = $UserControl->searchUserProfile($UserProfile, $UserId);
+        
         $printresult = "";
 
-        if($userinformation==true)
+        if($validation==true)
         {
+            $DoctorId = $_SESSION['validation']["0"];
+            $UserId = $_SESSION['validation']["1"];
+            $HealthFacility = $_SESSION['validation']["2"];
+            $Profession = $_SESSION['validation']["3"];
+            $DoctorYearsOfExperience = $_SESSION['validation']["4"];
             $printresult = "Found";
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Profile Information Not Found!")</script>';
         }
@@ -64,18 +65,19 @@ echo $UCUserProfile;
 
     if($_SESSION['UserProfile']==='patient'){
         $UserControl = new UserProfileController();
-        $userinformation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
-        $PatientId = $userinformation["0"];
-        $UserId = $userinformation["1"];
-        $DrugAllergy = $userinformation["2"];
-        $PrescriptionNotification = $userinformation["3"];
+        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        
         $printresult = "";
 
-        if($userinformation==true)
+        if($validation==true)
         {
+            $PatientId = $_SESSION['validation']["0"];
+            $UserId = $_SESSION['validation']["1"];
+            $DrugAllergy = $_SESSION['validation']["2"];
+            $PrescriptionNotification = $_SESSION['validation']["3"];
             $printresult = "";
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Profile Information Not Found!")</script>';
         }
@@ -83,19 +85,20 @@ echo $UCUserProfile;
 
     if($_SESSION['UserProfile']==='pharmacist'){
         $UserControl = new UserProfileController();
-        $userinformation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
-        $PharmacistId = $userinformation["0"];
-        $UserId = $userinformation["1"];
-        $PharmacyName = $userinformation["2"];
-        $PharmacyLocation = $userinformation["3"];
-        $PharmacistYearsOfExperience = $userinformation["4"];
+        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        
         $printresult = "";
 
-        if($userinformation==true)
+        if($validation==true)
         {
+            $PharmacistId = $_SESSION['validation']["0"];
+            $UserId = $_SESSION['validation']["1"];
+            $PharmacyName = $_SESSION['validation']["2"];
+            $PharmacyLocation = $_SESSION['validation']["3"];
+            $PharmacistYearsOfExperience = $_SESSION['validation']["4"];
             $printresult = "";
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Profile Information Not Found!")</script>';
         }

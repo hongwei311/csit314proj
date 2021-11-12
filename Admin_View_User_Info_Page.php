@@ -46,17 +46,17 @@ h1 {
                     // Attempt select query execution
 					$UserControl = new UserInfoController();
 					//send validation to login controller class
-					$userinformation = $UserControl->viewUserInfo();
+					$validation = $UserControl->viewUserInfo();
                     //for($i = 0; $i < count($userdetails); $i++) { Display all records
 						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
-                        echo "<td>" . $userinformation[$i]['UserId'] . "</td>";
-                        echo "<td>" . $userinformation[$i]['FirstName'] . "</td>";
-                        echo "<td>" . $userinformation[$i]['LastName'] . "</td>";
-                        echo "<td>" . $userinformation[$i]['BirthDate'] . "</td>";
-                        echo "<td>" . $userinformation[$i]['GenderCode'] . "</td>";
-                        echo "<td>" . $userinformation[$i]['PhoneNumber'] . "</td>";
-                        echo "<td>" . $userinformation[$i]['EmailAddress'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['LastName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
                         echo "</tr>";
                       }
                     

@@ -51,19 +51,20 @@ class User{
         if($qRes === FALSE)
         {
             //$_SESSION['errmsg'] = "Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
-			$validation = false;
-            return $validation;
+            return $validation = false;
 		}
         else
         {
-            unset($_SESSION['validation']);
+            // unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $_SESSION['validation'] = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
-            $Password_Hash = $Row["Password"];
-            if(password_verify($Password,$Password_Hash)){
+            if(isset($Row))
+            {
+                $_SESSION['validation'] = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
+                $Password_Hash = $Row["Password"];
+                if(password_verify($Password,$Password_Hash)){
                 return true;
-            }
-            
+                }
+            }else return $validation = false;
         }
     }
 
@@ -126,11 +127,15 @@ class User{
         {
             unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $_SESSION['validation'] = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
-            if($Row["UserId"]!=""){
-                return $validation = true;
+            if(isset($Row))
+            {
+                $_SESSION['validation'] = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
+                if($Row["UserId"]!=""){
+                    return $validation = true;
+                }
             }
-            else{
+            else
+            {
                 return $validation = false;
             }
         }
@@ -175,6 +180,7 @@ class User{
             //create array
             $_SESSION['validation']=array();
             //loop the array
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
@@ -187,7 +193,8 @@ class User{
                 else array_push($_SESSION['validation'],$Row);
             }
             
-            return $validation=true;
+            return $validation=true;}
+            else return $validation = false;
         }
 	}
 
@@ -208,10 +215,11 @@ class User{
             //create array
             $_SESSION['validation']=array();
             //loop the array
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($_SESSION['validation'])
+                if(empty($_SESSION['validation']))
                 {
                     //add in the first array row
                     array_push($_SESSION['validation'],$Row);
@@ -220,7 +228,8 @@ class User{
                 else array_push($_SESSION['validation'],$Row);
             }
             
-            return $validation=true;
+            return $validation=true;}
+            else return $validation = false;
         }
     }
 	
@@ -240,16 +249,18 @@ class User{
 			{  
                 unset($_SESSION['validation']); 
                 $_SESSION['validation']=array();
+                if(isset($Row)){
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
-                    if(empty($_SESSION['validation'])
+                    if(empty($_SESSION['validation']))
                     {
                         array_push($_SESSION['validation'],$Row);
                     }
                     else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $validation=true;
+            return $validation=true;}
+            else return $validation = false;
 				
 			}
 			
@@ -271,6 +282,7 @@ class User{
 			{   
                 unset($_SESSION['validation']);
                 $_SESSION['validation']=array();
+                if(isset($Row)){
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
                     if(empty($_SESSION['validation']))
@@ -280,7 +292,8 @@ class User{
                     else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $validation=true;
+            return $validation=true;}
+            else return $validation = false;
 				
 			}
 			
@@ -302,6 +315,7 @@ class User{
 			{   
                 unset($_SESSION['validation']);
                 $_SESSION['validation']=array();
+                if(isset($Row)){
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
                     if(empty($_SESSION['validation']))
@@ -311,7 +325,8 @@ class User{
                     else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $validation=true;
+            return $validation=true;}
+            else return $validation = false;
 				
 			}
 			
@@ -333,6 +348,7 @@ class User{
 			{   
                 unset($_SESSION['validation']);
                 $_SESSION['validation']=array();
+                if(isset($Row)){
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
                     if(empty($_SESSION['validation']))
@@ -342,7 +358,8 @@ class User{
                     else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $validation=true;
+            return $validation=true;}
+            else return $validation = false;
 				
 			}
 			

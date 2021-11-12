@@ -46,17 +46,17 @@ include_once("PrescriptionController.php");
                     // Attempt select query execution
                     $PrescriptionControl = new PrescriptionControl();
                     $PatientId = $_SESSION['UserProfileID'];
-                    $prescriptionDetails = $PrescriptionControl->viewPrescription($PatientId,"Not Collected");
-                    for($i = 0; $i < count($prescriptionDetails); $i++) {
+                    $validation = $PrescriptionControl->viewPrescription($PatientId,"Not Collected");
+                    for($i = 0; $i < count($_SESSION['validation']); $i++) {
                         echo "<tr>";
-                        echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
-                        echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['PrescriptionDetails'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['PrescriptionStatus'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['CreatedDateTime'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['DispensedDateTime'] . "</td>";
                         echo "</tr>";
                       }
                     

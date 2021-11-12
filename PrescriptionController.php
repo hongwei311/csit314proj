@@ -13,22 +13,22 @@ class PrescriptionControl
     function viewPrescription($PatientId,$PrescriptionStatus)
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->view($PatientId,$PrescriptionStatus);
-        return $prescriptionDetails;
+        $validation = $Prescription->view($PatientId,$PrescriptionStatus);
+        return $validation;
     }
 
     function searchPrescription($PatientId, $PrescriptionId) # Patient
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->search($PatientId, $PrescriptionId);
-        return $prescriptionDetails;
+        $validation = $Prescription->search($PatientId, $PrescriptionId);
+        return $validation;
     }
 
     function doctorSearchPrescription($PrescriptionId) # Doctor
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->doctorSearchPrescription($PrescriptionId);
-        return $prescriptionDetails;
+        $validation = $Prescription->doctorSearchPrescription($PrescriptionId);
+        return $validation;
     }
 
     function updatePrescription($PrescriptionId, $PrescriptionDetails) #Doctor
@@ -41,36 +41,36 @@ class PrescriptionControl
     function viewPrescriptionRecord($PrescriptionStatus) #Pharmacist
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->viewRecord($PrescriptionStatus);
-        return $prescriptionDetails;
+        $validation = $Prescription->viewRecord($PrescriptionStatus);
+        return $validation;
     }
 
     function searchPrescriptionRecord($PatientId, $PrescriptionStatus) #Pharmacist
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->searchRecord($PatientId, $PrescriptionStatus);
-        return $prescriptionDetails;
+        $validation = $Prescription->searchRecord($PatientId, $PrescriptionStatus);
+        return $validation;
     }
 
     function searchPatientPrescription($PrescriptionId, $PrescriptionStatus) #Pharmacist
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->searchPrescriptionRecord($PrescriptionId, $PrescriptionStatus);
-        return $prescriptionDetails;
+        $validation = $Prescription->searchPrescriptionRecord($PrescriptionId, $PrescriptionStatus);
+        return $validation;
     }
 
     function viewPrescriptionStatus() #Doctor & Pharmacist
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->viewPrescriptionStatus();
-        return $prescriptionDetails;
+        $validation = $Prescription->viewPrescriptionStatus();
+        return $validation;
     }
 
     function updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId) #Pharmacist
     {
         $Prescription = new Prescription();
-        $prescriptionDetails = $Prescription->updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId);
-        return $prescriptionDetails;
+        $validation = $Prescription->updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId);
+        return $validation;
     }
 
     

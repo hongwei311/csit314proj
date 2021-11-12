@@ -58,21 +58,21 @@ include_once("PrescriptionController.php");
            if($_SERVER['REQUEST_METHOD']=='POST')
            {        
                    $PrescriptionControl = new PrescriptionControl();
-                   $prescriptionDetails = $PrescriptionControl->searchPrescriptionRecord($_POST['PatientId'],"Collected");
+                   $validation = $PrescriptionControl->searchPrescriptionRecord($_POST['PatientId'],"Collected");
                    $_SESSION['PatientId']=$_POST['PatientId'];
            
-                   if($prescriptionDetails==true)
+                   if($validation==true)
                    {
-                              for($i = 0; $i < count($prescriptionDetails); $i++) {
+                              for($i = 0; $i < count($_SESSION['validation']); $i++) {
                                   echo "<tr>";
-                                  echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
-                                  echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['PrescriptionDetails'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['PrescriptionStatus'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['CreatedDateTime'] . "</td>";
+                                  echo "<td>" . $_SESSION['validation'][$i]['DispensedDateTime'] . "</td>";
                                   echo "</tr>";
                                 }
                        unset($_SESSION['PatientId']);

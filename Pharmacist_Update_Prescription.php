@@ -67,13 +67,14 @@ session_start();
       
 		<?php
 
-    if($_SERVER['REQUEST_METHOD']=='POST'){
+    if($_SERVER['REQUEST_METHOD']=='POST')
+    {
       $PrescriptionId=$_POST['PrescriptionId'];
       $PrescriptionStatus=$_POST['PrescriptionStatus'];
       $PharmacistId=$_SESSION['UserProfileID'];
       $PrescriptionControl = new PrescriptionControl();
-      $prescriptionDetails = $PrescriptionControl->updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId);
-      if($prescriptionDetails==true)
+      $validation = $PrescriptionControl->updatePrescriptionStatus($PrescriptionId, $PrescriptionStatus, $PharmacistId);
+      if($validation==true)
       {
         echo '<script>alert("Prescription Status Updated succesfully")</script>';
       }
@@ -85,19 +86,19 @@ session_start();
     }
 
     $PrescriptionControl = new PrescriptionControl();
-    $prescriptionDetails = $PrescriptionControl->viewPrescriptionStatus();
-    if($prescriptionDetails==true)
+    $validation = $PrescriptionControl->viewPrescriptionStatus();
+    if($validation==true)
     {
-      for($i = 0; $i < count($prescriptionDetails); $i++) {
+      for($i = 0; $i < count($_SESSION['validation']); $i++) {
             echo "<tr>";
-            echo "<td>" . $prescriptionDetails[$i]['PrescriptionId'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['PrescriptionDetails'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['PrescriptionStatus'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['DoctorId'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['PatientId'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['PharmacistId'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['CreatedDateTime'] . "</td>";
-            echo "<td>" . $prescriptionDetails[$i]['DispensedDateTime'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['PrescriptionDetails'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['PrescriptionStatus'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['CreatedDateTime'] . "</td>";
+            echo "<td>" . $_SESSION['validation'][$i]['DispensedDateTime'] . "</td>";
             echo "</tr>";
       }
     }

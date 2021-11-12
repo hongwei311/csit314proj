@@ -13,7 +13,7 @@ class UserControl
     {
         $User = new User();
         $validation = $User->search($UserId);
-        return $validation
+        return $validation;
     }
 
     function updateUser($UserId,$Username, $Password, $UserProfile)
@@ -27,42 +27,42 @@ class UserControl
 	{
 		$User = new User();
 		$validation = $User->view();
-		return $validation
+		return $validation;
 	}
 
 	function retrieveUserProfileID($UserId, $UserProfile)
 	{
 		$User = new User();
 		$validation = $User->retrieveUserProfileID($UserId,$UserProfile);
-		return $validation
+		return $validation;
 	}
 	
     function viewFullAdmin()
 	{
 		$User = new User();
 		$validation = $User->viewFullAdminDetails();
-		return $validation
+		return $validation;
 	}
 
 	function viewFullDoctor()
 	{
 		$User = new User();
 		$validation = $User->viewFullDoctorDetails();
-		return $validation
+		return $validation;
 	}
 
     function viewFullPatient()
 	{
 		$User = new User();
 		$validation = $User->viewFullPatientDetails();
-		return $validation
+		return $validation;
 	}
     
     function viewFullPharmacist()
 	{
 		$User = new User();
 		$validation = $User->viewFullPharmacistDetails();
-		return $validation
+		return $validation;
 	}
 
 }

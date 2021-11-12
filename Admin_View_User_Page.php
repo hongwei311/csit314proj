@@ -43,13 +43,13 @@ h1 {
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewUser();
+					$validation = $UserControl->viewUser();
                     //for($i = 0; $i < count($userdetails); $i++) { Display all records
 						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
-                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
                         echo "</tr>";
                       }
 

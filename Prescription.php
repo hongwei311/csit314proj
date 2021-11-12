@@ -66,21 +66,24 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptiondetails = array("","","","");
+            // echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
-            $prescriptionDetails=array();
+            unset($_SESSION['validation']);
+            $_SESSION['validation']=array();
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
-                if(empty($prescriptionDetails))
+                if(empty($_SESSION['validation']))
                 {
-                    array_push($prescriptionDetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
-                else array_push($prescriptionDetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
-            return $prescriptionDetails;
+            return $validation = true;}
+            else return $validation = false;
         }
     }
 
@@ -96,19 +99,24 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = array("","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $prescriptionDetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["PrescriptionStatus"],$Row["DoctorId"],
-            $Row["PatientId"],$Row["PharmacistId"],$Row["CreatedDateTime"],$Row["DispensedDateTime"]);
-            if($Row["PrescriptionId"]!=""){
-                return $prescriptionDetails;
+            if(isset($Row))
+            {
+                $_SESSION['validation'] = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["PrescriptionStatus"],$Row["DoctorId"],
+                $Row["PatientId"],$Row["PharmacistId"],$Row["CreatedDateTime"],$Row["DispensedDateTime"]);
+                if($Row["PrescriptionId"]!=""){
+                    return $validation = true;
+                }
             }
-            else{
-                return $prescriptionDetails = false;
+            else
+            {
+                return $validation = false;
             }
         }
 
@@ -125,27 +133,30 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = array("","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             //create array
-            $prescriptionDetails=array();
+            $_SESSION['validation']=array();
             //loop the array
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($prescriptionDetails))
+                if(empty($_SESSION['validation']))
                 {
                     //add in the first array row
-                    array_push($prescriptionDetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
                 //if array is not empty push new row into last position
-                else array_push($prescriptionDetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
             
-            return $prescriptionDetails;
+            return $validation = true;}
+            else return $validation = false;
         }
 
     }
@@ -160,13 +171,13 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionUpdate = false;
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
             // printf("Affected rows (UPDATE): %d\n", $conn->affected_rows);
-            return $prescriptionUpdate = true;
+            return $validation = true;
         }
     }
 
@@ -182,27 +193,29 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = array("","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
             //create array
-            $prescriptionDetails=array();
+            $_SESSION['validation']=array();
             //loop the array
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($prescriptionDetails))
+                if(empty($_SESSION['validation']))
                 {
                     //add in the first array row
-                    array_push($prescriptionDetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
                 //if array is not empty push new row into last position
-                else array_push($prescriptionDetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
             
-            return $prescriptionDetails;
+            return $validation = true;}
+            else return $validation = false;
         }
     }
 
@@ -214,27 +227,30 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = array("","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             //create array
-            $prescriptionDetails=array();
+            $_SESSION['validation']=array();
             //loop the array
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($prescriptionDetails))
+                if(empty($_SESSION['validation']))
                 {
                     //add in the first array row
-                    array_push($prescriptionDetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
                 //if array is not empty push new row into last position
-                else array_push($prescriptionDetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
             
-            return $prescriptionDetails;
+            return $validation = true;}
+            else return $validation = false;
         }
 	}
 
@@ -247,27 +263,30 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = array("","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             //create array
-            $prescriptionDetails=array();
+            $_SESSION['validation']=array();
             //loop the array
+            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($prescriptionDetails))
+                if(empty($_SESSION['validation']))
                 {
                     //add in the first array row
-                    array_push($prescriptionDetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
                 //if array is not empty push new row into last position
-                else array_push($prescriptionDetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
             
-            return $prescriptionDetails;
+            return $validation = true;}
+            else return $validation = false;
         }
 
     }
@@ -284,19 +303,21 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = array("","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $prescriptionDetails = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["PrescriptionStatus"],$Row["DoctorId"],
+            if(isset($Row)){
+            $_SESSION['validation'] = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["PrescriptionStatus"],$Row["DoctorId"],
             $Row["PatientId"],$Row["PharmacistId"],$Row["CreatedDateTime"],$Row["DispensedDateTime"]);
             if($Row["PrescriptionId"]!=""){
-                return $prescriptionDetails;
-            }
+                return $validation = true;
+            }}
             else{
-                return $prescriptionDetails = false;
+                return $validation = false;
             }
         }
     }
@@ -311,12 +332,12 @@ class Prescription{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $prescriptionDetails = false;
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
-            return $prescriptionDetails = true;
+            return $validation = true;
         }
     }
 

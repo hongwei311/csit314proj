@@ -57,19 +57,20 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     if($_POST['action']==='SearchUserInfo')
     {
         $UserControl = new UserInfoController();
-        $userinformation = $UserControl->searchUserInfo($_POST['UserId']);
+        $validation = $UserControl->searchUserInfo($_POST['UserId']);
         $_SESSION['UserId']=$_POST['UserId'];
-        $UserId = $userinformation["0"];
-        $FirstName = $userinformation["1"];
-        $LastName = $userinformation["2"];
-        $BirthDate = $userinformation["3"];
-        $GenderCode = $userinformation["4"];
-        $PhoneNumber = $userinformation["5"];
-        $EmailAddress = $userinformation["6"];
+        
         $printresult = "";
 
-        if($userinformation==true)
+        if($validation==true)
         {
+            $UserId = $_SESSION['validation']["0"];
+            $FirstName = $_SESSION['validation']["1"];
+            $LastName = $_SESSION['validation']["2"];
+            $BirthDate = $_SESSION['validation']["3"];
+            $GenderCode = $_SESSION['validation']["4"];
+            $PhoneNumber = $_SESSION['validation']["5"];
+            $EmailAddress = $_SESSION['validation']["6"];
             $printresult = "";
             echo "
             <div class='container'>
@@ -105,7 +106,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                 </form>
             </div>";
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Info Not Found")</script>';
         }

@@ -13,8 +13,8 @@ class UserInfoController
     function searchUserInfo($UserId)
     {
         $UserInfo = new UserInfo();
-        $userinformation = $UserInfo->search($UserId);
-        return $userinformation;
+        $validation = $UserInfo->search($UserId);
+        return $validation;
     }
 
     function updateUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
@@ -27,15 +27,15 @@ class UserInfoController
 	function viewUserInfo()
 	{
 		$UserInfo = new UserInfo();
-		$userinformation = $UserInfo->view();
-		return $userinformation;
+		$validation = $UserInfo->view();
+		return $validation;
 	}
 
     function generateUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode)
 	{
 		$UserInfo = new UserInfo();
-		$userinformation = $UserInfo->generate($UserId, $FirstName, $LastName, $BirthDate, $GenderCode);
-		return $userinformation;
+		$validation = $UserInfo->generate($UserId, $FirstName, $LastName, $BirthDate, $GenderCode);
+		return $validation;
 	}
 }
 
