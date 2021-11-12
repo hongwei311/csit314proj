@@ -77,7 +77,7 @@ include_once("PrescriptionController.php");
                                 }
                        unset($_SESSION['PatientId']);
                    }
-                   else
+                   elseif($validation==false)
                    {
                        echo '<script>alert("Patient ID not found!")</script>';
                    }

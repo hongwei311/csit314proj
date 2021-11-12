@@ -60,16 +60,7 @@ include_once("PrescriptionController.php");
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
-			<tr>
-				<th>Prescription Id</th>
-				<th>Prescription Details</th>
-				<th>Prescription Status</th>
-        <th>Doctor Id</th>
-        <th>Patient Id</th>
-        <th>Pharmacist Id</th>
-        <th>Created Date Time</th>
-        <th>Dispensed Date Time</th>
-			</tr>
+			
 		</thead>
 		<tbody>
 		<?php
@@ -80,6 +71,16 @@ include_once("PrescriptionController.php");
             $validation = $PrescriptionControl->viewPrescriptionStatus();
             if($validation==true)
             {
+              ?><tr>
+              <th>Prescription Id</th>
+              <th>Prescription Details</th>
+              <th>Prescription Status</th>
+              <th>Doctor Id</th>
+              <th>Patient Id</th>
+              <th>Pharmacist Id</th>
+              <th>Created Date Time</th>
+              <th>Dispensed Date Time</th>
+            </tr><?php
                 for($i = 0; $i < 20; $i++) {
                     echo "<tr>";
                     echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";

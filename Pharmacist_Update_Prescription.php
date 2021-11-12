@@ -80,7 +80,7 @@ session_start();
       }
       else
       {
-        echo '<script>alert("Unable to Update Prescription.'. $_SESSION['errmsg'] . '")</script>';
+        echo '<script>alert("Unable to Update Prescription.")</script>';
         unset($_SESSION['errmsg']);
       }
     }

@@ -38,7 +38,7 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Doctor'){
         $UserControl = new UserProfileController();
-        $validation = $UserControl->searchUserProfile($UserProfile, $UserId);
+        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
         $DoctorId = $_SESSION['validation']["0"];
         $UserId = $_SESSION['validation']["1"];
         $HealthFacility = $_SESSION['validation']["2"];
