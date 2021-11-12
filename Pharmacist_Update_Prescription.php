@@ -50,7 +50,7 @@ session_start();
   </div>
 <br><br>
 
-<table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
+<!-- <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
 			<tr>
 				<th>Prescription Id</th>
@@ -63,7 +63,7 @@ session_start();
         <th>Dispensed Date Time</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody> -->
       
 		<?php
 
@@ -85,7 +85,7 @@ session_start();
       }
     }
 
-    $PrescriptionControl = new PrescriptionControl();
+/*     $PrescriptionControl = new PrescriptionControl();
     $validation = $PrescriptionControl->viewPrescriptionStatus();
     if($validation==true)
     {
@@ -105,7 +105,7 @@ session_start();
     else
     {
         echo '<script>alert("Records not found!")</script>';
-    }
+    } */
 
 
     ?>
