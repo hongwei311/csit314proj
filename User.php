@@ -56,6 +56,7 @@ class User{
 		}
         else
         {
+            unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
             $_SESSION['validation'] = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
             $Password_Hash = $Row["Password"];
@@ -119,17 +120,18 @@ class User{
         if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userdetails = array("","","","");
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $userdetails = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
+            $_SESSION['validation'] = array($Row["UserId"],$Row["UserName"],$Row["Password"],$Row["UserProfile"]);
             if($Row["UserId"]!=""){
-                return $userdetails;
+                return $validation = true;
             }
             else{
-                return $userdetails = false;
+                return $validation = false;
             }
         }
     }
@@ -165,26 +167,27 @@ class User{
         if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userdetails = array("","","","");
+            return $validation = false;
         }
         else
         {
+            unset($_SESSION['validation']);
             //create array
-            $userdetails=array();
+            $_SESSION['validation']=array();
             //loop the array
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($userdetails))
+                if(empty($_SESSION['validation']))
                 {
                     //add in the first array row
-                    array_push($userdetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
                 //if array is not empty push new row into last position
-                else array_push($userdetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
             
-            return $userdetails;
+            return $validation=true;
         }
 	}
 
@@ -197,26 +200,27 @@ class User{
         if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userdetails = array("","","","");
+            return $validation=false;
         }
         else
         {
+            unset($_SESSION['validation']);
             //create array
-            $userdetails=array();
+            $_SESSION['validation']=array();
             //loop the array
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
-                if(empty($userdetails))
+                if(empty($_SESSION['validation'])
                 {
                     //add in the first array row
-                    array_push($userdetails,$Row);
+                    array_push($_SESSION['validation'],$Row);
                 }
                 //if array is not empty push new row into last position
-                else array_push($userdetails,$Row);
+                else array_push($_SESSION['validation'],$Row);
             }
             
-            return $userdetails;
+            return $validation=true;
         }
     }
 	
@@ -230,21 +234,22 @@ class User{
 			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-				return $userdetails = false;
+				return $validation = false;
 			}
 			else
-			{   
-                $userdetails=array();
+			{  
+                unset($_SESSION['validation']); 
+                $_SESSION['validation']=array();
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
-                    if(empty($userdetails))
+                    if(empty($_SESSION['validation'])
                     {
-                        array_push($userdetails,$Row);
+                        array_push($_SESSION['validation'],$Row);
                     }
-                    else array_push($userdetails,$Row);
+                    else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $userdetails;
+            return $validation=true;
 				
 			}
 			
@@ -260,21 +265,22 @@ class User{
 			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-				return $userdetails = false;
+				return $validation = false;
 			}
 			else
 			{   
-                $userdetails=array();
+                unset($_SESSION['validation']);
+                $_SESSION['validation']=array();
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
-                    if(empty($userdetails))
+                    if(empty($_SESSION['validation']))
                     {
-                        array_push($userdetails,$Row);
+                        array_push($_SESSION['validation'],$Row);
                     }
-                    else array_push($userdetails,$Row);
+                    else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $userdetails;
+            return $validation=true;
 				
 			}
 			
@@ -290,21 +296,22 @@ class User{
 			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-				return $userdetails = false;
+				return $validation = false;
 			}
 			else
 			{   
-                $userdetails=array();
+                unset($_SESSION['validation']);
+                $_SESSION['validation']=array();
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
-                    if(empty($userdetails))
+                    if(empty($_SESSION['validation']))
                     {
-                        array_push($userdetails,$Row);
+                        array_push($_SESSION['validation'],$Row);
                     }
-                    else array_push($userdetails,$Row);
+                    else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $userdetails;
+            return $validation=true;
 				
 			}
 			
@@ -320,21 +327,22 @@ class User{
 			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-				return $userdetails = false;
+				return $validation = false;
 			}
 			else
 			{   
-                $userdetails=array();
+                unset($_SESSION['validation']);
+                $_SESSION['validation']=array();
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
-                    if(empty($userdetails))
+                    if(empty($_SESSION['validation']))
                     {
-                        array_push($userdetails,$Row);
+                        array_push($_SESSION['validation'],$Row);
                     }
-                    else array_push($userdetails,$Row);
+                    else array_push($_SESSION['validation'],$Row);
                 }
             
-            return $userdetails;
+            return $validation=true;
 				
 			}
 			

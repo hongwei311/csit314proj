@@ -12,8 +12,8 @@ class UserControl
     function searchUser($UserId)
     {
         $User = new User();
-        $userdetails = $User->search($UserId);
-        return $userdetails;
+        $validation = $User->search($UserId);
+        return $validation
     }
 
     function updateUser($UserId,$Username, $Password, $UserProfile)
@@ -26,43 +26,43 @@ class UserControl
 	function viewUser()
 	{
 		$User = new User();
-		$userdetails = $User->view();
-		return $userdetails;
+		$validation = $User->view();
+		return $validation
 	}
 
 	function retrieveUserProfileID($UserId, $UserProfile)
 	{
 		$User = new User();
-		$userdetails = $User->retrieveUserProfileID($UserId,$UserProfile);
-		return $userdetails;
+		$validation = $User->retrieveUserProfileID($UserId,$UserProfile);
+		return $validation
 	}
 	
     function viewFullAdmin()
 	{
 		$User = new User();
-		$userdetails = $User->viewFullAdminDetails();
-		return $userdetails;
+		$validation = $User->viewFullAdminDetails();
+		return $validation
 	}
 
 	function viewFullDoctor()
 	{
 		$User = new User();
-		$userdetails = $User->viewFullDoctorDetails();
-		return $userdetails;
+		$validation = $User->viewFullDoctorDetails();
+		return $validation
 	}
 
     function viewFullPatient()
 	{
 		$User = new User();
-		$userdetails = $User->viewFullPatientDetails();
-		return $userdetails;
+		$validation = $User->viewFullPatientDetails();
+		return $validation
 	}
     
     function viewFullPharmacist()
 	{
 		$User = new User();
-		$userdetails = $User->viewFullPharmacistDetails();
-		return $userdetails;
+		$validation = $User->viewFullPharmacistDetails();
+		return $validation
 	}
 
 }

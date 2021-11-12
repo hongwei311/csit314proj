@@ -75,17 +75,18 @@ class UserInfo{
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","","","","");
+            return $validation=false;
         }
         else
         {
+            unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $userinformation = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"]);
+            $_SESSION['validation'] = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"]);
             if($Row["UserId"]!=""){
-                return $userinformation;
+                return $validatio= true;
             }
             else{
-                return $userinformation = false;
+                return $validation= false;
             }
         }
     }
