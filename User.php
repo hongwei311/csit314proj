@@ -48,7 +48,7 @@ class User{
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "'  ";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes === FALSE)
+        if($qRes ?? FALSE)
         {
             $_SESSION['errmsg'] = "Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
 			$validation = array("","","","");
@@ -74,7 +74,7 @@ class User{
         $sql = "INSERT INTO $TableName (UserName, Password, UserProfile)" .
         " VALUES ('$Username', '$Password_Hash', '$UserProfile')";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes === FALSE)
+        if($qRes ?? FALSE)
         {
             $_SESSION['errmsg'] = "Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
