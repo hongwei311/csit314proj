@@ -51,8 +51,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   }
   else
   {
-    echo '<script>alert("Unable to add user info.'. $_SESSION['errmsg'] . '")</script>';
-    unset($_SESSION['errmsg']);
+    echo '<script>alert("Unable to add user info.")</script>';
   }
 }
 }

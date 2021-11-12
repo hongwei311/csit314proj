@@ -42,20 +42,21 @@ include_once("PrescriptionController.php");
 if($_SERVER['REQUEST_METHOD']=='POST')
 {        
         $PrescriptionControl = new PrescriptionControl();
-        $prescriptionDetails = $PrescriptionControl->searchPatientPrescription($_POST['PrescriptionId'], "Not Collected");
+        $validation = $PrescriptionControl->searchPatientPrescription($_POST['PrescriptionId'], "Not Collected");
         $_SESSION['PrescriptionId']=$_POST['PrescriptionId'];
-        $PrescriptionId = $prescriptionDetails["0"];
-        $searchedPrescriptionDetails = $prescriptionDetails["1"];
-        $PrescriptionStatus = $prescriptionDetails["2"];
-        $DoctorId = $prescriptionDetails["3"];
-        $PatientId = $prescriptionDetails["4"];
-        $PharmacistId = $prescriptionDetails["5"];
-        $CreatedDateTime = $prescriptionDetails["6"];
-        $DispensedDateTime = $prescriptionDetails["7"];
-        $printresult = "";
+        
 
-        if($prescriptionDetails==true)
+        if($validation==true)
         {
+            $PrescriptionId = $_SESSION['validation']["0"];
+            $searchedPrescriptionDetails = $_SESSION['validation']["1"];
+            $PrescriptionStatus = $_SESSION['validation']["2"];
+            $DoctorId = $_SESSION['validation']["3"];
+            $PatientId = $_SESSION['validation']["4"];
+            $PharmacistId = $_SESSION['validation']["5"];
+            $CreatedDateTime = $_SESSION['validation']["6"];
+            $DispensedDateTime = $_SESSION['validation']["7"];
+            $printresult = "";
             echo "<form>
             <label>Prescription Id : $PrescriptionId</label><br><br> 
             <label>Prescription Details : $searchedPrescriptionDetails</label><br><br>

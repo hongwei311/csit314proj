@@ -49,16 +49,15 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     if($_POST['action']==='SearchUser')
     {
         $UserControl = new UserControl();
-        $userdetails = $UserControl->searchUser($_POST['userid']);
+        $validation = $UserControl->searchUser($_POST['userid']);
         $_SESSION['userid']=$_POST['userid'];
-        $userid = $userdetails["0"];
-        $username = $userdetails["1"];
-        $password = $userdetails["2"];
-        $userprofile = $userdetails["3"];
-        $printresult = "";
 
-        if($userdetails==true)
+        if($validation==true)
         {
+            $userid = $_SESSION['validation']["0"];
+            $username = $_SESSION['validation']["1"];
+            $password = $_SESSION['validation']["2"];
+            $userprofile = $_SESSION['validation']["3"];
             $printresult = "";
             echo"    <div class='container'>
             <form id='AdminUpdateUserPage' method='POST' action='Admin_Update_User_Page.php'>
@@ -83,7 +82,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             </form>
         </div>";
         }
-        elseif($userdetails==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Id Not Found")</script>';
         }
@@ -98,7 +97,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         }
         else
         {
-            echo '<script>alert("User Account Updated")</script>';
+            echo '<script>alert("User Account not Updated")</script>';
         }
     }
     

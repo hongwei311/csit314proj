@@ -12,21 +12,21 @@
         $validation = $LoginControl->onSubmit($_POST['username'],$_POST['password']);
 		//retrieve information from controller
 		
-        if($validation["0"]=="")
+        if($validation==false)
         {
             echo '<script>alert("Wrong Username/Password")</script>';
         }
         else{
-            $userid = $validation["0"];
-            $username = $validation["1"];
-            //$password = $validation["2"];
-            $UserProfile = $validation["3"];
+            $userid = $_SESSION['validation']["0"];
+            $username = $_SESSION['validation']["1"];
+            $UserProfile = $_SESSION['validation']["3"];
+
             //create session variables
             $_SESSION['userid']=$userid;
             $_SESSION['username']=$username;
             //$_SESSION['password']=$password;
             $_SESSION['UserProfile']=$UserProfile;
-
+            
             $UserControl = new UserControl(); //create new user controller class to run retrieveUserProfileID function
             $userdetails = $UserControl->retrieveUserProfileID($userid,$UserProfile); // retrieves UserProfile info using userid and userprofile
             $UserProfileInfo = $userdetails["0"]; // uses first entry of userprofile info

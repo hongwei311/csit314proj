@@ -26,21 +26,19 @@ session_start();
 
     $UserId = $FirstName = $LastName = $BirthDate = $GenderCode = $PhoneNumber = $EmailAddress = "";
         $UserControl = new UserInfoController();
-        $userinformation = $UserControl->searchUserInfo($_SESSION['userid']);
-        $UserId = $userinformation["0"];
-        $FirstName = $userinformation["1"];
-        $LastName = $userinformation["2"];
-        $BirthDate = $userinformation["3"];
-        $GenderCode = $userinformation["4"];
-        $PhoneNumber = $userinformation["5"];
-        $EmailAddress = $userinformation["6"];
-        $printresult = "";
+        $validation = $UserControl->searchUserInfo($_SESSION['userid']);
 
-        if($userinformation==true)
+        if($validation==true)
         {
-            $printresult = "";
+            $UserId = $_SESSION['validation']["0"];
+            $FirstName = $_SESSION['validation']["1"];
+            $LastName = $_SESSION['validation']["2"];
+            $BirthDate = $_SESSION['validation']["3"];
+            $GenderCode = $_SESSION['validation']["4"];
+            $PhoneNumber = $_SESSION['validation']["5"];
+            $EmailAddress = $_SESSION['validation']["6"];
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             $printresult = "User not found";
         }

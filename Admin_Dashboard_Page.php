@@ -60,19 +60,19 @@ h1 {
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullAdmin();
-					for($i = 0; $i < count($userdetails); $i++) {
+					$validation = $UserControl->viewFullAdmin();
+					for($i = 0; $i < count($_SESSION['validation']); $i++) {
                         echo "<tr>";
-                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['AdminId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
-						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
-						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
-						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['AdminId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['Lastname'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
                         echo "</tr>";
                       }
                     ?>
@@ -109,23 +109,23 @@ h1 {
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullDoctor();
-					//for($i = 0; $i < count($userdetails); $i++) { Display all records
+					$validation = $UserControl->viewFullDoctor();
+					//for($i = 0; $i < count($_SESSION['validation']); $i++) { Display all records
 						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
-                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['DoctorId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
-						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
-						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
-						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
-						echo "<td>" . $userdetails[$i]['HealthFacility'] . "</td>";
-						echo "<td>" . $userdetails[$i]['Profession'] . "</td>";
-						echo "<td>" . $userdetails[$i]['YearsOfExperience'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['Lastname'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['HealthFacility'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['Profession'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['YearsOfExperience'] . "</td>";
                         echo "</tr>";
                       }
                     ?>
@@ -160,22 +160,22 @@ h1 {
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullPatient();
-					//for($i = 0; $i < count($userdetails); $i++) { Display all records
+					$validation = $UserControl->viewFullPatient();
+					//for($i = 0; $i < count($_SESSION['validation']); $i++) { Display all records
 						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
-                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PatientId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
-						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
-						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
-						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
-						echo "<td>" . $userdetails[$i]['DrugAllergy'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PrescriptionNotifcation'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['Lastname'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['DrugAllergy'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PrescriptionNotifcation'] . "</td>";
                         echo "</tr>";
                       }
                     ?>
@@ -211,23 +211,23 @@ h1 {
                     // Attempt select query execution
 					$UserControl = new UserControl();
 					//send validation to login controller class
-					$userdetails = $UserControl->viewFullPharmacist();
-					//for($i = 0; $i < count($userdetails); $i++) { Display all records
+					$validation = $UserControl->viewFullPharmacist();
+					//for($i = 0; $i < count($_SESSION['validation']); $i++) { Display all records
 						for($i = 0; $i < 20; $i++) {
                         echo "<tr>";
-                        echo "<td>" . $userdetails[$i]['UserId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PharmacistId'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserName'] . "</td>";
-						echo "<td>" . $userdetails[$i]['UserProfile'] . "</td>";
-						echo "<td>" . $userdetails[$i]['FirstName'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['Lastname'] . "</td>";
-                        echo "<td>" . $userdetails[$i]['BirthDate'] . "</td>";
-						echo "<td>" . $userdetails[$i]['GenderCode'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PhoneNumber'] . "</td>";
-						echo "<td>" . $userdetails[$i]['EmailAddress'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PharmacyName'] . "</td>";
-						echo "<td>" . $userdetails[$i]['PharmacyLocation'] . "</td>";
-						echo "<td>" . $userdetails[$i]['YearsOfExperience'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['Lastname'] . "</td>";
+                        echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PharmacyName'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['PharmacyLocation'] . "</td>";
+						echo "<td>" . $_SESSION['validation'][$i]['YearsOfExperience'] . "</td>";
                         echo "</tr>";
                       }
                     ?>

@@ -38,15 +38,14 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Doctor'){
         $UserControl = new UserProfileController();
-        $userinformation = $UserControl->searchUserProfile($StringUserProfile, $_SESSION['userid']);
-        $DoctorId = $userinformation["0"];
-        $UserId = $userinformation["1"];
-        $HealthFacility = $userinformation["2"];
-        $Profession = $userinformation["3"];
-        $DoctorYearsOfExperience = $userinformation["4"];
-        $printresult = "";
+        $validation = $UserControl->searchUserProfile($UserProfile, $UserId);
+        $DoctorId = $_SESSION['validation']["0"];
+        $UserId = $_SESSION['validation']["1"];
+        $HealthFacility = $_SESSION['validation']["2"];
+        $Profession = $_SESSION['validation']["3"];
+        $DoctorYearsOfExperience = $_SESSION['validation']["4"];
 
-        if($userinformation==true)
+        if($validation==true)
         {
             echo '<div class="container">';
                 echo'<form id="UpdatePersonalUserProfileInfo" method="POST" action="Update_Personal_User_Profile_Info.php">';
@@ -65,8 +64,9 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
                     echo'</div>';
                 echo'</form>';
             echo'</div>';
+            
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Profile Information Not Found!")</script>';
         }
@@ -74,14 +74,13 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Patient'){
         $UserControl = new UserProfileController();
-        $userinformation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
-        $PatientId = $userinformation["0"];
-        $UserId = $userinformation["1"];
-        $DrugAllergy = $userinformation["2"];
-        $PrescriptionNotification = $userinformation["3"];
-        $printresult = "";
+        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        $PatientId = $_SESSION['validation']["0"];
+        $UserId = $_SESSION['validation']["1"];
+        $DrugAllergy = $_SESSION['validation']["2"];
+        $PrescriptionNotification = $_SESSION['validation']["3"];
 
-        if($userinformation==true)
+        if($validation==true)
         {
             echo '<div class="container">';
                 echo'<form id="UpdatePersonalUserProfileInfo" method="POST" action="Update_Personal_User_Profile_Info.php">';
@@ -98,8 +97,9 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
                     echo'</div>';
                 echo'</form>';
             echo'</div>';
+            
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Profile Information Not Found!")</script>';
         }
@@ -107,15 +107,14 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Pharmacist'){
         $UserControl = new UserProfileController();
-        $userinformation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
-        $PharmacistId = $userinformation["0"];
-        $UserId = $userinformation["1"];
-        $PharmacyName = $userinformation["2"];
-        $PharmacyLocation = $userinformation["3"];
-        $PharmacistYearsOfExperience = $userinformation["4"];
-        $printresult = "";
+        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        $PharmacistId = $_SESSION['validation']["0"];
+        $UserId = $_SESSION['validation']["1"];
+        $PharmacyName = $_SESSION['validation']["2"];
+        $PharmacyLocation = $_SESSION['validation']["3"];
+        $PharmacistYearsOfExperience = $_SESSION['validation']["4"]; 
 
-        if($userinformation==true)
+        if($validation==true)
         {
             echo '<div class="container">';
                 echo'<form id="UpdatePersonalUserProfileInfo" method="POST" action="Update_Personal_User_Profile_Info.php">';
@@ -133,9 +132,10 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
                             echo'<button class="btn btn-primary btn-lg" type="submit" value="Update">Update</button>';
                     echo'</div>';
                 echo'</form>';
-            echo'</div>';  
+            echo'</div>';
+            
         }
-        elseif($userinformation==false)
+        elseif($validation==false)
         {
             echo '<script>alert("User Profile Information Not Found!")</script>';
         }

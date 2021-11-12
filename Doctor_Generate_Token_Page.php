@@ -57,15 +57,13 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $validation = $TokenControl->generateToken($_POST['prescriptionId']);
     
     $PrescriptionControl = new PrescriptionControl();
-    $prescriptionDetails = $PrescriptionControl->doctorSearchPrescription($_POST['prescriptionId']);
-    // print_r($prescriptionDetails);
-    $_SESSION['patientid'] = $prescriptionDetails['0']['PatientId'];
+    $validation = $PrescriptionControl->doctorSearchPrescription($_POST['prescriptionId']);
+
     $_SESSION['prescriptionid'] = $_POST['prescriptionId'];
-    // print($_SESSION['patientid']);
     
     if($validation==true)
     {
-        
+        $_SESSION['patientid'] = $_SESSION['validation']['0']['PatientId'];
         $TokenControl = new TokenControl();
         $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
         if($validation2===true)

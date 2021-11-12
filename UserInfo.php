@@ -74,18 +74,22 @@ class UserInfo{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","","","","");
+            ///echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation=false;
         }
         else
         {
+            unset($_SESSION['validation']);
             $Row = mysqli_fetch_assoc($qRes);
-            $userinformation = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"]);
-            if($Row["UserId"]!=""){
-                return $userinformation;
+            if(isset($Row))
+            {
+                $_SESSION['validation'] = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"]);
+                if($Row["UserId"]!=""){
+                    return $validation = true;
+                }
             }
             else{
-                return $userinformation = false;
+                return $validation = false;
             }
         }
     }
@@ -100,7 +104,7 @@ class UserInfo{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            //$_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else
@@ -120,7 +124,7 @@ class UserInfo{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else
@@ -137,21 +141,28 @@ class UserInfo{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","","","");
+            //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
-            $userinformation=array();
+            unset($_SESSION['validation']);
+            //create array
+            $_SESSION['validation']=array();
+            //loop the array
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
-                if(empty($userinformation))
+                //check if array is empty
+                if(empty($_SESSION['validation']))
                 {
-                    array_push($userinformation,$Row);
+                    //add in the first array row
+                    array_push($_SESSION['validation'],$Row);
                 }
-                else array_push($userinformation,$Row);
+                //if array is not empty push new row into last position
+                else array_push($_SESSION['validation'],$Row);
             }
-            return $userinformation;
+    
+            return $validation=true;
         }
 	}
 
@@ -166,12 +177,12 @@ class UserInfo{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = false;
+            // $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $validation = false;
         }
         else
         {
-            return $userinformation = true;
+            return $validation = true;
         }
     }  
 

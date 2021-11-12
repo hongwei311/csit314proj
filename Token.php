@@ -15,7 +15,7 @@ class Token{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            //echo "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else
@@ -33,7 +33,7 @@ class Token{
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
-            echo "<p>* Unable to search1. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            //echo "<p>* Unable to search1. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
         }
         else
@@ -45,7 +45,7 @@ class Token{
             $qRes2 = @mysqli_query($conn, $sql2);
             if($qRes2 === FALSE)
             {
-                echo "<p>* Unable to search2. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+                //echo "<p>* Unable to search2. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
                 return $validation = false;
             }
             else
