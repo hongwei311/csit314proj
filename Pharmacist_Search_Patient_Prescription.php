@@ -37,7 +37,7 @@ include_once("PrescriptionController.php");
 </form>
 </div>
 <br><br> 
-
+<div class="container">
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 {        
@@ -78,6 +78,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 }
 
 ?>
+</div>
+
 <br>
 <a href="Pharmacist_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
