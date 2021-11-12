@@ -35,7 +35,7 @@ session_start();
 <form id="AdminSearchUserPage" method="POST" action="Admin_Update_User_Page.php">
 <div class="form-group">
   <label>Enter User ID: </label>
-  <input class="form-control" type="text" id="UserId" name="userid" Placeholder="User ID"><br><br>
+  <input class="form-control" type="text" id="UserId" name="UserId" Placeholder="User ID"><br><br>
   <input type='hidden' name = 'action' value = 'SearchUser'>
   <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
 </div>
@@ -49,21 +49,22 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     if($_POST['action']==='SearchUser')
     {
         $UserControl = new UserControl();
-        $validation = $UserControl->searchUser($_POST['userid']);
-        $_SESSION['userid']=$_POST['userid'];
+        $validation = $UserControl->searchUser($_POST['UserId']);
+        $_SESSION['UserId']=$_POST['UserId'];
 
         if($validation==true)
         {
-            $userid = $_SESSION['validation']["0"];
+            $UserId = $_SESSION['validation']["0"];
             $username = $_SESSION['validation']["1"];
             $password = $_SESSION['validation']["2"];
             $userprofile = $_SESSION['validation']["3"];
             $printresult = "";
+            
             echo"    <div class='container'>
             <form id='AdminUpdateUserPage' method='POST' action='Admin_Update_User_Page.php'>
                 <div class='form-group'>
                 <label><?php echo $printresult;?></label><br><br>
-                <label>User ID : $userid</label><br><br> 
+                <label>User ID : $UserId</label><br><br> 
                 <label>Username : </label>
                 <input type='text' class='form-control' id='Username' name='username' value='$username' required><br><br>
                 <label>Password : </label>
@@ -90,7 +91,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     if($_POST['action']==='UpdateUser')
     {
         $UserControl = new UserControl();
-        $validation = $UserControl ->updateUser($_SESSION['userid'],$_POST['username'],$_POST['password'],$_POST['userprofile']);
+        $validation = $UserControl ->updateUser($_SESSION['UserId'],$_POST['username'],$_POST['password'],$_POST['userprofile']);
         if($validation==true)
         {
             echo '<script>alert("User Account Updated")</script>';

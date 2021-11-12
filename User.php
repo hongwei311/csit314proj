@@ -279,7 +279,7 @@ class User{
 			}
 			else
 			{   
-                unset($_SESSION['validation']);
+                unset($_SESSION['validation']); 
                 $_SESSION['validation']=array();
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
@@ -312,7 +312,6 @@ class User{
 			{   
                 unset($_SESSION['validation']);
                 $_SESSION['validation']=array();
-
                 while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
                 {
                     if(empty($_SESSION['validation']))
