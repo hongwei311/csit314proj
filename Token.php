@@ -55,7 +55,7 @@ class Token{
                 
                 
                 $text = "Your Prescription ID is : " . $PrescriptionId; //data to be stored in qr
-                $file = "C:/xampp/htdocs/test/qr.png"; //file path
+                $file = "C:/xampp/htdocs/csit314proj/qr.png"; //file path
                 $ecc = 'H';
                 $pixel_size = 20;
                 $frame_size = 5; //other parameters
@@ -71,7 +71,7 @@ class Token{
                 $mail->Username = 'csit314hydrohomies@gmail.com';
                 $mail->Password = 'ucDud6Dt';
                 $mail->SetFrom('donotreply@mydomain.com', 'Admin');
-                $mail->Subject = 'Test Email';
+                $mail->Subject = 'Prescription ID';
                 $mail->addEmbeddedImage($file, 'qr', 'phpmailer.png', 'base64', 'image/png');
                 $mail->Body = '<img src="'.'cid:qr">';
 
