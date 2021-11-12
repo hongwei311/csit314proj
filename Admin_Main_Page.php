@@ -3,7 +3,6 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<meta charset="UTF-8>"
 <html>
 <head>
 	<title>Admin Main Page</title>
@@ -35,7 +34,7 @@ session_start();
 
 <a href="Admin_View_User_Info_Page.php"><button class="btn btn-primary btn-lg">View User Info</button></a></p>
 
-<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
+<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></p></a>
 
 <p hidden><a href="GenerateUsers.php"><button class="btn btn-primary btn-lg">Generate User Accounts</button></p></a>
 

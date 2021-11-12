@@ -1,42 +1,30 @@
 <?php
 include_once("UserProfile.php");
 
-class UserInfoController
+class UserProfileController
 {
-    function addUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
+    
+    function searchUserProfile($UserProfile, $UserId)
     {
-        $UserInfo = new UserInfo();
-        $validation = $UserInfo->add($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress);
-        return $validation;
-    }
-
-    function searchUserInfo($UserId)
-    {
-        $UserInfo = new UserInfo();
-        $userinformation = $UserInfo->search($UserId);
+        $UserProfile = new UserProfile();
+        $userinformation = $UserProfile->search($UserProfile, $UserId);
         return $userinformation;
     }
 
-    function updateUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
+    function updateUserProfile($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
     {
-        $UserInfo = new UserInfo();
-        $validation = $UserInfo->update($UserId,$FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress);
-        return $validation;
+        $UserProfile = new UserProfile();
+        $userinformation = $UserProfile->update($UserId,$FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress);
+        return $userinformation;
     }
 	
-	function viewUserInfo()
+	function viewUserProfile()
 	{
-		$UserInfo = new UserInfo();
-		$userinformation = $UserInfo->view();
+		$UserProfile = new UserProfile();
+		$userinformation = $UserProfile->view();
 		return $userinformation;
 	}
 
-    function generateUserInfo($UserId, $FirstName, $LastName, $BirthDate, $GenderCode)
-	{
-		$UserInfo = new UserInfo();
-		$userinformation = $UserInfo->generate($UserId, $FirstName, $LastName, $BirthDate, $GenderCode);
-		return $userinformation;
-	}
 }
 
 ?>

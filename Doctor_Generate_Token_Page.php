@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 {
   if($_POST['action']==="GenerateToken")
   {
-
+    
     $TokenControl = new TokenControl();
     $validation = $TokenControl->generateToken($_POST['prescriptionId']);
     
@@ -62,7 +62,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $_SESSION['patientid'] = $prescriptionDetails['0']['PatientId'];
     $_SESSION['prescriptionid'] = $_POST['prescriptionId'];
     // print($_SESSION['patientid']);
-
+    
     if($validation==true)
     {
         

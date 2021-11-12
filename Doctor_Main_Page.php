@@ -23,7 +23,9 @@ session_start();
 
 <p><a href="Doctor_View_Prescription_Page.php"><button class="btn btn-primary btn-lg">View prescriptions</button></a></p>
 
-<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
+<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></p></a>
+
+<p><a href="Update_Personal_User_Profile_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Profile Info</button></p></a>
 
 <p hidden><a href="GeneratePrescription.php"><button class="btn btn-primary btn-lg">Generate Prescription</button></p></a>
 

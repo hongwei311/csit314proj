@@ -22,7 +22,8 @@ session_start();
     <div class="button-align">
       <p><a href="Pharmacist_View_Prescription.php"><button class="btn btn-primary btn-lg">View Prescription Status</button></a></p>
         <p><a href="Pharmacist_Update_Prescription.php"><button class="btn btn-primary btn-lg">Update Prescription Status</button></a></p>
-        <p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></a></p>
+        <p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></a></p>
+        <p><a href="Update_Personal_User_Profile_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Profile Info</button></p></a>
           <p><a href="Pharmacist_View_Patient_Record.php"><button class="btn btn-primary btn-lg">View Patients Records</button></a></p>
           <p><a href="Pharmacist_search_patient_record.php"><button class="btn btn-primary btn-lg">Search Patient's Records</button></a></p>
           <p><a href="Pharmacist_Search_Patient_Prescription.php"><button class="btn btn-primary btn-lg">Search Patient's Prescription</button></a></p>

@@ -28,7 +28,9 @@ session_start();
 
 <p><a href="Patient_Search_Prescription.php"><button class="btn btn-primary btn-lg">Search Prescription</button></a></p>
 
-<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Your Personal User Info</button></p></a>
+<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></p></a>
+
+<p><a href="Update_Personal_User_Profile_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Profile Info</button></p></a>
 
 <p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>
 </div>

@@ -1,14 +1,25 @@
 <?php
 
-class UserInfo{
+class UserProfile{
+    private $UserProfile;
     private $UserId;
-    private $FirstName;
-    private $LastName;
-    private $BirthDate;
-    private $GenderCode;
-    private $PhoneNumber;
-    private $EmailAddress;
+    private $HealthFacility;
+    private $Profession;
+    private $DoctorYearsOfExperience;
+    private $DrugAllergy;
+    private $PrescriptionNotification;
+    private $PharmacyName;
+    private $PharmacyLocation;
+    private $PharmacistYearsOfExperience;
 	
+    function setUserProfile($UserProfile){
+        $this -> UserProfile = $UserProfile;
+    }
+
+    function getUserProfile(){
+        return $this -> UserProfile;
+    }
+
 	function setUserId($UserId){
         $this -> UserId = $UserId;
     }
@@ -17,70 +28,86 @@ class UserInfo{
         return $this -> UserId;
     }
 	
-    function setFirstName($FirstName){
-        $this -> FirstName = $FirstName;
+    function setHealthFacility($HealthFacility){
+        $this -> HealthFacility = $HealthFacility;
     }
 
-    function getUsername(){
-        return $this -> Username;
+    function getHealthFacility(){
+        return $this -> HealthFacility;
     }
 
-    function setLastName($LastName){
-        $this -> LastName = $LastName;
+    function setProfession($Profession){
+        $this -> Profession = $Profession;
     }
 
-    function getLastName(){
-        return $this -> LastName;
+    function getProfession(){
+        return $this -> Profession;
     }
 
-    function setBirthDate($BirthDate){
-        $this -> BirthDate = $BirthDate;
+    function setDoctorYearsOfExperience($DoctorYearsOfExperience){
+        $this -> DoctorYearsOfExperience = $DoctorYearsOfExperience;
     }
 
-    function getBirthDate(){
-        return $this -> BirthDate;
+    function getDoctorYearsOfExperience(){
+        return $this -> DoctorYearsOfExperience;
     }
 
-    function setGenderCode($GenderCode){
-        $this -> GenderCode = $GenderCode;
+    function setDrugAllergy($DrugAllergy){
+        $this -> DrugAllergy = $DrugAllergy;
     }
 
-    function getGenderCode(){
-        return $this -> GenderCode;
+    function getDrugAllergy(){
+        return $this -> DrugAllergy;
     }
 
-    function setPhoneNumber($PhoneNumber){
-        $this -> PhoneNumber = $PhoneNumber;
+    function setPrescriptionNotification($PrescriptionNotification){
+        $this -> PrescriptionNotification = $PrescriptionNotification;
     }
 
-    function getPhoneNumber(){
-        return $this -> PhoneNumber;
+    function getPrescriptionNotification(){
+        return $this -> PrescriptionNotification;
     }
 
-    function setEmailAddress($EmailAddress){
-        $this -> EmailAddress = $EmailAddress;
+    function setPharmacyName($PharmacyName){
+        $this -> PharmacyName = $PharmacyName;
     }
 
-    function getEmailAddress(){
-        return $this -> EmailAddress;
+    function getPharmacyName(){
+        return $this -> PharmacyName;
     }
 
-    function search($UserId)
-    {
-        $TableName = "userinfo";
-        $conn = mysqli_connect("localhost","root","","csit314");
+    function setPharmacyLocation($PharmacyLocation){
+        $this -> PharmacyLocation = $PharmacyLocation;
+    }
+
+    function getPharmacyLocation(){
+        return $this -> PharmacyLocation;
+    }
+
+    function setPharmacistYearsOfExperience($PharmacistYearsOfExperience){
+        $this -> PharmacistYearsOfExperience = $PharmacistYearsOfExperience;
+    }
+
+    function getPharmacistYearsOfExperience(){
+        return $this -> PharmacistYearsOfExperience;
+    }
         
-        $sql = "SELECT * FROM $TableName" . " where UserId ='" . $UserId . "'";
+    
+    function search($UserProfile, $UserId)
+    {
+        $TableName = "doctor";
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $UserProfile " . " where UserId ='" . $UserId . "'";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","","","","");
+            return $userinformation = array("","","","");
         }
-        else
+        elseif($UserProfile === 'doctor')
         {
             $Row = mysqli_fetch_assoc($qRes);
-            $userinformation = array($Row["UserId"],$Row["FirstName"],$Row["LastName"],$Row["BirthDate"],$Row["GenderCode"],$Row["PhoneNumber"],$Row["EmailAddress"]);
+            $userinformation = array($Row["DoctorId"],$Row["UserId"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
             if($Row["UserId"]!=""){
                 return $userinformation;
             }
@@ -90,68 +117,57 @@ class UserInfo{
         }
     }
 
-    function add($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
-    {       
-        $TableName = "userinfo";
-        $conn = mysqli_connect("localhost","root","","csit314");
-        
-        $sql = "INSERT INTO $TableName (UserId, FirstName, LastName, BirthDate, GenderCode, PhoneNumber, EmailAddress)" .
-        " VALUES ('$UserId', '$FirstName', '$LastName', '$BirthDate', '$GenderCode', '$PhoneNumber', '$EmailAddress')";
-        $qRes = @mysqli_query($conn, $sql);
-        if($qRes === FALSE)
-        {
-            $_SESSION['errmsg'] = "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
-        }
-        else
-        {
-            return $validation = true;
-        }
-    }   
-
-    function update($UserId, $FirstName, $LastName, $BirthDate, $GenderCode, $PhoneNumber, $EmailAddress)
+    function update($UserId, $Username, $Password, $UserProfile)
     {
-        $TableName = "userinfo";
+        $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
-
+        $Password_Hash = password_hash($Password, PASSWORD_DEFAULT);
         $sql = "UPDATE $TableName 
-                SET FirstName = '$FirstName', LastName = '$LastName', BirthDate = '$BirthDate', GenderCode='$GenderCode', PhoneNumber='$PhoneNumber', EmailAddress = '$EmailAddress'
+                SET UserName = '$Username', Password = '$Password_Hash', UserProfile = '$UserProfile' 
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
+            
         }
         else
         {
+            // printf("Affected rows (UPDATE): %d\n", $conn->affected_rows);
             return $validation = true;
         }
     }
 	
 	function view()
     {
-        $TableName = "userinfo";
+        $TableName = "useraccount";
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","","","");
+            return $userdetails = array("","","","");
         }
         else
         {
-            $userinformation=array();
+            //create array
+            $userdetails=array();
+            //loop the array
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
-                if(empty($userinformation))
+                //check if array is empty
+                if(empty($userdetails))
                 {
-                    array_push($userinformation,$Row);
+                    //add in the first array row
+                    array_push($userdetails,$Row);
                 }
-                else array_push($userinformation,$Row);
+                //if array is not empty push new row into last position
+                else array_push($userdetails,$Row);
             }
-            return $userinformation;
+            
+            return $userdetails;
         }
 	}
  
