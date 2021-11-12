@@ -41,6 +41,7 @@ session_start();
   <label>Prescription ID</label>
   <input type="text"class="form-control" id="Prescription ID" name="prescriptionId"><br><br>
   <input type="submit" class="btn btn-primary btn-lg" value="Generate" name="Generate">
+  <input type="hidden" name = "action" value = "GenerateToken">
 </div>
 
 </form>
@@ -56,41 +57,33 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $validation = $TokenControl->generateToken($_POST['prescriptionId']);
     
     $PrescriptionControl = new PrescriptionControl();
-    $prescriptionDetails = $PrescriptionControl->searchPrescription($_POST['prescriptionId']);
-    $_SESSION['patientid'] = $prescriptionDetails['PatientId'];
+    $prescriptionDetails = $PrescriptionControl->doctorSearchPrescription($_POST['prescriptionId']);
+    // print_r($prescriptionDetails);
+    $_SESSION['patientid'] = $prescriptionDetails['0']['PatientId'];
     $_SESSION['prescriptionid'] = $_POST['prescriptionId'];
+    // print($_SESSION['patientid']);
 
     if($validation==true)
     {
-      echo '<script>alert("Token Generated succesfully!")</script>';
-?>
-      <form id="DoctorGenerateTokenPage" method="POST" action="Doctor_Generate_Token_Page.php">
-        <input type="hidden" name = "action" value = "SendToken">
-        <input type="submit" value="Send" name="Send">
-      </form>
-<?php
-    }
-      
-    elseif($validation==false)
-    {
-      echo '<script>alert("Token Not Generated!")</script>';
-    }
-
-  }
-  if($_POST['action']==="SendToken")
-  {
-
-    $TokenControl = new TokenControl();
-    $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
-    if($validation2===true)
-    {
-      echo '<script>alert("Token Sent succesfully!")</script>';
+        
+        $TokenControl = new TokenControl();
+        $validation2 = $TokenControl->sendToken($_SESSION['patientid'], $_SESSION['prescriptionid']);
+        if($validation2===true)
+        {
+          // echo "Token sent successfully";
+          echo '<script>alert("Token generated and sent succesfully")</script>';
+        }
+        else
+        {
+          echo '<script>alert("Token not sent")</script>';
+        }
     }
     else
     {
-      echo '<script>alert("Token Not Sent!")</script>';
+      echo '<script>alert("Token not generated")</script>';
     }
   }
+  
 }
 
 ?>
