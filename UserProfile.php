@@ -100,38 +100,51 @@ class UserProfile{
         $qRes = @mysqli_query($conn, $sql);
 
         if ($StringUserProfile == "Doctor") {
+                unset($_SESSION['validation']);
                 $Row = mysqli_fetch_assoc($qRes);
-                $userinformation = array($Row["DoctorId"],$Row["UserId"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
-                if($Row["UserId"]!=""){
-                    return $userinformation;
+                if(isset($Row))
+                {
+                    $_SESSION['validation'] = array($Row["DoctorId"],$Row["UserId"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
+                    if($Row["UserId"]!=""){
+                        return $validation = true;
+                    }
                 }
                 else{
-                    return $userinformation = false;
+                    return $validation = false;
                 }
             }
-        elseif ($StringUserProfile == "patient") {
+            
+        elseif ($StringUserProfile == "Patient") {
+                unset($_SESSION['validation']);
                 $Row = mysqli_fetch_assoc($qRes);
-                $userinformation = array($Row["PatientId"],$Row["UserId"],$Row["DrugAllergy"],$Row["PrescriptionNotification"]);
-                if($Row["UserId"]!=""){
-                    return $userinformation;
+                if(isset($Row))
+                {
+                    $_SESSION['validation'] = array($Row["PatientId"],$Row["UserId"],$Row["DrugAllergy"],$Row["PrescriptionNotifcation"]);
+                    if($Row["UserId"]!=""){
+                        return $validation = true;
+                    }
                 }
                 else{
-                    return $userinformation = false;
+                    return $validation = false;
                 }
             }
-        elseif ($StringUserProfile == "pharmacist") {
+        elseif ($StringUserProfile == "Pharmacist") {
+                unset($_SESSION['validation']);
                 $Row = mysqli_fetch_assoc($qRes);
-                $userinformation = array($Row["PharmacistId"],$Row["UserId"],$Row["PharmacyName"],$Row["PharmacyLocation"],$Row["YearsOfExperience"]);
-                if($Row["UserId"]!=""){
-                    return $userinformation;
+                if(isset($Row))
+                {
+                    $_SESSION['validation'] = array($Row["PharmacistId"],$Row["UserId"],$Row["PharmacyName"],$Row["PharmacyLocation"],$Row["YearsOfExperience"]);
+                    if($Row["UserId"]!=""){
+                        return $validation = true;
+                    }
                 }
                 else{
-                    return $userinformation = false;
+                    return $validation = false;
                 }
         }
         else {
                 echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-                return $userinformation = array("","","","");
+                return $validation = array("","","","");
         }
     
     }
@@ -162,7 +175,7 @@ class UserProfile{
         $conn = mysqli_connect("localhost","root","","csit314");
 
         $sql = "UPDATE $TableName 
-                SET DrugAllergy = '$DrugAllergy', PrescriptionNotification = '$PrescriptionNotification'
+                SET DrugAllergy = '$DrugAllergy', PrescriptionNotifcation = '$PrescriptionNotification'
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)

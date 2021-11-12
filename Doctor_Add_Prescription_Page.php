@@ -34,9 +34,9 @@ session_start();
   <form method="POST">
   <div class="form-group">
     <label>Patient ID : </label>
-    <input type="text" class="form-control" id="Patient ID" name="patientId"><br><br>
+    <input type="text" class="form-control" id="Patient ID" name="patientId" required><br><br>
     <label>Prescription Details : </label>
-    <input type="text" class="form-control" id="Prescription Details" name="prescriptionDetails"><br><br>
+    <input type="text" class="form-control" id="Prescription Details" name="prescriptionDetails" required><br><br>
     <input type="submit" class="btn btn-primary btn-lg" value="Submit">
   </div>
   </form>

@@ -29,6 +29,7 @@ session_start();
 
 <br>
 <h1 class="text-center">Update User Profile Info</h1>
+
 <br>
 
 
@@ -38,7 +39,7 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Doctor'){
         $UserControl = new UserProfileController();
-        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        $validation = $UserControl->searchUserProfile($StringUserProfile, $_SESSION['userid']);
         $DoctorId = $_SESSION['validation']["0"];
         $UserId = $_SESSION['validation']["1"];
         $HealthFacility = $_SESSION['validation']["2"];
@@ -47,6 +48,8 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
         if($validation==true)
         {
+        
+
             echo '<div class="container">';
                 echo'<form id="UpdatePersonalUserProfileInfo" method="POST" action="Update_Personal_User_Profile_Info.php">';
                     echo'<div class="form-group">';
@@ -74,7 +77,7 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Patient'){
         $UserControl = new UserProfileController();
-        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        $validation = $UserControl->searchUserProfile($StringUserProfile, $_SESSION['userid']);
         $PatientId = $_SESSION['validation']["0"];
         $UserId = $_SESSION['validation']["1"];
         $DrugAllergy = $_SESSION['validation']["2"];
@@ -107,7 +110,7 @@ $StringUserProfile = ucfirst($UserProfile); // changes userprofile first letter 
 
     if($StringUserProfile==='Pharmacist'){
         $UserControl = new UserProfileController();
-        $validation = $UserControl->searchUserProfile($_SESSION['UserProfile'], $_SESSION['userid']);
+        $validation = $UserControl->searchUserProfile($StringUserProfile, $_SESSION['userid']);
         $PharmacistId = $_SESSION['validation']["0"];
         $UserId = $_SESSION['validation']["1"];
         $PharmacyName = $_SESSION['validation']["2"];

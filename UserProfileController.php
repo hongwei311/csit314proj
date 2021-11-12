@@ -7,8 +7,8 @@ class UserProfileController
     function searchUserProfile($StringUserProfile, $UserId)
     {
         $UserProfile = new UserProfile();
-        $userinformation = $UserProfile->search($StringUserProfile, $UserId);
-        return $userinformation;
+        $validation = $UserProfile->search($StringUserProfile, $UserId);
+        return $validation;
     }
 
     function updateDoctorProfile($UserId, $HealthFacility, $Profession, $DoctorYearsOfExperience)

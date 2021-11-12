@@ -53,7 +53,7 @@ session_start();
 <form id="AdminSearchUserPage" method="POST" action="Admin_Search_User_Page.php">
 <div class="form-group">
   <label>Enter User ID: </label>
-  <input type="text" class="form-control" id="UserId" name="UserId" placeholder="User ID"><br><br>
+  <input type="text" class="form-control" id="UserId" name="UserId" placeholder="User ID" required><br><br>
 
   <input type='hidden' name = 'action' value = 'SearchUser'>
   <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>

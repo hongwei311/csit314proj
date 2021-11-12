@@ -10,7 +10,7 @@ class PrescriptionControl
         return $validation;
     }
 
-    function viewPrescription($PatientId,$PrescriptionStatus)
+    function viewPrescription($PatientId,$PrescriptionStatus) #Patient
     {
         $Prescription = new Prescription();
         $validation = $Prescription->view($PatientId,$PrescriptionStatus);

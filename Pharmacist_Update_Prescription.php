@@ -37,7 +37,7 @@ session_start();
 <form id="PharmacistUpdatePrescription" method="POST" action="Pharmacist_Update_Prescription.php">
   <div class="form-group">
   <label>Enter Prescription ID: </label>
-  <input type="text" class="form-control" id="PrescriptionId" name="PrescriptionId"><br><br>
+  <input type="text" class="form-control" id="PrescriptionId" name="PrescriptionId" required><br><br>
   <label>Prescription Status</label>
   <select name="PrescriptionStatus" class="form-control" id="PrescriptionStatus">
       <option value="Collected">Collected</option>

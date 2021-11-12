@@ -80,6 +80,7 @@ class Prescription{
                     array_push($_SESSION['validation'],$Row);
                 }
                 else array_push($_SESSION['validation'],$Row);
+                
             }
             return $validation = true;
         }
@@ -142,6 +143,7 @@ class Prescription{
             //loop the array
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
+                
                 //check if array is empty
                 if(empty($_SESSION['validation']))
                 {
@@ -150,9 +152,9 @@ class Prescription{
                 }
                 //if array is not empty push new row into last position
                 else array_push($_SESSION['validation'],$Row);
+                return $validation = true;
             }
-            
-            return $validation = true;
+            return $validation = false;
         }
 
     }
@@ -185,7 +187,6 @@ class Prescription{
         AND PrescriptionStatus = '$PrescriptionStatus'
         ";
         
-
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
@@ -207,10 +208,11 @@ class Prescription{
                 }
                 //if array is not empty push new row into last position
                 else array_push($_SESSION['validation'],$Row);
+                
             }
-            
             return $validation = true;
         }
+        
     }
 
     function viewRecord($PrescriptionStatus)
@@ -240,8 +242,8 @@ class Prescription{
                 }
                 //if array is not empty push new row into last position
                 else array_push($_SESSION['validation'],$Row);
+                
             }
-            
             return $validation = true;
         }
 	}
@@ -274,6 +276,7 @@ class Prescription{
                 }
                 //if array is not empty push new row into last position
                 else array_push($_SESSION['validation'],$Row);
+                
             }
             
             return $validation = true;
@@ -298,7 +301,7 @@ class Prescription{
         }
         else
         {
-            unset($_SESSION['validation']);
+            
             $Row = mysqli_fetch_assoc($qRes);
             if(isset($Row)){
             $_SESSION['validation'] = array($Row["PrescriptionId"],$Row["PrescriptionDetails"],$Row["PrescriptionStatus"],$Row["DoctorId"],

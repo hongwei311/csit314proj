@@ -37,7 +37,7 @@ session_start();
 <form id="AdminSearchUserInfoPage" method="POST" action="Admin_Update_User_Info_Page.php">
     <div class="form-group">
         <label>Enter User ID: </label>
-        <input type="text" class="form-control"id="UserId" name="UserId"><br><br>
+        <input type="text" class="form-control"id="UserId" name="UserId" required><br><br>
         <input type='hidden' name = 'action' value = 'SearchUserInfo'>
         <button class="btn btn-primary btn-lg" type="submit" value="Search">Search</button>
     </div>
