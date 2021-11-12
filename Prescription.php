@@ -43,7 +43,7 @@ class Prescription{
         $sql = "INSERT INTO $TableName (PatientId, PrescriptionDetails, PrescriptionStatus, DoctorId)" .
         " VALUES ('$PatientId', '$PrescriptionDetails', '$PrescriptionStatus', '$DoctorId')";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             
             //echo "<p>* Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
@@ -64,7 +64,7 @@ class Prescription{
         AND PatientId = '$PatientId'
         ";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptiondetails = array("","","","");
@@ -94,7 +94,7 @@ class Prescription{
         
 
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = array("","","","");
@@ -123,7 +123,7 @@ class Prescription{
         
 
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = array("","","","");
@@ -158,7 +158,7 @@ class Prescription{
                 SET PrescriptionDetails = '$PrescriptionDetails'
                 WHERE PrescriptionId = $PrescriptionId";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionUpdate = false;
@@ -180,7 +180,7 @@ class Prescription{
         
 
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = array("","","","");
@@ -212,7 +212,7 @@ class Prescription{
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName" . " WHERE PrescriptionStatus ='" . $PrescriptionStatus . "' ";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = array("","","","");
@@ -245,7 +245,7 @@ class Prescription{
         $sql = "SELECT * FROM $TableName";
         
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = array("","","","");
@@ -282,7 +282,7 @@ class Prescription{
         
 
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = array("","","","");
@@ -309,7 +309,7 @@ class Prescription{
                 SET PrescriptionStatus = '$PrescriptionStatus', PharmacistId = '$PharmacistId', DispensedDateTime = CURRENT_TIMESTAMP 
                 WHERE PrescriptionId = $PrescriptionId";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $prescriptionDetails = false;
