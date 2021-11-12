@@ -27,6 +27,7 @@ session_start();
 <br>
 <h1 class="text-center">Search Prescription</h1>
 <br>
+
 <div class="container">
 <form id="PatientSearchPrescription" method="POST" action="Patient_Search_Prescription.php">
   <div class="form-group">
@@ -37,6 +38,8 @@ session_start();
 </form>
 </div>
 <br><br> 
+
+<div class="container">
 
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -56,7 +59,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
         if($prescriptionDetails==true)
         {
-            echo "<form>
+            echo "
+            
+            <form>
             <label>Prescription Id : $PrescriptionId</label><br><br> 
             <label>Prescription Details : $searchedPrescriptionDetails</label><br><br>
             <label>Prescription Status : $PrescriptionStatus</label><br><br>
@@ -67,7 +72,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             <label>Dispensed Date Time : $DispensedDateTime</label><br><br>
 
             <label>$printresult</label><br><br>
-            </form>";
+            </form>
+            ";
             unset($_SESSION['PrescriptionId']);
         }
         else
@@ -79,6 +85,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 ?>
 
+</div>
 <a href="Patient_Main_Page.php"><button class="btn btn-primary btn-lg" style="float: right; margin:0 20px 0 0;">Back</button></a>
 
 </body>
