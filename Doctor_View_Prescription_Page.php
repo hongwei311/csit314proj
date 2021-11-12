@@ -25,8 +25,8 @@ session_start();
     .table{
     width: 80%;
     margin: 0 0 0 50px;
-    text-align:left;"
-    cellspacing="0"
+    text-align:left;
+    cellspacing="0";
   }
     </style>
 
