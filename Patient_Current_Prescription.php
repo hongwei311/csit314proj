@@ -29,25 +29,28 @@ include_once("PrescriptionController.php");
 <br>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
-		<thead>
-			<tr>
-				<th>PrescriptionId</th>
-        <th>PrescriptionDetails</th>
-				<th>PrescriptionStatus</th>
-        <th>DoctorId</th>
-        <th>PatientId</th>
-				<th>PharmacistId</th>
-        <th>CreatedDateTime</th>
-        <th>DispensedDateTime</th>
-			</tr>
-		</thead>
+		
 		<tbody>
 		<?php
                     // Attempt select query execution
                     $PrescriptionControl = new PrescriptionControl();
                     $PatientId = $_SESSION['UserProfileID'];
                     $validation = $PrescriptionControl->viewPrescription($PatientId,"Not Collected");
-                    for($i = 0; $i < count($_SESSION['validation']); $i++) {
+                    if($validation= true)
+                    {
+                      ?><thead>
+                      <tr>
+                        <th>PrescriptionId</th>
+                        <th>PrescriptionDetails</th>
+                        <th>PrescriptionStatus</th>
+                        <th>DoctorId</th>
+                        <th>PatientId</th>
+                        <th>PharmacistId</th>
+                        <th>CreatedDateTime</th>
+                        <th>DispensedDateTime</th>
+                      </tr>
+                    </thead><?php
+                      for($i = 0; $i < count($_SESSION['validation']); $i++) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";
                         echo "<td>" . $_SESSION['validation'][$i]['PrescriptionDetails'] . "</td>";
@@ -59,6 +62,8 @@ include_once("PrescriptionController.php");
                         echo "<td>" . $_SESSION['validation'][$i]['DispensedDateTime'] . "</td>";
                         echo "</tr>";
                       }
+                    }
+                    
                     
          ?>
 		</tbody>

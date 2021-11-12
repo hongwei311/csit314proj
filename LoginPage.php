@@ -20,7 +20,7 @@
             $userid = $_SESSION['validation']["0"];
             $username = $_SESSION['validation']["1"];
             $UserProfile = $_SESSION['validation']["3"];
-
+            
             //create session variables
             $_SESSION['userid']=$userid;
             $_SESSION['username']=$username;
@@ -28,12 +28,15 @@
             $_SESSION['UserProfile']=$UserProfile;
             
             $UserControl = new UserControl(); //create new user controller class to run retrieveUserProfileID function
-            $userdetails = $UserControl->retrieveUserProfileID($userid,$UserProfile); // retrieves UserProfile info using userid and userprofile
-            $UserProfileInfo = $userdetails["0"]; // uses first entry of userprofile info
-            $UCUserProfile = ucfirst($UserProfile); // changes userprofile first letter to capital
-            $ProfileID = $UCUserProfile."Id"; // add ID to userprofile to reference to the desired userprofileid
-            $UserProfileID = $UserProfileInfo[$ProfileID]; // assigns to the userprofileid
-            $_SESSION['UserProfileID']=$UserProfileID; //assigns to the session userprofileid
+            $validation2 = $UserControl->retrieveUserProfileID($userid,$UserProfile); // retrieves UserProfile info using userid and userprofile
+            if($validation2==true)
+            {
+                $UserProfileInfo = $_SESSION['validation']["0"]; // uses first entry of userprofile info
+                $UCUserProfile = ucfirst($UserProfile); // changes userprofile first letter to capital
+                $ProfileID = $UCUserProfile."Id"; // add ID to userprofile to reference to the desired userprofileid
+                $UserProfileID = $UserProfileInfo[$ProfileID]; // assigns to the userprofileid
+                $_SESSION['UserProfileID']=$UserProfileID; //assigns to the session userprofileid
+            }
             
             if ($_SESSION['UserProfile']!=null){
                 switch($_SESSION['UserProfile'])

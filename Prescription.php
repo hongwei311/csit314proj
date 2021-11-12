@@ -73,7 +73,6 @@ class Prescription{
         {
             unset($_SESSION['validation']);
             $_SESSION['validation']=array();
-            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 if(empty($_SESSION['validation']))
@@ -82,8 +81,7 @@ class Prescription{
                 }
                 else array_push($_SESSION['validation'],$Row);
             }
-            return $validation = true;}
-            else return $validation = false;
+            return $validation = true;
         }
     }
 
@@ -142,7 +140,6 @@ class Prescription{
             //create array
             $_SESSION['validation']=array();
             //loop the array
-            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
@@ -155,8 +152,7 @@ class Prescription{
                 else array_push($_SESSION['validation'],$Row);
             }
             
-            return $validation = true;}
-            else return $validation = false;
+            return $validation = true;
         }
 
     }
@@ -201,7 +197,6 @@ class Prescription{
             //create array
             $_SESSION['validation']=array();
             //loop the array
-            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
@@ -214,8 +209,7 @@ class Prescription{
                 else array_push($_SESSION['validation'],$Row);
             }
             
-            return $validation = true;}
-            else return $validation = false;
+            return $validation = true;
         }
     }
 
@@ -236,7 +230,6 @@ class Prescription{
             //create array
             $_SESSION['validation']=array();
             //loop the array
-            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
@@ -249,8 +242,7 @@ class Prescription{
                 else array_push($_SESSION['validation'],$Row);
             }
             
-            return $validation = true;}
-            else return $validation = false;
+            return $validation = true;
         }
 	}
 
@@ -272,7 +264,6 @@ class Prescription{
             //create array
             $_SESSION['validation']=array();
             //loop the array
-            if(isset($Row)){
             while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
             {
                 //check if array is empty
@@ -285,8 +276,7 @@ class Prescription{
                 else array_push($_SESSION['validation'],$Row);
             }
             
-            return $validation = true;}
-            else return $validation = false;
+            return $validation = true;
         }
 
     }
