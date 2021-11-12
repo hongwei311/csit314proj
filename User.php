@@ -48,7 +48,7 @@ class User{
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName" . " where UserName = '" . $Username . "'  ";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             //$_SESSION['errmsg'] = "Unable to login. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn) . "</p>";
 			$validation = array("","","","");
@@ -74,7 +74,7 @@ class User{
         $sql = "INSERT INTO $TableName (UserName, Password, UserProfile)" .
         " VALUES ('$Username', '$Password_Hash', '$UserProfile')";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             //$_SESSION['errmsg'] = "Unable to add. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
@@ -116,7 +116,7 @@ class User{
         
         $sql = "SELECT * FROM $TableName" . " where UserId ='" . $UserId . "'";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $userdetails = array("","","","");
@@ -143,7 +143,7 @@ class User{
                 SET UserName = '$Username', Password = '$Password_Hash', UserProfile = '$UserProfile' 
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $validation = false;
@@ -162,7 +162,7 @@ class User{
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $userdetails = array("","","","");
@@ -194,7 +194,7 @@ class User{
         $conn = mysqli_connect("localhost","root","","csit314");
         $sql = "SELECT * FROM $TableName" . " where UserId ='" . $UserId . "'";
         $qRes = @mysqli_query($conn, $sql);
-        if($qRes ?? FALSE)
+        if($qRes === FALSE)
         {
             //echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
             return $userdetails = array("","","","");
@@ -227,7 +227,7 @@ class User{
 			$sql = "SELECT * FROM fulladmin";
 			$qRes = mysqli_query($conn, $sql);
 			
-			if($qRes ?? FALSE)
+			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
 				return $userdetails = false;
@@ -257,7 +257,7 @@ class User{
 			$sql = "SELECT * FROM fulldoctor";
 			$qRes = mysqli_query($conn, $sql);
 			
-			if($qRes ?? FALSE)
+			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
 				return $userdetails = false;
@@ -287,7 +287,7 @@ class User{
 			$sql = "SELECT * FROM fullpatient";
 			$qRes = mysqli_query($conn, $sql);
 			
-			if($qRes ?? FALSE)
+			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
 				return $userdetails = false;
@@ -317,7 +317,7 @@ class User{
 			$sql = "SELECT * FROM fullpharmacist";
 			$qRes = mysqli_query($conn, $sql);
 			
-			if($qRes ?? FALSE)
+			if($qRes === FALSE)
 			{
 				//echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
 				return $userdetails = false;

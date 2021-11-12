@@ -1,7 +1,7 @@
 <?php
 
 class UserProfile{
-    private $UserProfile;
+    private $StringUserProfile;
     private $UserId;
     private $HealthFacility;
     private $Profession;
@@ -12,12 +12,12 @@ class UserProfile{
     private $PharmacyLocation;
     private $PharmacistYearsOfExperience;
 	
-    function setUserProfile($UserProfile){
-        $this -> UserProfile = $UserProfile;
+    function setUserProfile($StringUserProfile){
+        $this -> StringUserProfile = $StringUserProfile;
     }
 
-    function getUserProfile(){
-        return $this -> UserProfile;
+    function getStringUserProfile(){
+        return $this -> StringUserProfile;
     }
 
 	function setUserId($UserId){
@@ -93,83 +93,108 @@ class UserProfile{
     }
         
     
-    function search($UserProfile, $UserId)
+    function search($StringUserProfile, $UserId)
+    {
+        $conn = mysqli_connect("localhost","root","","csit314");
+        $sql = "SELECT * FROM $StringUserProfile " . " where UserId ='" . $UserId . "'";
+        $qRes = @mysqli_query($conn, $sql);
+
+        if ($StringUserProfile == "Doctor") {
+                $Row = mysqli_fetch_assoc($qRes);
+                $userinformation = array($Row["DoctorId"],$Row["UserId"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
+                if($Row["UserId"]!=""){
+                    return $userinformation;
+                }
+                else{
+                    return $userinformation = false;
+                }
+            }
+        elseif ($StringUserProfile == "patient") {
+                $Row = mysqli_fetch_assoc($qRes);
+                $userinformation = array($Row["PatientId"],$Row["UserId"],$Row["DrugAllergy"],$Row["PrescriptionNotification"]);
+                if($Row["UserId"]!=""){
+                    return $userinformation;
+                }
+                else{
+                    return $userinformation = false;
+                }
+            }
+        elseif ($StringUserProfile == "pharmacist") {
+                $Row = mysqli_fetch_assoc($qRes);
+                $userinformation = array($Row["PharmacistId"],$Row["UserId"],$Row["PharmacyName"],$Row["PharmacyLocation"],$Row["YearsOfExperience"]);
+                if($Row["UserId"]!=""){
+                    return $userinformation;
+                }
+                else{
+                    return $userinformation = false;
+                }
+        }
+        else {
+                echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+                return $userinformation = array("","","","");
+        }
+    
+    }
+
+    function updateDoctorProfile($UserId, $HealthFacility, $Profession, $DoctorYearsOfExperience)
     {
         $TableName = "doctor";
         $conn = mysqli_connect("localhost","root","","csit314");
-        $sql = "SELECT * FROM $UserProfile " . " where UserId ='" . $UserId . "'";
-        $qRes = @mysqli_query($conn, $sql);
-        if($qRes === FALSE)
-        {
-            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userinformation = array("","","","");
-        }
-        elseif($UserProfile === 'doctor')
-        {
-            $Row = mysqli_fetch_assoc($qRes);
-            $userinformation = array($Row["DoctorId"],$Row["UserId"],$Row["HealthFacility"],$Row["Profession"],$Row["YearsOfExperience"]);
-            if($Row["UserId"]!=""){
-                return $userinformation;
-            }
-            else{
-                return $userinformation = false;
-            }
-        }
-    }
 
-    function update($UserId, $Username, $Password, $UserProfile)
-    {
-        $TableName = "useraccount";
-        $conn = mysqli_connect("localhost","root","","csit314");
-        $Password_Hash = password_hash($Password, PASSWORD_DEFAULT);
         $sql = "UPDATE $TableName 
-                SET UserName = '$Username', Password = '$Password_Hash', UserProfile = '$UserProfile' 
+                SET HealthFacility = '$HealthFacility', Profession = '$Profession', YearsOfExperience = '$DoctorYearsOfExperience'
                 WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $validation = false;
-            
+            return $updateinformation = false;
         }
         else
         {
-            // printf("Affected rows (UPDATE): %d\n", $conn->affected_rows);
-            return $validation = true;
+            return $updateinformation = true;
         }
     }
-	
-	function view()
+
+    function updatePatientProfile($UserId, $DrugAllergy, $PrescriptionNotification)
     {
-        $TableName = "useraccount";
+        $TableName = "patient";
         $conn = mysqli_connect("localhost","root","","csit314");
-        $sql = "SELECT * FROM $TableName";
+
+        $sql = "UPDATE $TableName 
+                SET DrugAllergy = '$DrugAllergy', PrescriptionNotification = '$PrescriptionNotification'
+                WHERE UserId = $UserId";
         $qRes = @mysqli_query($conn, $sql);
         if($qRes === FALSE)
         {
             echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
-            return $userdetails = array("","","","");
+            return $updateinformation = false;
         }
         else
         {
-            //create array
-            $userdetails=array();
-            //loop the array
-            while (($Row = mysqli_fetch_assoc($qRes)) != FALSE)
-            {
-                //check if array is empty
-                if(empty($userdetails))
-                {
-                    //add in the first array row
-                    array_push($userdetails,$Row);
-                }
-                //if array is not empty push new row into last position
-                else array_push($userdetails,$Row);
-            }
-            
-            return $userdetails;
+            return $updateinformation = true;
         }
-	}
+    }
+
+    function updatePharmacistProfile($UserId, $PharmacyName, $PharmacyLocation, $PharmacistYearsOfExperience)
+    {
+        $TableName = "pharmacist";
+        $conn = mysqli_connect("localhost","root","","csit314");
+
+        $sql = "UPDATE $TableName 
+                SET PharmacyName = '$PharmacyName', PharmacyLocation = '$PharmacyLocation', YearsOfExperience = '$PharmacistYearsOfExperience'
+                WHERE UserId = $UserId";
+        $qRes = @mysqli_query($conn, $sql);
+        if($qRes === FALSE)
+        {
+            echo "<p>* Unable to search. Error code " . mysqli_errno($conn). " : " . mysqli_error($conn);
+            return $updateinformation = false;
+        }
+        else
+        {
+            return $updateinformation = true;
+        }
+    }
  
 
 }

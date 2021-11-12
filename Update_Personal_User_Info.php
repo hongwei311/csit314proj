@@ -95,15 +95,14 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $validation = $UserControl ->updateUserInfo($_SESSION['userid'],$_POST['FirstName'],$_POST['LastName'],
         $_POST['BirthDate'],$_POST['GenderCode'],$_POST['PhoneNumber'],$_POST['EmailAddress']);
 
-        if($validation==true)
-        {
-            echo '<script>alert("User Info Updated succesfully")</script>';
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-        else
-        {
-            echo "User Info not updated";
-        }
+            if($validation==true)
+            {
+                echo '<script>alert("User Info Updated succesfully")</script>';
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+            else{
+                echo '<script>alert("Unable to update user info. '. $phonenumber_err . $emailaddress_err . ' ")</script>';
+            }
         }
         elseif($phonenumber_err != "" || $emailaddress_err != ""){
             echo '<script>alert("Unable to update user info. '. $phonenumber_err . $emailaddress_err . ' ")</script>';
@@ -130,7 +129,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
                         break;
                 }
              }
-            }
+        }
     
 }
 
