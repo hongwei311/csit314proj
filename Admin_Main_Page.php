@@ -20,7 +20,7 @@ session_start();
 	
 <a href="Admin_Add_User_Page.php"><button class="btn btn-primary btn-lg">Add New User Accounts</button></a>&nbsp;
 
-<a href="Admin_Add_User_Info_Page.php"><button class="btn btn-primary btn-lg">Add New User Info</button></a></p>
+<a href="Admin_Update_User_Info_Page.php"><button class="btn btn-primary btn-lg">Update User Info</button></a></p>
 
 <a href="Admin_Search_User_Page.php"><button class="btn btn-primary btn-lg">Search For User Accounts</button></a> &nbsp;
 
@@ -28,13 +28,11 @@ session_start();
 
 <a href="Admin_Update_User_Page.php"><button class="btn btn-primary btn-lg">Update User Accounts</button></a> &nbsp;
 
-<a href="Admin_Update_User_Info_Page.php"><button class="btn btn-primary btn-lg">Update User Info</button></a></p>
+<a href="Admin_View_User_Info_Page.php"><button class="btn btn-primary btn-lg">View User Info</button></a></p>
 
 <a href="Admin_View_User_Page.php"><button class="btn btn-primary btn-lg">View User Accounts</button></a> &nbsp; 
 
-<a href="Admin_View_User_Info_Page.php"><button class="btn btn-primary btn-lg">View User Info</button></a></p>
-
-<p><a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></p></a>
+<a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></a></p>
 
 <p hidden><a href="GenerateUsers.php"><button class="btn btn-primary btn-lg">Generate User Accounts</button></p></a>
 
