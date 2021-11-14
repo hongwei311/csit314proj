@@ -94,7 +94,7 @@ session_start();
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) 
+						for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) 
             {
               echo "<tr>";
               if(isset($_SESSION['validation'][$i]['PrescriptionId']))
@@ -188,7 +188,7 @@ session_start();
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-            for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) 
+            for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) 
             { 
               echo "<tr>";
               if(isset($_SESSION['validation'][$i]['PrescriptionId']))
@@ -282,7 +282,7 @@ session_start();
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-          for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) 
+          for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) 
           { 
             echo "<tr>";
             if(isset($_SESSION['validation'][$i]['PrescriptionId']))

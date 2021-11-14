@@ -69,7 +69,7 @@ h1 {
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
+						for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['AdminId'] . "</td>";
@@ -127,7 +127,7 @@ h1 {
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
+						for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
@@ -186,7 +186,7 @@ h1 {
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
+						for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
@@ -245,7 +245,7 @@ h1 {
 						 {
 						  $cutoff=sizeof($_SESSION['validation']);
 						 }
-						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
+						for($i = sizeof($_SESSION['validation'])-1; $i >= (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
