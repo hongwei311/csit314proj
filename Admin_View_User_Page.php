@@ -32,11 +32,7 @@ h1 {
 
 <table class="table table-bordered table-striped">
 		<thead>
-			<tr>
-				<th width="5%">UserId</th>
-				<th>UserName</th>
-				<th width="10%">UserProfile</th>
-			</tr>
+			
 		</thead>
 		<tbody>
 		<?php
@@ -44,14 +40,33 @@ h1 {
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$validation = $UserControl->viewUser();
-                    //for($i = 0; $i < count($userdetails); $i++) { Display all records
-						for($i = 0; $i < 20; $i++) {
-                        echo "<tr>";
-                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
-                        echo "</tr>";
-                      }
+                    if($validation==true)
+					{
+						?>
+						<tr>
+						<th width="5%">UserId</th>
+						<th>UserName</th>
+						<th width="10%">UserProfile</th>
+						</tr><?php
+						if(sizeof($_SESSION['validation'])>20)
+						{
+						  $cutoff = 20;
+						}
+						else 
+						 {
+						  $cutoff=sizeof($_SESSION['validation']);
+						 }
+						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) 
+						{
+							echo "<tr>";
+							echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['UserName'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['UserProfile'] . "</td>";
+							echo "</tr>";
+						}
+					}
+					else echo '<script>alert("User not found!")</script>';
+						
 
          ?>
 		</tbody>

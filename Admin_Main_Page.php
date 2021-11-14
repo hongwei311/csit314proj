@@ -32,13 +32,12 @@ session_start();
 
 <a href="Admin_View_User_Page.php"><button class="btn btn-primary btn-lg">View User Accounts</button></a> &nbsp; 
 
-<a href="Update_Personal_User_Info.php"><button class="btn btn-primary btn-lg">Update Personal User Info</button></a></p>
+<a href="Admin_Dashboard_Page.php"><button class="btn btn-primary btn-lg">View Full Details</button></a></p>
 
 <p hidden><a href="GenerateUsers.php"><button class="btn btn-primary btn-lg">Generate User Accounts</button></p></a>
 
 <p hidden><a href="GenerateUserInfo.php"><button class="btn btn-primary btn-lg">Generate User Information</button></p></a>
 
-<p><a href="Admin_Dashboard_Page.php"><button class="btn btn-primary btn-lg">View Full Details</button></p></a>
 </div>
 
 <p><a href="Logout.php"><button class="btn btn-danger btn-lg" style="float: right; margin:0 20px 0 0;">Logout</button></a></p>

@@ -31,15 +31,7 @@ h1 {
 
 <table class="table table-bordered table-striped" >
 		<thead>
-			<tr>
-				<th width="5%">User Id</th>
-                <th width="10%">First Name</th>
-				<th width="10%">Last Name</th>
-                <th width="10%">Birth Date</th>
-                <th width="10%">Gender Code</th>
-                <th width="10%">Phone Number</th>
-                <th>Email Address</th>
-			</tr>
+			
 		</thead>
 		<tbody>
 		<?php
@@ -47,18 +39,43 @@ h1 {
 					$UserControl = new UserInfoController();
 					//send validation to login controller class
 					$validation = $UserControl->viewUserInfo();
-                    //for($i = 0; $i < count($userdetails); $i++) { Display all records
-						for($i = 0; $i < 20; $i++) {
-                        echo "<tr>";
-                        echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['LastName'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
-                        echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
-                        echo "</tr>";
-                      }
+                    if($validation==true)
+					{
+						?>
+						<tr>
+						<th width="5%">User Id</th>
+						<th width="10%">First Name</th>
+						<th width="10%">Last Name</th>
+						<th width="10%">Birth Date</th>
+						<th width="10%">Gender Code</th>
+						<th width="10%">Phone Number</th>
+						<th>Email Address</th>
+						</tr>
+						<?php
+						if(sizeof($_SESSION['validation'])>20)
+						{
+						  $cutoff = 20;
+						}
+						else 
+						 {
+						  $cutoff=sizeof($_SESSION['validation']);
+						 }
+						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) 
+						{
+							
+							echo "<tr>";
+							echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['FirstName'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['LastName'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['BirthDate'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['GenderCode'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['PhoneNumber'] . "</td>";
+							echo "<td>" . $_SESSION['validation'][$i]['EmailAddress'] . "</td>";
+							echo "</tr>";
+						}
+					}
+					else echo '<script>alert("User not found!")</script>';
+						
                     
          ?>
 		</tbody>

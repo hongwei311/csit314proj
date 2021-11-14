@@ -26,21 +26,12 @@ include_once("PrescriptionController.php");
 <body>
 
 <br>
-<h1 class="text-center">View Patient Record (First 20 Records)</h1>
+<h1 class="text-center">View Patient Record</h1>
 <br>
 
 <table class="table table-bordered table-striped" style="text-align:left;" width="100%" cellspacing="0">
 		<thead>
-			<tr>
-				<th>Prescription Id</th>
-				<th>Prescription Details</th>
-				<th>Prescription Status</th>
-        <th>Doctor Id</th>
-        <th>Patient Id</th>
-        <th>Pharmacist Id</th>
-        <th>Created Date Time</th>
-        <th>Dispensed Date Time</th>
-			</tr>
+			
 		</thead>
 		<tbody>
 		<?php
@@ -49,79 +40,101 @@ include_once("PrescriptionController.php");
                    $validation = $PrescriptionControl->viewPrescriptionRecord("Collected");
                    if($validation==true)
                    {
-                                for($i = 0; $i < 20; $i++) {
-                                  echo "<tr>";
-                                  if(isset($_SESSION['validation'][$i]['PrescriptionId']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  
-                                  if(isset($_SESSION['validation'][$i]['PrescriptionDetails']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['PrescriptionDetails'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  
-                                  if(isset($_SESSION['validation'][$i]['PrescriptionStatus']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['PrescriptionStatus'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  
-                                  if(isset($_SESSION['validation'][$i]['DoctorId']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  
-                                  if(isset($_SESSION['validation'][$i]['PatientId']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  if(isset($_SESSION['validation'][$i]['PharmacistId']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  
-                                  if(isset($_SESSION['validation'][$i]['CreatedDateTime']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['CreatedDateTime'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  if(isset($_SESSION['validation'][$i]['DispensedDateTime']))
-                                  {
-                                    echo "<td>" . $_SESSION['validation'][$i]['DispensedDateTime'] . "</td>";
-                                  }
-                                  else
-                                  {
-                                    echo "<td> NIL </td>";
-                                  }
-                                  echo "</tr>";
-                                }
+                     ?>
+                     <tr>
+                      <th>Prescription Id</th>
+                      <th>Prescription Details</th>
+                      <th>Prescription Status</th>
+                      <th>Doctor Id</th>
+                      <th>Patient Id</th>
+                      <th>Pharmacist Id</th>
+                      <th>Created Date Time</th>
+                      <th>Dispensed Date Time</th>
+                    </tr>
+                     <?php
+                     if(sizeof($_SESSION['validation'])>20)
+                     {
+                       $cutoff = 20;
+                     }
+                     else 
+                      {
+                       $cutoff=sizeof($_SESSION['validation']);
+                      }
+
+                    for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) 
+                    {
+                      echo "<tr>";
+                      if(isset($_SESSION['validation'][$i]['PrescriptionId']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['PrescriptionId'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      
+                      if(isset($_SESSION['validation'][$i]['PrescriptionDetails']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['PrescriptionDetails'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      
+                      if(isset($_SESSION['validation'][$i]['PrescriptionStatus']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['PrescriptionStatus'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      
+                      if(isset($_SESSION['validation'][$i]['DoctorId']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      
+                      if(isset($_SESSION['validation'][$i]['PatientId']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      if(isset($_SESSION['validation'][$i]['PharmacistId']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      
+                      if(isset($_SESSION['validation'][$i]['CreatedDateTime']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['CreatedDateTime'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      if(isset($_SESSION['validation'][$i]['DispensedDateTime']))
+                      {
+                        echo "<td>" . $_SESSION['validation'][$i]['DispensedDateTime'] . "</td>";
+                      }
+                      else
+                      {
+                        echo "<td> NIL </td>";
+                      }
+                      echo "</tr>";
+                    }
                    }
                    else
                    {

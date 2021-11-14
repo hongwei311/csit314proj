@@ -71,7 +71,7 @@ class Token{
                 $mail->Username = 'csit314hydrohomies@gmail.com';
                 $mail->Password = 'ucDud6Dt';
                 $mail->SetFrom('donotreply@mydomain.com', 'Admin');
-                $mail->Subject = 'Prescription ID';
+                $mail->Subject = $text;
                 $mail->addEmbeddedImage($file, 'qr', 'phpmailer.png', 'base64', 'image/png');
                 $mail->Body = '<img src="'.'cid:qr">';
 
