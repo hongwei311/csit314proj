@@ -38,7 +38,7 @@ include_once("PrescriptionController.php");
 <p>
 <form id="PharmacistViewPrescription" method="POST" action="Pharmacist_View_Prescription.php">
 <input type='hidden' name = 'action' value = 'Combined'>
-<button type="submit" class="btn btn-primary btn-lg" value="Combined">Combined (First 20 Records)</button>
+<button type="submit" class="btn btn-primary btn-lg" value="Combined">Combined (Last 20 Records)</button>
 </form>
 </p>
 

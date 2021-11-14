@@ -61,7 +61,15 @@ h1 {
 					$UserControl = new UserControl();
 					//send validation to login controller class
 					$validation = $UserControl->viewFullAdmin();
-					for($i = 0; $i < count($_SESSION['validation']); $i++) {
+					if(sizeof($_SESSION['validation'])>20)
+						{
+						  $cutoff = 20;
+						}
+						else 
+						 {
+						  $cutoff=sizeof($_SESSION['validation']);
+						 }
+						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['AdminId'] . "</td>";
@@ -82,7 +90,7 @@ h1 {
 	</div>
 	<br>
 
-	<h1 class="text-center">View Full Doctor (First 20 Records)</h1>
+	<h1 class="text-center">View Full Doctor (Latest 20 Records)</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
@@ -111,7 +119,15 @@ h1 {
 					//send validation to login controller class
 					$validation = $UserControl->viewFullDoctor();
 					//for($i = 0; $i < count($_SESSION['validation']); $i++) { Display all records
-						for($i = 0; $i < 20; $i++) {
+						if(sizeof($_SESSION['validation'])>20)
+						{
+						  $cutoff = 20;
+						}
+						else 
+						 {
+						  $cutoff=sizeof($_SESSION['validation']);
+						 }
+						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['DoctorId'] . "</td>";
@@ -134,7 +150,7 @@ h1 {
 	</div>
 	</div>
 <br>
-	<h1 class="text-center">View Full Patient (First 20 Records)</h1>
+	<h1 class="text-center">View Full Patient (Latest 20 Records)</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
@@ -162,7 +178,15 @@ h1 {
 					//send validation to login controller class
 					$validation = $UserControl->viewFullPatient();
 					//for($i = 0; $i < count($_SESSION['validation']); $i++) { Display all records
-						for($i = 0; $i < 20; $i++) {
+						if(sizeof($_SESSION['validation'])>20)
+						{
+						  $cutoff = 20;
+						}
+						else 
+						 {
+						  $cutoff=sizeof($_SESSION['validation']);
+						 }
+						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['PatientId'] . "</td>";
@@ -184,7 +208,7 @@ h1 {
 	</div>
 	</div>
 	<br>
-	<h1 class="text-center">View Full Pharmacist (First 20 Records)</h1>
+	<h1 class="text-center">View Full Pharmacist (Latest 20 Records)</h1>
 	<div class="block">
 	<div class="form-style">
 	<br>
@@ -213,7 +237,15 @@ h1 {
 					//send validation to login controller class
 					$validation = $UserControl->viewFullPharmacist();
 					//for($i = 0; $i < count($_SESSION['validation']); $i++) { Display all records
-						for($i = 0; $i < 20; $i++) {
+						if(sizeof($_SESSION['validation'])>20)
+						{
+						  $cutoff = 20;
+						}
+						else 
+						 {
+						  $cutoff=sizeof($_SESSION['validation']);
+						 }
+						for($i = sizeof($_SESSION['validation'])-1; $i > (sizeof($_SESSION['validation'])-$cutoff); $i--) {
                         echo "<tr>";
                         echo "<td>" . $_SESSION['validation'][$i]['UserId'] . "</td>";
 						echo "<td>" . $_SESSION['validation'][$i]['PharmacistId'] . "</td>";
